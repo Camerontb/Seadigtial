@@ -90,36 +90,106 @@
             }
         }
 
-        /* Wave animation */
-        .waves {
+        /* Ocean waves */
+        .ocean {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 40%;
+            background: linear-gradient(180deg, 
+                transparent 0%,
+                rgba(0, 40, 70, 0.3) 20%,
+                rgba(0, 60, 100, 0.5) 40%,
+                rgba(0, 80, 120, 0.7) 60%,
+                rgba(0, 100, 140, 0.85) 80%,
+                rgba(0, 120, 160, 0.95) 100%);
             overflow: hidden;
+        }
+
+        .ocean::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 60%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 70% 70%, rgba(0, 180, 220, 0.08) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .wave {
             position: absolute;
-            bottom: 0;
             width: 200%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2300d4ff' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            left: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23006994' fill-opacity='0.4' d='M0,160L24,165.3C48,171,96,181,144,186.7C192,192,240,192,288,176C336,160,384,128,432,128C480,128,528,160,576,181.3C624,203,672,213,720,202.7C768,192,816,160,864,154.7C912,149,960,171,1008,181.3C1056,192,1104,192,1152,181.3C1200,171,1248,149,1296,149.3C1344,149,1392,171,1416,181.3L1440,192L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
             background-size: 50% 100%;
-            animation: wave 10s linear infinite;
+            animation: wave 25s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+            transform-origin: center bottom;
+        }
+
+        .wave:nth-child(1) {
+            bottom: 0;
+            opacity: 1;
+            z-index: 5;
         }
 
         .wave:nth-child(2) {
-            bottom: 10px;
-            opacity: 0.5;
-            animation: wave 7s linear infinite reverse;
+            bottom: 15px;
+            opacity: 0.7;
+            z-index: 4;
+            animation: wave 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite reverse;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23007ea7' fill-opacity='0.5' d='M0,224L24,213.3C48,203,96,181,144,181.3C192,181,240,203,288,218.7C336,235,384,245,432,234.7C480,224,528,192,576,176C624,160,672,160,720,176C768,192,816,224,864,218.7C912,213,960,171,1008,160C1056,149,1104,171,1152,186.7C1200,203,1248,213,1296,197.3C1344,181,1392,139,1416,117.3L1440,96L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            background-size: 50% 100%;
         }
 
         .wave:nth-child(3) {
-            bottom: 20px;
+            bottom: 30px;
+            opacity: 0.5;
+            z-index: 3;
+            animation: wave 23s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+            animation-delay: -2s;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2300a8cc' fill-opacity='0.3' d='M0,128L24,144C48,160,96,192,144,197.3C192,203,240,181,288,181.3C336,181,384,203,432,208C480,213,528,203,576,181.3C624,160,672,128,720,138.7C768,149,816,203,864,208C912,213,960,171,1008,149.3C1056,128,1104,128,1152,149.3C1200,171,1248,213,1296,213.3C1344,213,1392,171,1416,149.3L1440,128L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            background-size: 50% 100%;
+        }
+
+        .wave:nth-child(4) {
+            bottom: 50px;
             opacity: 0.3;
-            animation: wave 12s linear infinite;
+            z-index: 2;
+            animation: wave 18s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite reverse;
+            animation-delay: -5s;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2300d4ff' fill-opacity='0.2' d='M0,96L24,112C48,128,96,160,144,154.7C192,149,240,107,288,101.3C336,96,384,128,432,149.3C480,171,528,181,576,165.3C624,149,672,107,720,101.3C768,96,816,128,864,144C912,160,960,160,1008,138.7C1056,117,1104,75,1152,69.3C1200,64,1248,96,1296,122.7C1344,149,1392,171,1416,181.3L1440,192L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            background-size: 50% 100%;
+        }
+
+        /* Foam/sparkle effect */
+        .foam {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 2%),
+                              radial-gradient(circle at 30% 40%, rgba(0,212,255,0.15) 0%, transparent 1.5%),
+                              radial-gradient(circle at 50% 10%, rgba(255,255,255,0.08) 0%, transparent 2%),
+                              radial-gradient(circle at 70% 30%, rgba(0,212,255,0.1) 0%, transparent 1%),
+                              radial-gradient(circle at 90% 25%, rgba(255,255,255,0.12) 0%, transparent 2%);
+            animation: sparkle 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
 
         @keyframes wave {
@@ -312,23 +382,9 @@
             vertical-align: middle;
         }
 
-        /* Scanning line effect */
+        /* Scanning line effect - disabled */
         .scan-line {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
-            animation: scan 4s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes scan {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
+            display: none;
         }
 
         /* Corner decorations */
@@ -437,10 +493,12 @@
         <div class="particle"></div>
     </div>
 
-    <div class="waves">
+    <div class="ocean">
         <div class="wave"></div>
         <div class="wave"></div>
         <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="foam"></div>
     </div>
 
     <div class="scan-line"></div>
