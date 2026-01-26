@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Digital | Launching Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 50%, #1b263b 100%);
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animated background grid */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 212, 255, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 14s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 16s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 13s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 15s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 11s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2s; animation-duration: 17s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4s; animation-duration: 14s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1s; animation-duration: 12s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 3s; animation-duration: 16s; }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Wave animation */
+        .waves {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2300d4ff' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            background-size: 50% 100%;
+            animation: wave 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 10px;
+            opacity: 0.5;
+            animation: wave 7s linear infinite reverse;
+        }
+
+        .wave:nth-child(3) {
+            bottom: 20px;
+            opacity: 0.3;
+            animation: wave 12s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Main content */
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .logo-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+        }
+
+        .logo-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        .logo-ring:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .company-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 0.5rem;
+            text-shadow: 
+                0 0 10px rgba(0, 212, 255, 0.5),
+                0 0 20px rgba(0, 212, 255, 0.3),
+                0 0 40px rgba(0, 212, 255, 0.2);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 10px rgba(0, 212, 255, 0.5),
+                    0 0 20px rgba(0, 212, 255, 0.3),
+                    0 0 40px rgba(0, 212, 255, 0.2);
+            }
+            to {
+                text-shadow: 
+                    0 0 20px rgba(0, 212, 255, 0.8),
+                    0 0 40px rgba(0, 212, 255, 0.5),
+                    0 0 60px rgba(0, 212, 255, 0.3);
+            }
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: rgba(0, 212, 255, 0.7);
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        .launching-soon {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: #00d4ff;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .launching-soon::before,
+        .launching-soon::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00d4ff;
+        }
+
+        .launching-soon::before {
+            top: -5px;
+            left: -5px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .launching-soon::after {
+            bottom: -5px;
+            right: -5px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Contact section */
+        .contact-section {
+            margin-top: 3rem;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-link {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: #00d4ff;
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact-link:hover::before {
+            left: 100%;
+        }
+
+        .email-icon {
+            display: inline-block;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Scanning line effect */
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Corner decorations */
+        .corner {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+        }
+
+        .corner::before,
+        .corner::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 212, 255, 0.5);
+        }
+
+        .corner.top-left {
+            top: 20px;
+            left: 20px;
+        }
+        .corner.top-left::before {
+            width: 50px;
+            height: 2px;
+        }
+        .corner.top-left::after {
+            width: 2px;
+            height: 50px;
+        }
+
+        .corner.top-right {
+            top: 20px;
+            right: 20px;
+        }
+        .corner.top-right::before {
+            right: 0;
+            width: 50px;
+            height: 2px;
+        }
+        .corner.top-right::after {
+            right: 0;
+            width: 2px;
+            height: 50px;
+        }
+
+        .corner.bottom-left {
+            bottom: 20px;
+            left: 20px;
+        }
+        .corner.bottom-left::before {
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+        }
+        .corner.bottom-left::after {
+            bottom: 0;
+            width: 2px;
+            height: 50px;
+        }
+
+        .corner.bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+        .corner.bottom-right::before {
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+        }
+        .corner.bottom-right::after {
+            bottom: 0;
+            right: 0;
+            width: 2px;
+            height: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .company-name {
+                letter-spacing: 0.15em;
+            }
+            .launching-soon {
+                letter-spacing: 0.2em;
+                padding: 0.8rem 1.5rem;
+            }
+            .tagline {
+                letter-spacing: 0.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <div class="scan-line"></div>
+
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <div class="logo-ring"></div>
+                <div class="logo-ring"></div>
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Compass/Navigation symbol with digital elements -->
+                    <circle cx="50" cy="50" r="45" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.3"/>
+                    <circle cx="50" cy="50" r="35" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <!-- Anchor shape modernized -->
+                    <path d="M50 15 L50 75" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M35 65 Q50 85 65 65" stroke="#00d4ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="50" cy="25" r="6" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <path d="M30 50 L70 50" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Digital elements -->
+                    <circle cx="50" cy="50" r="3" fill="#00d4ff"/>
+                    <path d="M50 5 L50 12" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M50 88 L50 95" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M5 50 L12 50" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M88 50 L95 50" stroke="#00d4ff" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+        
+        <h1 class="company-name">Sea Digital</h1>
+        <p class="tagline">Maritime Technology</p>
+        
+        <div class="launching-soon">Launching Soon</div>
+
+        <div class="contact-section">
+            <p class="contact-label">Get in touch</p>
+            <a href="mailto:admin@seadigital.com.au" class="contact-link">
+                <svg class="email-icon" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z" fill="#00d4ff"/>
+                </svg>
+                admin@seadigital.com.au
+            </a>
+        </div>
+    </div>
+</body>
+</html>
