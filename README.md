@@ -1,3 +1,3 @@
 # Seadigtial
-# Main Deploys to the web Page. 
+# DeployBranch is connected to Cloud flare 
 
