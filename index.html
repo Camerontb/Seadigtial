@@ -22,6 +22,88 @@
             justify-content: center;
         }
 
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(5, 10, 20, 0.7);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            z-index: 30;
+        }
+
+        .site-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 0.8rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(5, 10, 20, 0.9);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            color: #f5faff;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            z-index: 40;
+        }
+
+        .site-footer span {
+            color: rgba(245, 250, 255, 0.8);
+        }
+
+        .nav-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #f5faff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            position: relative;
+            padding-bottom: 0.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #00d4ff;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
         /* Animated background grid */
         .grid-bg {
             position: fixed;
@@ -464,6 +546,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 1rem 1.5rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
             .company-name {
                 letter-spacing: 0.15em;
             }
@@ -474,10 +566,27 @@
             .tagline {
                 letter-spacing: 0.3em;
             }
+            .site-footer {
+                flex-direction: column;
+                gap: 0.3rem;
+                padding: 0.8rem 1.5rem;
+                text-align: center;
+                letter-spacing: 0.18em;
+            }
         }
     </style>
 </head>
 <body>
+    <header class="nav-bar">
+        <div class="nav-brand">Sea Digital</div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
     <div class="grid-bg"></div>
     
     <div class="particles">
@@ -508,7 +617,7 @@
     <div class="corner bottom-left"></div>
     <div class="corner bottom-right"></div>
 
-    <div class="container">
+    <div class="container" id="home">
         <div class="logo-container">
             <div class="logo-icon">
                 <div class="logo-ring"></div>
@@ -533,11 +642,11 @@
         </div>
         
         <h1 class="company-name">Sea Digital</h1>
-        <p class="tagline">Maritime Technology</p>
+        <p class="tagline" id="about">Maritime Technology</p>
         
-        <div class="launching-soon">Launching Soon</div>
+        <div class="launching-soon" id="services">Launching Soon</div>
 
-        <div class="contact-section">
+        <div class="contact-section" id="contact">
             <p class="contact-label">Get in touch</p>
             <a href="mailto:admin@seadigital.com.au" class="contact-link">
                 <svg class="email-icon" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -547,5 +656,10 @@
             </a>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <span>Sea Digital © 2026</span>
+        <span>Precision Maritime Tech</span>
+    </footer>
 </body>
 </html>
