@@ -407,6 +407,119 @@
             border-top: none;
         }
 
+        .access-card {
+            margin: 2.5rem auto 0;
+            max-width: 520px;
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(7, 20, 35, 0.6);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            text-align: left;
+        }
+
+        .access-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00d4ff;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .access-card p {
+            color: rgba(245, 250, 255, 0.7);
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .access-form {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .access-form label {
+            color: rgba(245, 250, 255, 0.6);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+
+        .access-form input {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 212, 255, 0.35);
+            background: rgba(2, 12, 20, 0.8);
+            color: #f5faff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .access-form input::placeholder {
+            color: rgba(245, 250, 255, 0.35);
+        }
+
+        .access-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .access-button {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 0.7rem 1.3rem;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            background: rgba(0, 212, 255, 0.12);
+            color: #00d4ff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .access-button:hover {
+            background: rgba(0, 212, 255, 0.25);
+            box-shadow: 0 0 18px rgba(0, 212, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .access-note {
+            font-size: 0.75rem;
+            color: rgba(245, 250, 255, 0.5);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .access-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) scale(0.95);
+            padding: 0.9rem 1.8rem;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            border-radius: 999px;
+            color: #00d4ff;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 50;
+        }
+
+        .access-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
         /* Contact section */
         .contact-section {
             margin-top: 3rem;
@@ -644,7 +757,24 @@
         <h1 class="company-name">Sea Digital</h1>
         <p class="tagline" id="about">Maritime Technology</p>
         
-        <div class="launching-soon" id="services">Launching Soon</div>
+        <div class="launching-soon" id="services">EMPX: Next‑Gen Pilot Software — Coming Soon</div>
+
+        <div class="access-card" aria-label="Private pilot access">
+            <h3>Private Pilot Access</h3>
+            <p>Selected pilots can sign in to preview EMPX workflows, route tools, and live status dashboards.</p>
+            <form class="access-form" action="/submit-access" method="POST">
+                <div>
+                    <label for="pilot-email">Email</label>
+                    <input id="pilot-email" name="email" type="email" placeholder="pilot@company.com" required />
+                </div>
+                <div class="access-actions">
+                    <button type="submit" class="access-button">Request Access</button>
+                    <span class="access-note">Invite-only beta</span>
+                </div>
+            </form>
+        </div>
+
+        <div class="access-toast" role="status" aria-live="polite">Submitted</div>
 
         <div class="contact-section" id="contact">
             <p class="contact-label">Get in touch</p>
@@ -661,5 +791,6 @@
         <span>Sea Digital © 2026</span>
         <span>Precision Maritime Tech</span>
     </footer>
+    <script src="scripts/access-toast.js" defer></script>
 </body>
 </html>
