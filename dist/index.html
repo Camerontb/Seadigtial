@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Digital | EMPX is Coming</title>
+    <meta name="description" content="EMPX — the next-generation electronic Master Pilot Exchange. Built for pilots. Launching soon.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cyan: #00d4ff;
+            --cyan-dim: rgba(0, 212, 255, 0.7);
+            --cyan-ghost: rgba(0, 212, 255, 0.08);
+            --dark: #0a0a1a;
+            --dark-mid: #0d1b2a;
+            --text: #f5faff;
+            --text-dim: rgba(245, 250, 255, 0.6);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--dark);
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1rem 3rem;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(5, 10, 20, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+            z-index: 100;
+            transition: padding 0.3s;
+        }
+        .nav-bar.scrolled { padding: 0.6rem 3rem; }
+        .nav-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem; letter-spacing: 0.4em;
+            text-transform: uppercase; color: var(--cyan);
+        }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a {
+            color: var(--text); text-decoration: none;
+            text-transform: uppercase; font-size: 0.85rem;
+            letter-spacing: 0.2em; position: relative;
+            padding-bottom: 0.2rem; transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; left: 0; bottom: 0;
+            width: 100%; height: 2px; background: var(--cyan);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.3s;
+        }
+        .nav-links a:hover { color: var(--cyan); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+
+        /* ── BACKGROUND LAYERS ── */
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        }
+
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; pointer-events: none; z-index: 1;
+        }
+        .particle {
+            position: absolute; width: 3px; height: 3px;
+            background: rgba(0,212,255,0.5); border-radius: 50%;
+            animation: float 15s infinite;
+            box-shadow: 0 0 8px rgba(0,212,255,0.6);
+        }
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 14s; }
+        .particle:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 16s; }
+        .particle:nth-child(4) { left: 45%; animation-delay: 1s; animation-duration: 13s; }
+        .particle:nth-child(5) { left: 55%; animation-delay: 3s; animation-duration: 15s; }
+        .particle:nth-child(6) { left: 65%; animation-delay: 5s; animation-duration: 11s; }
+        .particle:nth-child(7) { left: 75%; animation-delay: 2s; animation-duration: 17s; }
+        .particle:nth-child(8) { left: 85%; animation-delay: 4s; animation-duration: 14s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; } 90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        /* ── SECTIONS ── */
+        section { position: relative; z-index: 10; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 60%, rgba(0,60,100,0.4) 100%);
+            padding: 6rem 2rem 4rem;
+        }
+        .hero-inner { max-width: 900px; }
+
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem; letter-spacing: 0.35em;
+            text-transform: uppercase; color: var(--cyan);
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(0,212,255,0.3);
+            border-radius: 999px;
+            background: rgba(0,212,255,0.06);
+            margin-bottom: 2.5rem;
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+        .status-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #00ff88;
+            box-shadow: 0 0 8px #00ff88;
+            animation: dotBlink 2s ease-in-out infinite;
+        }
+        @keyframes dotBlink {
+            0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0); }
+            50% { box-shadow: 0 0 20px rgba(0,212,255,0.15); }
+        }
+
+        .logo-icon {
+            width: 100px; height: 100px;
+            margin: 0 auto 2rem; position: relative;
+        }
+        .logo-icon svg {
+            width: 100%; height: 100%;
+            filter: drop-shadow(0 0 20px rgba(0,212,255,0.5));
+        }
+        .logo-ring {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 130px; height: 130px;
+            border: 2px solid rgba(0,212,255,0.25);
+            border-radius: 50%;
+            animation: pulseRing 2.5s ease-out infinite;
+        }
+        .logo-ring:nth-child(2) { animation-delay: 0.6s; }
+        @keyframes pulseRing {
+            0% { transform: translate(-50%,-50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%,-50%) scale(1.6); opacity: 0; }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900; letter-spacing: 0.25em;
+            text-transform: uppercase; color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.25);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 15px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.25); }
+            to   { text-shadow: 0 0 25px rgba(0,212,255,0.8), 0 0 50px rgba(0,212,255,0.4); }
+        }
+
+        .hero-tagline {
+            font-size: 1.15rem; color: var(--cyan-dim);
+            letter-spacing: 0.5em; text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-headline {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.1rem, 3vw, 1.8rem);
+            font-weight: 400; color: var(--text);
+            letter-spacing: 0.15em;
+            line-height: 1.6; margin-bottom: 1rem;
+        }
+        .hero-headline strong { color: var(--cyan); font-weight: 600; }
+
+        .hero-sub {
+            font-size: 1.1rem; color: var(--text-dim);
+            max-width: 600px; margin: 0 auto 3rem;
+            line-height: 1.6; letter-spacing: 0.05em;
+        }
+
+        .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .cta-primary, .cta-secondary {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase; letter-spacing: 0.2em;
+            font-size: 0.85rem; padding: 0.9rem 2rem;
+            border-radius: 6px; cursor: pointer;
+            transition: all 0.3s; text-decoration: none;
+        }
+        .cta-primary {
+            background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(0,212,255,0.12));
+            border: 1px solid rgba(0,212,255,0.6); color: var(--cyan);
+        }
+        .cta-primary:hover {
+            background: linear-gradient(135deg, rgba(0,212,255,0.4), rgba(0,212,255,0.2));
+            box-shadow: 0 0 30px rgba(0,212,255,0.3); transform: translateY(-2px);
+        }
+        .cta-secondary {
+            background: transparent;
+            border: 1px solid rgba(245,250,255,0.2); color: var(--text-dim);
+        }
+        .cta-secondary:hover {
+            border-color: rgba(0,212,255,0.4); color: var(--cyan);
+            transform: translateY(-2px);
+        }
+
+        .scroll-hint {
+            position: absolute; bottom: 2rem; left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem; letter-spacing: 0.4em;
+            text-transform: uppercase; color: var(--text-dim);
+            animation: bounce 2s ease-in-out infinite;
+        }
+        .scroll-hint::after {
+            content: ''; display: block;
+            width: 1px; height: 30px;
+            background: linear-gradient(180deg, var(--cyan-dim), transparent);
+            margin: 0.5rem auto 0;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ── WHAT IS EMPX ── */
+        .what-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, rgba(0,60,100,0.4) 0%, var(--dark-mid) 30%, var(--dark-mid) 70%, var(--dark) 100%);
+            text-align: center;
+        }
+        .section-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem; letter-spacing: 0.5em;
+            text-transform: uppercase; color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700; letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+        }
+        .section-desc {
+            font-size: 1.15rem; color: var(--text-dim);
+            max-width: 700px; margin: 0 auto 4rem;
+            line-height: 1.7;
+        }
+
+        /* Feature grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+        }
+        .feature-card {
+            padding: 2rem;
+            border: 1px solid rgba(0,212,255,0.12);
+            background: rgba(7,20,35,0.5);
+            backdrop-filter: blur(8px);
+            text-align: left;
+            transition: all 0.4s;
+            position: relative; overflow: hidden;
+        }
+        .feature-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .feature-card:hover {
+            border-color: rgba(0,212,255,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-icon {
+            width: 48px; height: 48px;
+            margin-bottom: 1.2rem;
+            color: var(--cyan);
+        }
+        .feature-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--cyan);
+            margin-bottom: 0.8rem;
+        }
+        .feature-card p {
+            font-size: 0.95rem; color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* ── BUILD STATUS ── */
+        .status-section {
+            padding: 6rem 2rem;
+            background: var(--dark);
+            text-align: center;
+        }
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem; max-width: 900px; margin: 0 auto;
+        }
+        .status-item {
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(0,212,255,0.1);
+            background: rgba(7,20,35,0.4);
+        }
+        .status-item .label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem; letter-spacing: 0.3em;
+            text-transform: uppercase; color: var(--text-dim);
+            margin-bottom: 0.8rem;
+        }
+        .status-item .value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem; font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        .status-item .value.live { color: #00ff88; }
+        .status-item .value.building { color: var(--cyan); }
+        .status-item .value.soon { color: #ffa500; }
+
+        .progress-bar-wrap {
+            max-width: 600px; margin: 3rem auto 0;
+        }
+        .progress-label {
+            display: flex; justify-content: space-between;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--text-dim);
+            margin-bottom: 0.6rem;
+        }
+        .progress-track {
+            width: 100%; height: 4px;
+            background: rgba(0,212,255,0.1);
+            border-radius: 2px; overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%; width: 0%;
+            background: linear-gradient(90deg, var(--cyan), #00ff88);
+            border-radius: 2px;
+            transition: width 1.5s ease-out;
+            box-shadow: 0 0 12px rgba(0,212,255,0.5);
+        }
+
+        /* ── BUILT FOR PILOTS ── */
+        .pilots-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 50%, var(--dark) 100%);
+            text-align: center;
+        }
+        .pilot-quote {
+            max-width: 700px; margin: 0 auto;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.7;
+            position: relative;
+            padding: 2rem 0;
+        }
+        .pilot-quote::before {
+            content: '\201C';
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem; color: rgba(0,212,255,0.2);
+            position: absolute; top: -0.5rem; left: -1rem;
+        }
+        .pilot-quote-attr {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem; letter-spacing: 0.3em;
+            text-transform: uppercase; color: var(--cyan-dim);
+            margin-top: 1.5rem;
+        }
+        .pilot-points {
+            display: flex; gap: 3rem; justify-content: center;
+            flex-wrap: wrap; margin-top: 4rem;
+        }
+        .pilot-point {
+            text-align: center; max-width: 200px;
+        }
+        .pilot-point .number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem; font-weight: 900;
+            color: var(--cyan);
+            line-height: 1;
+        }
+        .pilot-point .desc {
+            font-size: 0.85rem; color: var(--text-dim);
+            letter-spacing: 0.15em; text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* ── ACCESS / SIGNUP ── */
+        .access-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--dark) 0%, rgba(0,40,70,0.3) 50%, var(--dark) 100%);
+            text-align: center;
+        }
+        .access-card {
+            max-width: 520px; margin: 0 auto;
+            padding: 2.5rem;
+            border: 1px solid rgba(0,212,255,0.2);
+            background: rgba(7,20,35,0.7);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            text-align: left;
+        }
+        .access-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--cyan); letter-spacing: 0.2em;
+            text-transform: uppercase; font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        .access-card p {
+            color: var(--text-dim); line-height: 1.6;
+            margin-bottom: 1.5rem; font-size: 0.95rem;
+        }
+        .access-form { display: grid; gap: 1rem; }
+        .access-form label {
+            color: var(--text-dim); letter-spacing: 0.15em;
+            text-transform: uppercase; font-size: 0.7rem;
+        }
+        .access-form input {
+            width: 100%; padding: 0.8rem 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(0,212,255,0.3);
+            background: rgba(2,12,20,0.8);
+            color: var(--text);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem; letter-spacing: 0.05em;
+            transition: border-color 0.3s;
+        }
+        .access-form input:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 12px rgba(0,212,255,0.15);
+        }
+        .access-form input::placeholder { color: rgba(245,250,255,0.3); }
+        .access-actions {
+            display: flex; align-items: center;
+            gap: 1rem; flex-wrap: wrap;
+        }
+        .access-button {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase; letter-spacing: 0.2em;
+            padding: 0.8rem 1.5rem; border-radius: 6px;
+            border: 1px solid rgba(0,212,255,0.5);
+            background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,212,255,0.08));
+            color: var(--cyan); cursor: pointer;
+            transition: all 0.3s; font-size: 0.85rem;
+        }
+        .access-button:hover {
+            background: linear-gradient(135deg, rgba(0,212,255,0.35), rgba(0,212,255,0.15));
+            box-shadow: 0 0 25px rgba(0,212,255,0.3);
+            transform: translateY(-2px);
+        }
+        .access-note {
+            font-size: 0.75rem; color: var(--text-dim);
+            letter-spacing: 0.12em; text-transform: uppercase;
+        }
+
+        .access-toast {
+            position: fixed; bottom: 2rem; left: 50%;
+            transform: translateX(-50%) scale(0.95);
+            padding: 0.9rem 1.8rem;
+            background: rgba(0,255,136,0.1);
+            border: 1px solid rgba(0,255,136,0.5);
+            border-radius: 999px; color: #00ff88;
+            letter-spacing: 0.3em; text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif; font-size: 0.75rem;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 200;
+        }
+        .access-toast.show { opacity: 1; transform: translateX(-50%) scale(1); }
+
+        /* ── FOOTER ── */
+        .site-footer {
+            padding: 2rem 3rem;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(5,10,20,0.95);
+            border-top: 1px solid rgba(0,212,255,0.1);
+            color: var(--text-dim);
+            letter-spacing: 0.2em; text-transform: uppercase;
+            font-size: 0.7rem; position: relative; z-index: 10;
+        }
+        .footer-contact a {
+            color: var(--cyan); text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .footer-contact a:hover { opacity: 0.7; }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-bar { flex-direction: column; gap: 0.6rem; padding: 1rem 1.5rem; }
+            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .hero { padding: 8rem 1.5rem 4rem; }
+            .hero h1 { letter-spacing: 0.12em; }
+            .hero-tagline { letter-spacing: 0.25em; }
+            .features { grid-template-columns: 1fr; }
+            .pilot-points { gap: 2rem; }
+            .site-footer {
+                flex-direction: column; gap: 0.5rem;
+                text-align: center; padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <header class="nav-bar">
+        <div class="nav-brand">Sea Digital</div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#product">Product</a>
+            <a href="#status">Status</a>
+            <a href="#access">Early Access</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- BG LAYERS -->
+    <div class="grid-bg"></div>
+    <div class="particles">
+        <div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+    </div>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="home">
+        <div class="hero-inner">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Actively Building
+            </div>
+
+            <div class="logo-icon">
+                <div class="logo-ring"></div>
+                <div class="logo-ring"></div>
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.3"/>
+                    <circle cx="50" cy="50" r="35" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <path d="M50 15 L50 75" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M35 65 Q50 85 65 65" stroke="#00d4ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="50" cy="25" r="6" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <path d="M30 50 L70 50" stroke="#00d4ff" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="50" cy="50" r="3" fill="#00d4ff"/>
+                    <path d="M50 5 L50 12" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M50 88 L50 95" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M5 50 L12 50" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M88 50 L95 50" stroke="#00d4ff" stroke-width="2"/>
+                </svg>
+            </div>
+
+            <h1>Sea Digital</h1>
+            <p class="hero-tagline">Maritime Technology</p>
+
+            <p class="hero-headline">
+                Introducing <strong>EMPX</strong> &mdash; the Electronic<br>
+                Master Pilot Exchange, reimagined.
+            </p>
+
+            <p class="hero-sub">
+                A tablet-first platform that replaces paper MPX forms with a digital, IMO-compliant workflow.
+                Nautical charts. Digital signatures. Cloud sync. Built by a working pilot.
+            </p>
+
+            <div class="cta-group">
+                <a href="#access" class="cta-primary">Request Early Access</a>
+                <a href="#product" class="cta-secondary">See What's Coming</a>
+            </div>
+        </div>
+        <div class="scroll-hint">Scroll</div>
+    </section>
+
+    <!-- ═══════════════ WHAT IS EMPX ═══════════════ -->
+    <section class="what-section" id="product">
+        <div class="section-label reveal">What We're Building</div>
+        <h2 class="section-title reveal">Everything a pilot needs. Nothing they don't.</h2>
+        <p class="section-desc reveal">
+            EMPX is a complete digital Master Pilot Exchange platform.
+            From the boarding ground to the berth &mdash; every checklist item, every waypoint,
+            every signature &mdash; captured digitally, stored securely, accessible anywhere.
+        </p>
+
+        <div class="features">
+            <div class="feature-card reveal reveal-delay-1">
+                <svg class="feature-icon" viewBox="0 0 48 48" fill="none">
+                    <rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 16h40" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 24h16M16 30h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="10" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+                <h3>Full IMO Checklist</h3>
+                <p>12 sections, ~80 fields, fully compliant with IMO Resolution A.960 and SOLAS Chapter V. No more paper forms.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-2">
+                <svg class="feature-icon" viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+                    <path d="M24 8v4M24 36v4M8 24h4M36 24h4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 14l18 18M14 34l18-18" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                    <circle cx="24" cy="24" r="3" fill="currentColor"/>
+                    <path d="M24 24l8-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <h3>Nautical Charts</h3>
+                <p>Live chart overlays with OpenSeaMap integration. Route waypoints plotted with bearings and distances. Designed for pilotage.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-3">
+                <svg class="feature-icon" viewBox="0 0 48 48" fill="none">
+                    <path d="M8 38c4-8 8-2 12-10s4-16 8-10 8 6 12-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    <rect x="4" y="6" width="40" height="36" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+                <h3>Digital Signatures</h3>
+                <p>Master and pilot sign directly on the tablet. Captured, locked, and exported to PDF. Tamper-proof and auditable.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-4">
+                <svg class="feature-icon" viewBox="0 0 48 48" fill="none">
+                    <path d="M24 4v8M24 36v8" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 24h8M36 24h8" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/>
+                    <path d="M24 16a8 8 0 0 1 0 16" stroke="currentColor" stroke-width="2.5"/>
+                    <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+                </svg>
+                <h3>Cloud Sync</h3>
+                <p>Multi-tenant Firestore backend. Your org's records, routes, and waypoints &mdash; synced in real-time across every device.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-5">
+                <svg class="feature-icon" viewBox="0 0 48 48" fill="none">
+                    <rect x="6" y="4" width="36" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 14h20M14 22h14M14 30h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="36" cy="36" r="8" fill="#0a0a1a" stroke="currentColor" stroke-width="2"/>
+                    <path d="M33 36l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Org Admin Console</h3>
+                <p>Manage pilots, routes, waypoints, and billing from a dedicated admin panel. Per-org access control and subscription management.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-5">
+                <svg class="feature-icon" viewBox="0 0 48 48" fill="none">
+                    <path d="M12 40V20l12-12 12 12v20" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                    <path d="M20 40V30h8v10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 44h40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M30 16l6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="38" cy="10" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M38 7v6M35 10h6" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <h3>Weather & Tides</h3>
+                <p>Live maritime weather, wind conditions, and tidal data integrated directly into the pilotage workflow. No app-switching.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ BUILD STATUS ═══════════════ -->
+    <section class="status-section" id="status">
+        <div class="section-label reveal">Development Status</div>
+        <h2 class="section-title reveal">We're building EMPX right now.</h2>
+        <p class="section-desc reveal">
+            Active development. Real features shipping. Here's where we stand.
+        </p>
+
+        <div class="status-grid reveal">
+            <div class="status-item">
+                <div class="label">Core App</div>
+                <div class="value live">LIVE</div>
+            </div>
+            <div class="status-item">
+                <div class="label">MPX Checklist</div>
+                <div class="value live">LIVE</div>
+            </div>
+            <div class="status-item">
+                <div class="label">Cloud Backend</div>
+                <div class="value building">BUILDING</div>
+            </div>
+            <div class="status-item">
+                <div class="label">Admin Console</div>
+                <div class="value building">BUILDING</div>
+            </div>
+            <div class="status-item">
+                <div class="label">Nautical Charts</div>
+                <div class="value live">LIVE</div>
+            </div>
+            <div class="status-item">
+                <div class="label">Billing & Subs</div>
+                <div class="value building">BUILDING</div>
+            </div>
+            <div class="status-item">
+                <div class="label">Pilot Onboarding</div>
+                <div class="value soon">NEXT</div>
+            </div>
+            <div class="status-item">
+                <div class="label">Public Beta</div>
+                <div class="value soon">SOON</div>
+            </div>
+        </div>
+
+        <div class="progress-bar-wrap reveal">
+            <div class="progress-label">
+                <span>Overall Progress</span>
+                <span class="progress-pct">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" data-target="65"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ BUILT BY A PILOT ═══════════════ -->
+    <section class="pilots-section">
+        <div class="section-label reveal">Built Different</div>
+        <h2 class="section-title reveal">Built by a working pilot.</h2>
+
+        <div class="pilot-quote reveal">
+            Most maritime software is designed in an office by people who've never stood on a bridge wing at 0400.
+            EMPX is different &mdash; it's built from the deck up, by someone who uses it.
+        </div>
+        <div class="pilot-quote-attr reveal">Cameron &mdash; Marine Pilot & Founder, Sea Digital</div>
+
+        <div class="pilot-points reveal">
+            <div class="pilot-point">
+                <div class="number">12</div>
+                <div class="desc">IMO Sections</div>
+            </div>
+            <div class="pilot-point">
+                <div class="number">~80</div>
+                <div class="desc">Checklist Fields</div>
+            </div>
+            <div class="pilot-point">
+                <div class="number">1</div>
+                <div class="desc">Tap to Export</div>
+            </div>
+            <div class="pilot-point">
+                <div class="number">0</div>
+                <div class="desc">Paper Forms</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ EARLY ACCESS ═══════════════ -->
+    <section class="access-section" id="access">
+        <div class="section-label reveal">Get In Early</div>
+        <h2 class="section-title reveal">Join the pilot programme.</h2>
+        <p class="section-desc reveal">
+            We're onboarding select pilots and port organisations for early access.
+            Be among the first to test EMPX and shape the product.
+        </p>
+
+        <div class="access-card reveal">
+            <h3>Request Access</h3>
+            <p>Enter your email and we'll reach out with next steps. Invite-only while we finalise the platform.</p>
+            <form class="access-form" action="https://formspree.io/f/xrpggywg" method="POST">
+                <div>
+                    <label for="pilot-email">Email</label>
+                    <input id="pilot-email" name="email" type="email" placeholder="pilot@portauthority.com" required />
+                </div>
+                <div class="access-actions">
+                    <button type="submit" class="access-button">Request Access</button>
+                    <span class="access-note">Invite-only beta</span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- TOAST -->
+    <div class="access-toast" role="status" aria-live="polite">Request Sent</div>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="site-footer" id="contact">
+        <span>Sea Digital &copy; 2026</span>
+        <span>Precision Maritime Technology</span>
+        <span class="footer-contact"><a href="mailto:admin@seadigital.com.au">admin@seadigital.com.au</a></span>
+    </footer>
+
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
+    <script src="scripts/access-toast.js" defer></script>
+    <script>
+        // Shrink nav on scroll
+        const nav = document.querySelector('.nav-bar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Scroll-reveal observer
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // Animate progress bar when visible
+        const progressFill = document.querySelector('.progress-fill');
+        const pctLabel = document.querySelector('.progress-pct');
+        if (progressFill) {
+            const progressObserver = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const target = parseInt(progressFill.dataset.target, 10);
+                        progressFill.style.width = target + '%';
+                        // Animate counter
+                        let current = 0;
+                        const step = () => {
+                            current += 1;
+                            if (current <= target) {
+                                pctLabel.textContent = current + '%';
+                                requestAnimationFrame(step);
+                            }
+                        };
+                        requestAnimationFrame(step);
+                        progressObserver.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            progressObserver.observe(progressFill);
+        }
+    </script>
+</body>
+</html>
