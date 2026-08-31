@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sea Digital | EMPX — Digital Master Pilot Exchange for Maritime Pilots</title>
-    <meta name="description" content="EMPX is a tablet-first electronic Master Pilot Exchange platform. IMO A.960 compliant digital checklists, nautical charts, digital signatures, and cloud sync — replacing paper MPX forms for maritime pilots and port authorities.">
-    <meta name="keywords" content="Master Pilot Exchange, MPX, electronic MPX, digital pilotage, maritime pilot, port authority, IMO A.960, SOLAS Chapter V, pilotage checklist, nautical charts, Sea Digital, EMPX">
+    <title>Sea Digital | EMPX — Beta Now Open for Trial Pilots</title>
+    <meta name="description" content="EMPX is a tablet-first electronic Master Pilot Exchange platform, live and in beta. IMO A.960 checklists, per-leg under-keel clearance, nautical charts, an underway logbook and signed PDF records. Now taking trial pilots and pilotage organisations.">
+    <meta name="keywords" content="Master Pilot Exchange, MPX, electronic MPX, digital pilotage, maritime pilot, port authority, IMO A.960, SOLAS Chapter V, pilotage checklist, under keel clearance, UKC calculator, squat, passage plan, nautical charts, Sea Digital, EMPX, beta trial">
     <meta name="author" content="Sea Digital">
     <link rel="canonical" href="https://seadigital.com.au">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="EMPX — The Master Pilot Exchange, Reimagined">
-    <meta property="og:description" content="A tablet-first platform replacing paper MPX forms with digital, IMO-compliant workflows. Nautical charts, digital signatures, cloud sync. Built by a working pilot.">
+    <meta property="og:title" content="EMPX — Beta Now Open for Trial Pilots">
+    <meta property="og:description" content="The Master Pilot Exchange, reimagined — and now shipping. IMO-compliant checklists, per-leg UKC, charts, an underway logbook and signed PDFs. We're taking a small number of trial pilots and pilotage organisations.">
     <meta property="og:image" content="https://seadigital.com.au/og-image.jpg">
     <meta property="og:url" content="https://seadigital.com.au">
     <meta property="og:site_name" content="Sea Digital">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="EMPX — The Master Pilot Exchange, Reimagined">
-    <meta name="twitter:description" content="A tablet-first platform replacing paper MPX forms with digital, IMO-compliant workflows. Built by a working maritime pilot.">
+    <meta name="twitter:title" content="EMPX — Beta Now Open for Trial Pilots">
+    <meta name="twitter:description" content="Live, in beta, and taking trial pilots. A tablet-first Master Pilot Exchange built by a working maritime pilot.">
     <meta name="twitter:image" content="https://seadigital.com.au/og-image.jpg">
 
     <!-- Favicon -->
@@ -33,11 +33,15 @@
       "@type": "SoftwareApplication",
       "name": "EMPX",
       "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web, iOS, Android",
-      "description": "Digital Master Pilot Exchange platform — IMO A.960 compliant checklists, nautical charts, digital signatures, and cloud sync for maritime pilots.",
+      "operatingSystem": "Web, iPadOS, iOS, Android",
+      "url": "https://app.seadigital.com.au",
+      "softwareVersion": "0.8.5",
+      "releaseNotes": "Beta. Per-leg under-keel clearance with squat, passage builder, underway logbook, org admin console and invite-based onboarding.",
+      "description": "Digital Master Pilot Exchange platform — IMO A.960 checklists, per-leg under-keel clearance, nautical charts, an underway logbook, digital signatures and cloud sync for maritime pilots. Currently in beta.",
       "offers": {
         "@type": "Offer",
-        "availability": "https://schema.org/PreOrder",
+        "availability": "https://schema.org/LimitedAvailability",
+        "description": "Free beta trial for selected pilots and pilotage organisations. No card required.",
         "price": "0",
         "priceCurrency": "AUD"
       },
@@ -136,6 +140,16 @@
             transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--sand-deep); }
+        .nav-links a.nav-signin {
+            border: 1px solid var(--border-mid);
+            padding: 0.5rem 1rem;
+            margin: -0.5rem 0;
+            color: var(--text-mid);
+        }
+        .nav-links a.nav-signin:hover {
+            border-color: var(--sand-deep);
+            color: var(--sand-deep);
+        }
 
         /* ── MOBILE NAV ── */
         .nav-toggle {
@@ -767,6 +781,152 @@
         }
         .footer-contact a:hover { opacity: 0.6; }
 
+        /* ── BETA BAND ── */
+        .beta-band {
+            background: var(--bg-3);
+            border-bottom: 1px solid var(--border);
+            padding: 1.4rem 3rem;
+            position: relative; z-index: 10;
+        }
+        .beta-band-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 2rem; flex-wrap: wrap;
+        }
+        .beta-band-item {
+            display: flex; align-items: baseline; gap: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+        .beta-band-item strong {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            font-weight: 400;
+            color: var(--text);
+        }
+        .beta-band-item a {
+            color: var(--sand-deep);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(166,138,96,0.35);
+            transition: opacity 0.3s;
+        }
+        .beta-band-item a:hover { opacity: 0.65; }
+
+        /* ── TRIAL SECTION ── */
+        .trial-section {
+            padding: 8rem 3rem;
+            background: linear-gradient(165deg, var(--bg-1) 0%, rgba(232,196,184,0.14) 55%, rgba(197,184,216,0.14) 100%);
+            position: relative;
+        }
+        .trial-section::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
+        }
+        .trial-header { max-width: 1200px; margin: 0 auto 4.5rem; }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            max-width: 1200px; margin: 0 auto 4rem;
+            background: var(--border);
+        }
+        .step {
+            padding: 2.5rem;
+            background: var(--bg-card);
+            position: relative;
+            border-top: 3px solid transparent;
+        }
+        .step:nth-child(1) { border-top-color: var(--mint); }
+        .step:nth-child(2) { border-top-color: var(--sky); }
+        .step:nth-child(3) { border-top-color: var(--lavender); }
+        .step .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+        }
+        .step h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .terms {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem 5rem;
+        }
+        .terms h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--sand-deep);
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .terms ul { list-style: none; display: grid; gap: 0.9rem; }
+        .terms li {
+            font-size: 0.95rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            font-weight: 300;
+            padding-left: 1.6rem;
+            position: relative;
+        }
+        .terms li::before {
+            content: '';
+            position: absolute; left: 0; top: 0.62em;
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--mint-deep);
+        }
+        .terms .asks li::before { background: var(--blush-deep); }
+        .terms li strong { color: var(--text); font-weight: 500; }
+
+        /* ── ACCESS FORM GRID ── */
+        .access-form .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .access-form select,
+        .access-form textarea {
+            width: 100%; padding: 0.9rem 1rem;
+            border: 1px solid var(--border-mid);
+            background: var(--bg-1);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        .access-form select:focus,
+        .access-form textarea:focus {
+            outline: none;
+            border-color: var(--sand-deep);
+        }
+        .access-form textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+        .access-form select { cursor: pointer; }
+
         /* ── SCROLL REVEAL ── */
         .reveal {
             opacity: 0; transform: translateY(24px);
@@ -786,6 +946,8 @@
             .status-inner { grid-template-columns: 1fr; gap: 3rem; }
             .pilot-inner { grid-template-columns: 1fr; gap: 3rem; }
             .access-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .steps { grid-template-columns: 1fr; }
+            .terms { grid-template-columns: 1fr; gap: 2.5rem; }
             .compass-rose { width: 500px; right: -15%; }
         }
 
@@ -813,12 +975,17 @@
 
             .what-section,
             .status-section,
+            .trial-section,
             .pilot-section,
             .access-section { padding: 5rem 1.5rem; }
 
             .features { grid-template-columns: 1fr; }
             .status-grid { grid-template-columns: 1fr; }
             .pilot-stats { grid-template-columns: 1fr 1fr; }
+
+            .beta-band { padding: 1.2rem 1.5rem; }
+            .beta-band-inner { gap: 1rem; flex-direction: column; align-items: flex-start; }
+            .access-form .field-row { grid-template-columns: 1fr; }
 
             .site-footer {
                 flex-direction: column; gap: 0.8rem;
@@ -842,8 +1009,9 @@
             <a href="#home">Home</a>
             <a href="#product">Product</a>
             <a href="#status">Status</a>
-            <a href="#access">Early Access</a>
-            <a href="#contact">Contact</a>
+            <a href="#trial">The Trial</a>
+            <a href="#access">Apply</a>
+            <a href="https://app.seadigital.com.au" class="nav-signin">Sign In</a>
         </nav>
     </header>
 
@@ -883,7 +1051,7 @@
 
             <div class="hero-kicker reveal reveal-d1">
                 <span class="dot"></span>
-                Actively Building
+                Beta Open &mdash; Taking Trial Pilots
             </div>
 
             <h1 class="reveal reveal-d2">
@@ -891,19 +1059,20 @@
             </h1>
 
             <p class="hero-sub reveal reveal-d3">
-                <strong>EMPX</strong> is a tablet-first platform that replaces paper MPX forms
-                with a digital, IMO-compliant workflow. Nautical charts. Digital signatures.
-                Cloud sync. Built by a working pilot.
+                <strong>EMPX</strong> is a tablet-first platform that replaces the paper MPX
+                with a digital, IMO-compliant workflow &mdash; charts, per-leg under-keel
+                clearance, an underway logbook and a signed PDF record.
+                <strong>It's built, it's live, and we're looking for pilots to trial it.</strong>
             </p>
 
             <div class="cta-group reveal reveal-d4">
                 <a href="#access" class="cta-primary">
-                    Request Early Access
+                    Apply for the Beta
                     <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M1 7h12M8 2l5 5-5 5"/>
                     </svg>
                 </a>
-                <a href="#product" class="cta-ghost">See What's Coming</a>
+                <a href="#product" class="cta-ghost">See What's Shipped</a>
             </div>
         </div>
 
@@ -913,47 +1082,85 @@
         </div>
     </section>
 
+    <!-- ═══════════════ BETA BAND ═══════════════ -->
+    <div class="beta-band">
+        <div class="beta-band-inner">
+            <div class="beta-band-item">
+                Status
+                <strong>Beta &mdash; live in service</strong>
+            </div>
+            <div class="beta-band-item">
+                Running at
+                <strong><a href="https://app.seadigital.com.au">app.seadigital.com.au</a></strong>
+            </div>
+            <div class="beta-band-item">
+                Trial places
+                <strong>Limited &mdash; invite only</strong>
+            </div>
+            <div class="beta-band-item">
+                To start
+                <strong>No card required</strong>
+            </div>
+        </div>
+    </div>
+
     <!-- ═══════════════ WHAT IS EMPX ═══════════════ -->
     <section class="what-section" id="product">
         <div class="what-header">
-            <div class="section-tag reveal">What We're Building</div>
+            <div class="section-tag reveal">What's Shipped</div>
             <h2 class="section-heading reveal reveal-d1">Everything a pilot needs.<br><em>Nothing they don't.</em></h2>
             <p class="section-prose reveal reveal-d2">
-                From the boarding ground to the berth &mdash; every checklist item, every waypoint,
-                every signature &mdash; captured digitally, stored securely, accessible anywhere.
+                From the boarding ground to the berth &mdash; every checklist item, every leg,
+                every signature &mdash; captured digitally, stored securely, and printed into one
+                record. All of the below is built and in the app today.
             </p>
         </div>
 
         <div class="features">
             <div class="feature-card reveal">
                 <div class="feature-num">01</div>
-                <h3>Full IMO Checklist</h3>
-                <p>12 sections, ~80 fields, fully compliant with IMO Resolution A.960 and SOLAS Chapter V. No more paper forms.</p>
+                <h3>The IMO Exchange</h3>
+                <p>A full A.960 / SOLAS Chapter V checklist &mdash; and a form builder, so your organisation runs <em>its</em> form, not ours. Photograph your existing paper form and it's read in for you.</p>
             </div>
             <div class="feature-card reveal reveal-d1">
                 <div class="feature-num">02</div>
-                <h3>Nautical Charts</h3>
-                <p>Live chart overlays with OpenSeaMap integration. Route waypoints plotted with bearings and distances.</p>
+                <h3>Under-Keel Clearance, by Leg</h3>
+                <p>Controlling depth on every leg, height of tide, squat from planned speed, and net clearance against the port's margin &mdash; drawn as a depth section, not a table of numbers.</p>
             </div>
             <div class="feature-card reveal reveal-d2">
                 <div class="feature-num">03</div>
-                <h3>Digital Signatures</h3>
-                <p>Master and pilot sign directly on the tablet. Captured, locked, and exported to PDF. Tamper-proof and auditable.</p>
+                <h3>Passage Plan &amp; Charts</h3>
+                <p>Build passages on the chart with bearings, distances and speed limits per leg. Shared org passages your admin maintains, plus your own personal ones.</p>
             </div>
             <div class="feature-card reveal reveal-d3">
                 <div class="feature-num">04</div>
-                <h3>Cloud Sync</h3>
-                <p>Multi-tenant backend. Your org's records, routes, and waypoints &mdash; synced in real-time across every device.</p>
+                <h3>Underway Logbook</h3>
+                <p>Live GPS against the plan, one-tap event presets, voice memos, and time corrections that are marked as amended rather than silently rewritten.</p>
             </div>
             <div class="feature-card reveal reveal-d4">
                 <div class="feature-num">05</div>
-                <h3>Org Admin Console</h3>
-                <p>Manage pilots, routes, waypoints, and billing from a dedicated admin panel. Per-org access control.</p>
+                <h3>Signed, Exportable Record</h3>
+                <p>Master and pilot sign on the tablet. Exchange, conditions, UKC table and passage log export as one PDF under your organisation's branding.</p>
             </div>
             <div class="feature-card reveal reveal-d5">
                 <div class="feature-num">06</div>
+                <h3>Vessel Memory</h3>
+                <p>Finalise an exchange and the ship's particulars are kept. Next visit, type three letters of her name and around thirty fields fill themselves in.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-num">07</div>
                 <h3>Weather &amp; Tides</h3>
-                <p>Live maritime weather, wind conditions, and tidal data integrated directly into the pilotage workflow.</p>
+                <p>Wind, gusts, pressure tendency, sea state and tide &mdash; resolved at the passage position rather than wherever the pilot happens to be standing, and captured onto the record.</p>
+            </div>
+            <div class="feature-card reveal reveal-d1">
+                <div class="feature-num">08</div>
+                <h3>Admin Console</h3>
+                <p>Invite pilots, set roles, watch licence expiries, maintain the org form and passages, and see every record in the organisation. Per-org isolation throughout.</p>
+            </div>
+            <div class="feature-card reveal reveal-d2">
+                <div class="feature-num">09</div>
+                <h3>Built for the Bridge</h3>
+                <p>Tablet-first, day and night themes, Apple Pencil on the chart, and installable as an app. Designed to be read at arm's length on a wing at 0400.</p>
             </div>
         </div>
     </section>
@@ -962,56 +1169,119 @@
     <section class="status-section" id="status">
         <div class="status-inner">
             <div>
-                <div class="section-tag reveal">Development Status</div>
-                <h2 class="section-heading reveal reveal-d1">We're building<br>EMPX <em>right now.</em></h2>
+                <div class="section-tag reveal">Where It Stands</div>
+                <h2 class="section-heading reveal reveal-d1">Not a mockup.<br>A <em>working product.</em></h2>
                 <p class="section-prose reveal reveal-d2">
-                    Active development. Real features shipping. Here's where we stand.
+                    EMPX has been in continuous development and is deployed and running today.
+                    We publish what's done, what's in test, and what's still ahead &mdash; because
+                    a trial is worth nothing if you can't tell the difference.
                 </p>
 
                 <div class="progress-wrap reveal reveal-d3">
                     <div class="progress-header">
-                        <span>Overall Progress</span>
+                        <span>Toward 1.0</span>
                         <span class="pct progress-pct">0%</span>
                     </div>
                     <div class="progress-track">
-                        <div class="progress-fill" data-target="65"></div>
+                        <div class="progress-fill" data-target="85"></div>
                     </div>
                 </div>
             </div>
 
             <div class="status-grid reveal reveal-d2">
                 <div class="status-item">
-                    <div class="label">Core App</div>
+                    <div class="label">MPX Checklist &amp; Form Builder</div>
                     <div class="value live">Live</div>
                 </div>
                 <div class="status-item">
-                    <div class="label">MPX Checklist</div>
+                    <div class="label">Charts &amp; Passage Builder</div>
                     <div class="value live">Live</div>
                 </div>
                 <div class="status-item">
-                    <div class="label">Cloud Backend</div>
-                    <div class="value building">Building</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Admin Console</div>
-                    <div class="value building">Building</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Nautical Charts</div>
+                    <div class="label">Under-Keel Clearance</div>
                     <div class="value live">Live</div>
                 </div>
                 <div class="status-item">
-                    <div class="label">Billing &amp; Subs</div>
-                    <div class="value building">Building</div>
+                    <div class="label">Underway Logbook</div>
+                    <div class="value live">Live</div>
                 </div>
                 <div class="status-item">
-                    <div class="label">Pilot Onboarding</div>
+                    <div class="label">Signatures &amp; PDF Export</div>
+                    <div class="value live">Live</div>
+                </div>
+                <div class="status-item">
+                    <div class="label">Admin Console &amp; Onboarding</div>
+                    <div class="value live">Live</div>
+                </div>
+                <div class="status-item">
+                    <div class="label">Offline on Passage</div>
+                    <div class="value building">In Test</div>
+                </div>
+                <div class="status-item">
+                    <div class="label">Ship &amp; Mooring Diagrams</div>
+                    <div class="value building">In Test</div>
+                </div>
+                <div class="status-item">
+                    <div class="label">Record Export (CSV)</div>
                     <div class="value soon">Next</div>
                 </div>
                 <div class="status-item">
-                    <div class="label">Public Beta</div>
-                    <div class="value soon">Soon</div>
+                    <div class="label">Push Notifications</div>
+                    <div class="value soon">Planned</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ THE TRIAL ═══════════════ -->
+    <section class="trial-section" id="trial">
+        <div class="trial-header">
+            <div class="section-tag reveal">The Beta Trial</div>
+            <h2 class="section-heading reveal reveal-d1">Use it on a real job.<br><em>Tell us what breaks.</em></h2>
+            <p class="section-prose reveal reveal-d2">
+                We're taking a small number of trial pilots and pilotage organisations &mdash;
+                solo pilots and providers both. Small on purpose: every trial is set up by hand,
+                and we'd rather support a handful properly than a hundred badly.
+            </p>
+        </div>
+
+        <div class="steps">
+            <div class="step reveal">
+                <div class="step-num">Step 01</div>
+                <h3>You apply</h3>
+                <p>Tell us who you are and where you pilot. We'll come back to you directly &mdash; no queue, no drip campaign, no sales call.</p>
+            </div>
+            <div class="step reveal reveal-d1">
+                <div class="step-num">Step 02</div>
+                <h3>We set you up</h3>
+                <p>Your organisation is provisioned by hand, with your own form and your own passages built in for you. You get a sign-in link by email and you're working the same day.</p>
+            </div>
+            <div class="step reveal reveal-d2">
+                <div class="step-num">Step 03</div>
+                <h3>You run it for real</h3>
+                <p>Use it on actual pilotage, not a demo. What you report goes into the next release &mdash; most of what shipped this month was found by using the app on a real passage.</p>
+            </div>
+        </div>
+
+        <div class="terms">
+            <div class="reveal">
+                <h4>What you get</h4>
+                <ul>
+                    <li><strong>The whole product.</strong> Nothing is held back for a paid tier &mdash; a solo pilot gets the form builder and passage builder just as an organisation does.</li>
+                    <li><strong>A free trial, no card.</strong> Nothing to cancel, nothing charged at the end. We agree the trial length with you.</li>
+                    <li><strong>Your form and your passages,</strong> set up for you rather than left as homework.</li>
+                    <li><strong>A direct line</strong> to the pilot who builds it &mdash; not a ticket queue.</li>
+                    <li><strong>Real influence on the roadmap</strong> while it is still cheap to change.</li>
+                </ul>
+            </div>
+            <div class="reveal reveal-d1">
+                <h4 style="color: var(--blush-deep);">What we ask</h4>
+                <ul class="asks">
+                    <li><strong>Use it in service,</strong> on real exchanges &mdash; that's the only test that finds anything.</li>
+                    <li><strong>Tell us when it's wrong,</strong> including the small irritations. Those are usually the ones that matter on a bridge.</li>
+                    <li><strong>Keep the paper alongside it</strong> until you're satisfied. This is beta software in a safety-critical setting and we'd think less of you if you didn't.</li>
+                    <li><strong>An honest verdict at the end</strong> &mdash; including "no". We'd rather hear it than not.</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -1048,6 +1318,14 @@
                     <div class="number">0</div>
                     <div class="desc">Paper Forms</div>
                 </div>
+                <div class="pilot-stat">
+                    <div class="number">9</div>
+                    <div class="desc">Releases Shipped</div>
+                </div>
+                <div class="pilot-stat">
+                    <div class="number">0</div>
+                    <div class="desc">Office Committees</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1056,25 +1334,62 @@
     <section class="access-section" id="access">
         <div class="access-inner">
             <div>
-                <div class="section-tag reveal">Get In Early</div>
-                <h2 class="section-heading reveal reveal-d1">Join the pilot<br><em>programme.</em></h2>
+                <div class="section-tag reveal">Apply</div>
+                <h2 class="section-heading reveal reveal-d1">Take a place in<br>the <em>beta.</em></h2>
                 <p class="section-prose reveal reveal-d2">
-                    We're onboarding select pilots and port organisations for early access.
-                    Be among the first to test EMPX and shape the product.
+                    Tell us a little about your pilotage and we'll come back to you personally.
+                    If it's a fit, we'll provision your organisation, build your form and your
+                    passages, and email you a sign-in link.
+                </p>
+                <p class="section-prose reveal reveal-d3" style="margin-top: 1.5rem;">
+                    Already in the beta?
+                    <a href="https://app.seadigital.com.au" style="color: var(--sand-deep); text-decoration: none; border-bottom: 1px solid rgba(166,138,96,0.35);">Sign in to EMPX</a>.
                 </p>
             </div>
 
             <div class="access-card reveal reveal-d2">
-                <h3>Request Access</h3>
-                <p>Enter your email and we'll reach out with next steps. Invite-only while we finalise the platform.</p>
+                <h3>Apply for a trial</h3>
+                <p>No card, no commitment. We read every one of these ourselves.</p>
                 <form class="access-form" action="https://formspree.io/f/xrpggywg" method="POST">
+                    <input type="hidden" name="_subject" value="EMPX beta trial application" />
+                    <div class="field-row">
+                        <div>
+                            <label for="pilot-name">Name</label>
+                            <input id="pilot-name" name="name" type="text" placeholder="Jane Bligh" required />
+                        </div>
+                        <div>
+                            <label for="pilot-email">Email Address</label>
+                            <input id="pilot-email" name="email" type="email" placeholder="pilot@portauthority.com" required />
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div>
+                            <label for="pilot-org">Organisation</label>
+                            <input id="pilot-org" name="organisation" type="text" placeholder="Or &ldquo;independent&rdquo;" />
+                        </div>
+                        <div>
+                            <label for="pilot-port">Port / Region</label>
+                            <input id="pilot-port" name="port" type="text" placeholder="Port Botany, NSW" />
+                        </div>
+                    </div>
                     <div>
-                        <label for="pilot-email">Email Address</label>
-                        <input id="pilot-email" name="email" type="email" placeholder="pilot@portauthority.com" required />
+                        <label for="pilot-seats">How many pilots?</label>
+                        <select id="pilot-seats" name="pilots">
+                            <option value="">Select&hellip;</option>
+                            <option value="1">Just me</option>
+                            <option value="2-5">2 &ndash; 5</option>
+                            <option value="6-15">6 &ndash; 15</option>
+                            <option value="16-40">16 &ndash; 40</option>
+                            <option value="40+">More than 40</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="pilot-note">What would you want it to fix? <span style="text-transform: none; letter-spacing: 0;">(optional)</span></label>
+                        <textarea id="pilot-note" name="message" placeholder="The bit of the paper MPX that wastes your time."></textarea>
                     </div>
                     <div class="access-actions">
-                        <button type="submit" class="access-button">Request Access</button>
-                        <span class="access-note">Invite-only beta</span>
+                        <button type="submit" class="access-button">Apply for the Beta</button>
+                        <span class="access-note">Limited places &middot; no card</span>
                     </div>
                 </form>
             </div>
@@ -1087,8 +1402,12 @@
     <!-- ═══════════════ FOOTER ═══════════════ -->
     <footer class="site-footer" id="contact">
         <span class="footer-brand">Sea Digital &copy; 2026</span>
-        <span class="footer-center">Precision Maritime Technology</span>
-        <span class="footer-contact"><a href="mailto:admin@seadigital.com.au">admin@seadigital.com.au</a></span>
+        <span class="footer-center">Precision Maritime Technology &middot; Beta</span>
+        <span class="footer-contact">
+            <a href="https://app.seadigital.com.au">app.seadigital.com.au</a>
+            &nbsp;&middot;&nbsp;
+            <a href="mailto:admin@seadigital.com.au">admin@seadigital.com.au</a>
+        </span>
     </footer>
 
     <!-- ═══════════════ SCRIPTS ═══════════════ -->
