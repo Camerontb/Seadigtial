@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-03T07:16:05.861Z",
+        "reason": "model decision: the dashed rail line is the page's passage route, drawn dashed like a planned route on the app's own chart; functional wayfinding, not decoration"
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-03T07:25:02.483Z",
+        "reason": "model decision: remaining hit is the condensed-caps display h1/h2 at 0.9-0.95 line-height (ship-marking display setting); body text, quote and h3/h4 are all >=1.2-1.6, verified by computed-style scan"
+      }
+    ]
+  }
+}

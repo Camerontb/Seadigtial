@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sea Digital | EMPX — Beta Now Open for Trial Pilots</title>
-    <meta name="description" content="EMPX is a tablet-first electronic Master Pilot Exchange platform, live and in beta. IMO A.960 checklists, per-leg under-keel clearance, nautical charts, an underway logbook and signed PDF records. Now taking trial pilots and pilotage organisations.">
-    <meta name="keywords" content="Master Pilot Exchange, MPX, electronic MPX, digital pilotage, maritime pilot, port authority, IMO A.960, SOLAS Chapter V, pilotage checklist, under keel clearance, UKC calculator, squat, passage plan, nautical charts, Sea Digital, EMPX, beta trial">
+    <title>Sea Digital | EMPX — Now Taking Test Pilots</title>
+    <meta name="description" content="EMPX is a tablet-first electronic Master Pilot Exchange platform, ready and in service. IMO A.960 checklists, per-leg under-keel clearance, nautical charts, an underway logbook and signed PDF records. Now taking test pilots and pilotage organisations.">
+    <meta name="keywords" content="Master Pilot Exchange, MPX, electronic MPX, digital pilotage, maritime pilot, port authority, IMO A.960, SOLAS Chapter V, pilotage checklist, under keel clearance, UKC calculator, squat, passage plan, nautical charts, Sea Digital, EMPX, test pilots, free trial">
     <meta name="author" content="Sea Digital">
+    <meta name="theme-color" content="#0A0D18">
     <link rel="canonical" href="https://seadigital.com.au">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="EMPX — Beta Now Open for Trial Pilots">
-    <meta property="og:description" content="The Master Pilot Exchange, reimagined — and now shipping. IMO-compliant checklists, per-leg UKC, charts, an underway logbook and signed PDFs. We're taking a small number of trial pilots and pilotage organisations.">
+    <meta property="og:title" content="EMPX — Now Taking Test Pilots">
+    <meta property="og:description" content="The Master Pilot Exchange, reimagined, and ready. IMO A.960 checklists, per-leg UKC, charts, an underway logbook and signed PDFs. We're taking a small number of test pilots and pilotage organisations.">
     <meta property="og:image" content="https://seadigital.com.au/og-image.jpg">
     <meta property="og:url" content="https://seadigital.com.au">
     <meta property="og:site_name" content="Sea Digital">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="EMPX — Beta Now Open for Trial Pilots">
-    <meta name="twitter:description" content="Live, in beta, and taking trial pilots. A tablet-first Master Pilot Exchange built by a working maritime pilot.">
+    <meta name="twitter:title" content="EMPX — Now Taking Test Pilots">
+    <meta name="twitter:description" content="Ready, in service, and taking test pilots. A tablet-first Master Pilot Exchange for maritime pilots.">
     <meta name="twitter:image" content="https://seadigital.com.au/og-image.jpg">
 
     <!-- Favicon -->
@@ -33,15 +34,15 @@
       "@type": "SoftwareApplication",
       "name": "EMPX",
       "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web, iPadOS, iOS, Android",
+      "operatingSystem": "Web, iPadOS, iOS",
       "url": "https://app.seadigital.com.au",
       "softwareVersion": "0.8.5",
-      "releaseNotes": "Beta. Per-leg under-keel clearance with squat, passage builder, underway logbook, org admin console and invite-based onboarding.",
-      "description": "Digital Master Pilot Exchange platform — IMO A.960 checklists, per-leg under-keel clearance, nautical charts, an underway logbook, digital signatures and cloud sync for maritime pilots. Currently in beta.",
+      "releaseNotes": "Per-leg under-keel clearance with squat, passage builder, underway logbook, org admin console and invite-based onboarding.",
+      "description": "Digital Master Pilot Exchange platform — IMO A.960 checklists, per-leg under-keel clearance, nautical charts, an underway logbook, digital signatures and cloud sync for maritime pilots.",
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/LimitedAvailability",
-        "description": "Free beta trial for selected pilots and pilotage organisations. No card required.",
+        "description": "Free trial for selected test pilots and pilotage organisations. No card required.",
         "price": "0",
         "priceCurrency": "AUD"
       },
@@ -54,1707 +55,1049 @@
     }
     </script>
 
+    <!-- Theme before paint: night unless the visitor chose dawn. -->
+    <script>
+        (function () {
+            var root = document.documentElement;
+            try {
+                if (localStorage.getItem('empx-theme') === 'dawn') root.dataset.theme = 'dawn';
+            } catch (e) {}
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" type="image/webp" href="images/ios/hero-night.webp">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
+        /* ── TOKENS: the app's own night chart ── */
         :root {
-            --bg-1: #F4F1EC;
-            --bg-2: #EDE8E0;
-            --bg-3: #E6E0D6;
-            --bg-card: #FDFCFA;
-            --mint: #B8D8D0;
-            --mint-deep: #7ABFB3;
-            --blush: #E8C4B8;
-            --blush-deep: #D4A090;
-            --lavender: #C5B8D8;
-            --lavender-deep: #A694C4;
-            --sky: #B4CBE0;
-            --sky-deep: #8AAFCF;
-            --sand: #C4A882;
-            --sand-deep: #A68A60;
-            --coral: #D4806A;
-            --text: #2C2A26;
-            --text-dim: rgba(44, 42, 38, 0.5);
-            --text-mid: rgba(44, 42, 38, 0.7);
-            --border: rgba(44, 42, 38, 0.08);
-            --border-mid: rgba(44, 42, 38, 0.12);
+            --sea: #0A1922;
+            --console: #0A0D18;
+            --panel: #0F222E;
+            --panel-2: #132A38;
+            --rule: #1F3747;
+            --rule-strong: #2C4A5C;
+            --ink: #E3EAEE;
+            --ink-2: #A9BAC4;
+            --ink-3: #869DAA;
+            --route: #3FB26A;
+            --route-ink: #4CC27A;
+            --amber: #E0A030;
+            --red: #C8322B;
+            --red-hover: #A82822;
+            --red-ink: #EF7068;
+            --on-red: #FFFFFF;
+            --dimmer: rgba(8, 12, 22, 0.18);
+            --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+
+            --f-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+            --f-text: "Barlow", "Helvetica Neue", Arial, sans-serif;
+
+            --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+            --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+            --gutter: clamp(16px, 4vw, 48px);
+            --max: 1280px;
+            --rail: 208px;
+            --nav-h: 64px;
+            color-scheme: dark;
+        }
+        /* Dawn: the app's day chart */
+        :root[data-theme="dawn"] {
+            --sea: #EEF1EC;
+            --console: #FFFFFF;
+            --panel: #FFFFFF;
+            --panel-2: #F5F7F3;
+            --rule: #D3DAD5;
+            --rule-strong: #B8C3BE;
+            --ink: #0E1B24;
+            --ink-2: #3E4F5A;
+            --ink-3: #56666F;
+            --route: #23854C;
+            --route-ink: #1C7041;
+            --amber: #8A5A00;
+            --red: #B3261E;
+            --red-hover: #9C1F18;
+            --red-ink: #A82A22;
+            --dimmer: rgba(255, 255, 255, 0);
+            --shadow: 0 18px 40px -22px rgba(14, 27, 36, 0.35);
+            color-scheme: light;
         }
 
-        html { scroll-behavior: smooth; }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); -webkit-text-size-adjust: 100%; scrollbar-color: var(--rule-strong) var(--console); }
         body {
-            background: var(--bg-1);
-            font-family: 'DM Sans', sans-serif;
-            color: var(--text);
-            overflow-x: hidden;
+            background: var(--sea);
+            color: var(--ink);
+            font-family: var(--f-text);
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            font-variant-numeric: tabular-nums;
             -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
+        img { display: block; max-width: 100%; height: auto; }
+        a { color: inherit; }
+        ::selection { background: var(--route); color: var(--console); }
+        :focus-visible { outline: 2px solid var(--route-ink); outline-offset: 3px; border-radius: 2px; }
+        input, select, textarea, button { font: inherit; color: inherit; }
+        .skip {
+            position: absolute; left: var(--s-4); top: -100px; z-index: 200;
+            background: var(--red); color: var(--on-red); padding: var(--s-2) var(--s-4);
+            font-weight: 600; text-decoration: none;
+        }
+        .skip:focus { top: var(--s-4); }
 
-        /* ── GRAIN OVERLAY ── */
-        body::after {
-            content: '';
-            position: fixed; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.5;
+        /* ── TYPE ── */
+        h1, h2, h3 {
+            font-family: var(--f-display);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            text-wrap: balance;
         }
+        h2 {
+            font-size: clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
+            line-height: 0.95;
+            margin-bottom: var(--s-5);
+        }
+        h3 { font-weight: 600; font-size: 1.5rem; line-height: 1.2; letter-spacing: 0.01em; }
+        .prose { color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
+        .prose + .prose { margin-top: var(--s-4); }
+        .label {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+        .inline-link {
+            color: var(--ink);
+            text-decoration: underline;
+            text-decoration-color: var(--route);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+        }
+        .inline-link:hover { color: var(--route-ink); }
 
-        /* ── CHART LINES BG ── */
-        .chart-bg {
-            position: fixed; inset: 0;
-            background-image:
-                linear-gradient(rgba(44,42,38,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(44,42,38,0.03) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none; z-index: 0;
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+            min-height: 48px; padding: 0 var(--s-5);
+            font-family: var(--f-display); font-weight: 600; font-size: 1.125rem;
+            letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
+            border: 0; border-radius: 4px; cursor: pointer;
+            transition: background-color 160ms ease-out;
         }
+        .btn-apply { background: var(--red); color: var(--on-red); }
+        .btn-apply:hover { background: var(--red-hover); }
+        .btn-apply[disabled] { opacity: 0.7; cursor: progress; }
+        .btn svg { width: 16px; height: 16px; flex: none; }
 
         /* ── NAV ── */
-        .nav-bar {
-            position: fixed; top: 0; left: 0; width: 100%;
-            padding: 1.4rem 3rem;
-            display: flex; align-items: center; justify-content: space-between;
-            background: rgba(244, 241, 236, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-            transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        .site-nav {
+            position: fixed; inset: 0 0 auto 0; z-index: 100;
+            height: var(--nav-h);
+            display: flex; align-items: center; gap: var(--s-5);
+            padding: 0 var(--gutter);
+            background: var(--console);
+            border-bottom: 1px solid var(--rule);
         }
-        .nav-bar.scrolled { padding: 0.8rem 3rem; }
-        .nav-brand {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.25rem;
-            letter-spacing: 0.06em;
-            color: var(--text);
+        .brand {
+            display: flex; align-items: baseline; gap: var(--s-3);
+            text-decoration: none; margin-right: auto;
         }
-        .nav-brand span { color: var(--sand-deep); }
-        .nav-links { display: flex; gap: 2.5rem; }
+        .brand-name { font-family: var(--f-display); font-weight: 700; font-size: 1.375rem; letter-spacing: 0.02em; text-transform: uppercase; }
+        .brand-product { font-size: 0.875rem; font-weight: 600; color: var(--ink-3); letter-spacing: 0.08em; }
+        .nav-links { display: flex; align-items: center; gap: var(--s-5); list-style: none; }
         .nav-links a {
-            color: var(--text-dim); text-decoration: none;
-            text-transform: uppercase; font-size: 0.7rem;
-            letter-spacing: 0.22em; font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.9375rem; font-weight: 500; color: var(--ink-2); text-decoration: none;
+            padding: var(--s-2) 0;
         }
-        .nav-links a:hover { color: var(--sand-deep); }
-        .nav-links a.nav-signin {
-            border: 1px solid var(--border-mid);
-            padding: 0.5rem 1rem;
-            margin: -0.5rem 0;
-            color: var(--text-mid);
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links .nav-apply { color: var(--red-ink); font-weight: 600; }
+        .nav-links .nav-apply:hover { color: var(--ink); }
+        .theme-switch {
+            display: inline-flex; padding: 3px; gap: 2px;
+            border-radius: 6px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--rule);
         }
-        .nav-links a.nav-signin:hover {
-            border-color: var(--sand-deep);
-            color: var(--sand-deep);
+        .theme-switch button {
+            border: 0; background: transparent; cursor: pointer;
+            min-height: 34px; padding: 0 var(--s-3); border-radius: 4px;
+            font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+            color: var(--ink-3);
         }
-
-        /* ── MOBILE NAV ── */
+        .theme-switch button[aria-pressed="true"] { background: var(--panel-2); color: var(--ink); box-shadow: inset 0 0 0 1px var(--rule-strong); }
         .nav-toggle {
-            display: none;
-            background: none; border: none; cursor: pointer;
-            width: 28px; height: 20px;
-            position: relative; z-index: 110;
+            display: none; border: 0; background: transparent; cursor: pointer;
+            min-height: 44px; padding: 0 var(--s-2);
+            font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
         }
-        .nav-toggle span {
-            display: block; width: 100%; height: 1.5px;
-            background: var(--text);
-            position: absolute; left: 0;
-            transition: all 0.3s;
-        }
-        .nav-toggle span:nth-child(1) { top: 0; }
-        .nav-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-        .nav-toggle span:nth-child(3) { bottom: 0; }
-        .nav-toggle.open span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
-        .nav-toggle.open span:nth-child(2) { opacity: 0; }
-        .nav-toggle.open span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
 
-        /* ── SECTIONS ── */
-        section { position: relative; z-index: 10; }
-
-        /* ── HERO ── */
+        /* ── HERO: the chart is the ground ── */
         .hero {
-            min-height: 100vh;
+            position: relative;
+            min-height: max(680px, 100svh);
+            padding: calc(var(--nav-h) + clamp(40px, 7vh, 88px)) var(--gutter) var(--s-9);
             display: flex; align-items: center;
-            padding: 8rem 3rem 4rem;
-            position: relative;
-            background: var(--bg-1);
-            overflow: hidden;
+            overflow: clip;
+            isolation: isolate;
+            background: var(--sea);
         }
-        .hero-bg {
-            position: absolute; inset: 0;
-            background-image: url('ocean-bg.jpg');
-            background-size: cover;
-            background-position: center 60%;
-            opacity: 0.35;
-            pointer-events: none;
-        }
-        .hero-bg::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(165deg, rgba(244,241,236,0.5) 0%, rgba(244,241,236,0.1) 60%, transparent 100%);
-        }
-
-        /* Compass rose - decorative */
-        .compass-rose {
-            position: absolute;
-            right: -5%; top: 50%;
+        .hero-chart { position: absolute; inset: 0; z-index: -2; }
+        .hero-chart img {
+            position: absolute; right: 0; top: 50%;
+            width: min(62vw, 900px); height: auto;
             transform: translateY(-50%);
-            width: 700px; height: 700px;
-            opacity: 0.08;
-            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 38%), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+            -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to right, transparent, #000 38%), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+            mask-composite: intersect;
         }
-        .compass-rose svg { width: 100%; height: 100%; }
-        .compass-rose svg { animation: compassSpin 120s linear infinite; }
-        @keyframes compassSpin { to { transform: rotate(360deg); } }
-
-        /* Horizon line */
+        .hero-chart.dawn img {
+            width: min(58vw, 860px); transform: translateY(-50%);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 38%), linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+            -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to right, transparent, #000 38%), linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+            mask-composite: intersect;
+        }
         .hero::after {
-            content: '';
-            position: absolute; bottom: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 20%, var(--sand) 50%, var(--border-mid) 80%, transparent 100%);
+            content: ""; position: absolute; inset: 0; z-index: -1;
+            background: var(--dimmer);
         }
-
-        .hero-content {
-            max-width: 760px;
-            position: relative;
-        }
-
-        .hero-coords {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--sand);
-            letter-spacing: 0.2em;
-            margin-bottom: 2rem;
-            display: flex; align-items: center; gap: 1rem;
-        }
-        .hero-coords::before {
-            content: '';
-            width: 32px; height: 1px;
-            background: var(--sand);
-        }
-
-        .hero-kicker {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: var(--mint-deep);
-            margin-bottom: 1.5rem;
-            display: flex; align-items: center; gap: 0.75rem;
-        }
-        .hero-kicker .dot {
-            width: 6px; height: 6px;
-            background: var(--mint-deep);
-            border-radius: 50%;
-            animation: pulse 2.5s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(122,191,179,0.5); }
-            50% { box-shadow: 0 0 0 8px rgba(122,191,179,0); }
-        }
-
+        [data-theme="dawn"] .hero-chart.night, :root:not([data-theme="dawn"]) .hero-chart.dawn { display: none; }
+        .hero-inner { width: 100%; max-width: var(--max); margin: 0 auto; }
+        .hero-copy { max-width: 720px; }
         .hero h1 {
-            font-family: 'Instrument Serif', serif;
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin-bottom: 0.3rem;
+            font-size: clamp(3.25rem, 1.6rem + 5.6vw, 6rem);
+            line-height: 0.9;
+            margin-bottom: var(--s-5);
         }
-        .hero h1 em {
-            font-style: italic;
-            color: var(--sand-deep);
-        }
-
         .hero-sub {
-            font-size: 1.15rem;
-            color: var(--text-mid);
-            line-height: 1.7;
-            max-width: 520px;
-            margin: 2rem 0 2.5rem;
-            font-weight: 300;
+            font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+            line-height: 1.55;
+            color: var(--ink-2);
+            max-width: 36ch;
+            margin-bottom: var(--s-6);
         }
-        .hero-sub strong {
-            color: var(--text);
-            font-weight: 500;
-        }
+        .hero-sub strong { color: var(--ink); font-weight: 600; }
 
-        .cta-group { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        /* Instrument panels, after the app's own stack */
+        .readouts {
+            display: grid; grid-template-columns: repeat(4, auto);
+            gap: 1px; margin-bottom: var(--s-4);
+            border-radius: 8px; overflow: hidden;
+            box-shadow: 0 0 0 1px var(--rule);
+            background: var(--rule);
+        }
+        .readout { background: var(--panel); padding: var(--s-3) var(--s-4); }
+        .readout dt { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+        .readout dd { font-size: 1rem; font-weight: 600; line-height: 1.3; margin-top: 2px; }
+        .readout dd a { text-decoration: none; }
+        .readout dd a:hover { color: var(--route-ink); }
+        .pilot-lights { display: inline-flex; flex-direction: column; gap: 3px; vertical-align: middle; margin-right: 8px; }
+        .pilot-lights i { width: 7px; height: 7px; border-radius: 50%; display: block; }
+        .pilot-lights i:first-child { background: var(--ink); }
+        .pilot-lights i:last-child { background: var(--red); }
 
-        .cta-primary {
-            display: inline-flex; align-items: center; gap: 0.6rem;
-            font-family: 'DM Sans', sans-serif;
-            text-transform: uppercase; letter-spacing: 0.2em;
-            font-size: 0.72rem; font-weight: 500;
-            padding: 1rem 2rem;
-            border: 1px solid var(--sand-deep);
-            background: var(--sand-deep);
-            color: #fff;
-            text-decoration: none; cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        .hero-apply {
+            display: grid; grid-template-columns: 1fr auto; gap: var(--s-2);
+            background: var(--panel); padding: var(--s-3);
+            border-radius: 8px; box-shadow: 0 0 0 1px var(--rule), var(--shadow);
         }
-        .cta-primary:hover {
-            background: var(--sand);
-            border-color: var(--sand);
-            box-shadow: 0 4px 24px rgba(166, 138, 96, 0.25);
-            transform: translateY(-2px);
+        .hero-apply label { grid-column: 1 / -1; padding: 0 var(--s-1); font-size: 0.9375rem; font-weight: 600; }
+        .field {
+            width: 100%; min-height: 48px; padding: 0 var(--s-4);
+            background: var(--console); border: 1px solid var(--rule-strong); border-radius: 4px;
+            caret-color: var(--route-ink);
         }
-        .cta-primary svg {
-            width: 14px; height: 14px;
-            transition: transform 0.3s;
+        .field::placeholder { color: var(--ink-3); opacity: 1; }
+        .field:focus { outline: none; border-color: var(--route-ink); box-shadow: 0 0 0 1px var(--route-ink); }
+        .hero-more { margin-top: var(--s-4); font-size: 0.9375rem; color: var(--ink-2); }
+        .chart-note {
+            position: absolute; left: 0; right: 0; bottom: 0;
+            display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-6);
+            padding: var(--s-2) var(--gutter);
+            background: var(--console); border-top: 1px solid var(--rule);
+            font-size: 0.8125rem; color: var(--ink-3);
         }
-        .cta-primary:hover svg { transform: translateX(3px); }
+        .chart-note b { font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; }
 
-        .cta-ghost {
-            font-family: 'DM Sans', sans-serif;
-            text-transform: uppercase; letter-spacing: 0.2em;
-            font-size: 0.72rem; font-weight: 500;
-            padding: 1rem 1.5rem;
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: color 0.3s;
+        /* ── VOYAGE: rail + sections ── */
+        .voyage {
+            display: grid; grid-template-columns: var(--rail) minmax(0, 1fr);
+            max-width: calc(var(--max) + var(--rail)); margin: 0 auto;
+            padding: 0 var(--gutter);
         }
-        .cta-ghost:hover { color: var(--text); }
+        .rail { position: relative; }
+        .rail-inner {
+            position: sticky; top: calc(var(--nav-h) + 48px);
+            padding: var(--s-9) 0 0;
+        }
+        .rail ol { list-style: none; position: relative; }
+        .rail ol::before {
+            content: ""; position: absolute; left: 7px; top: 12px; bottom: 12px; width: 2px;
+            background: repeating-linear-gradient(to bottom, var(--route) 0 10px, transparent 10px 16px);
+            opacity: 0.6;
+        }
+        .rail li { position: relative; padding-left: 32px; }
+        .rail li + li { margin-top: var(--s-5); }
+        .rail a {
+            display: block; text-decoration: none; color: var(--ink-3);
+            font-size: 0.9375rem; font-weight: 500; line-height: 1.3; padding: 2px 0;
+        }
+        .rail a::before {
+            content: ""; position: absolute; left: 2px; top: 6px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--sea); box-shadow: inset 0 0 0 2px var(--route);
+        }
+        .rail a:hover { color: var(--ink); }
+        .rail a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+        .rail a[aria-current="true"]::before { background: var(--route); }
+        .own-ship {
+            position: absolute; left: -1px; top: 0; width: 18px; height: 22px;
+            color: var(--amber); pointer-events: none;
+            transform: translateY(var(--ship-y, 0px));
+        }
+        .rail-foot { margin-top: var(--s-6); padding-left: 32px; font-size: 0.8125rem; color: var(--ink-3); }
 
-        .scroll-cue {
-            position: absolute; bottom: 2.5rem; left: 3rem;
-            display: flex; align-items: center; gap: 1rem;
-        }
-        .scroll-line {
-            width: 1px; height: 50px;
-            background: linear-gradient(180deg, var(--sand), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
-        }
-        @keyframes scrollPulse {
-            0%, 100% { opacity: 1; transform: scaleY(1); }
-            50% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
-        }
-        .scroll-cue span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            writing-mode: vertical-rl;
-        }
-
-        /* ── SECTION UTILITY ── */
-        .section-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--sand-deep);
-            margin-bottom: 1.2rem;
-            display: flex; align-items: center; gap: 1rem;
-        }
-        .section-tag::before {
-            content: '';
-            width: 24px; height: 1px;
-            background: var(--sand);
-        }
-        .section-heading {
-            font-family: 'Instrument Serif', serif;
-            font-size: clamp(2rem, 4.5vw, 3.2rem);
-            font-weight: 400;
-            line-height: 1.15;
-            letter-spacing: -0.01em;
-            margin-bottom: 1.2rem;
-        }
-        .section-heading em { font-style: italic; color: var(--sand-deep); }
-        .section-prose {
-            font-size: 1.05rem;
-            color: var(--text-dim);
-            line-height: 1.75;
-            max-width: 560px;
-            font-weight: 300;
-        }
-
-        /* ── WHAT IS EMPX ── */
-        .what-section {
-            padding: 8rem 3rem;
-            background: var(--bg-2);
+        .leg {
             position: relative;
+            padding: var(--s-10) 0;
+            border-top: 1px solid var(--rule);
+            min-width: 0;
         }
-        .what-section::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
+        .leg::before {
+            content: ""; position: absolute; left: 0; top: -4px; width: 121px; height: 7px;
+            background: var(--ink-3);
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='121' height='7'%3E%3Crect x='.5' y='.5' width='120' height='6' fill='none' stroke='%23000'/%3E%3Crect x='0' y='0' width='30' height='7'/%3E%3Crect x='60' y='0' width='30' height='7'/%3E%3C/svg%3E") no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='121' height='7'%3E%3Crect x='.5' y='.5' width='120' height='6' fill='none' stroke='%23000'/%3E%3Crect x='0' y='0' width='30' height='7'/%3E%3Crect x='60' y='0' width='30' height='7'/%3E%3C/svg%3E") no-repeat;
         }
-        .what-header {
-            max-width: 1200px; margin: 0 auto 5rem;
-        }
+        .leg:first-child { border-top: 0; }
+        .leg:first-child::before { display: none; }
+        .leg-head { max-width: 780px; margin-bottom: var(--s-8); }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            max-width: 1200px; margin: 0 auto;
-            background: var(--border);
+        /* ── THE EXCHANGE: one large switchable screen ── */
+        .screens { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); align-items: start; }
+        .ship-list {
+            display: inline-flex; flex-wrap: wrap; gap: 1px; margin-top: var(--s-5); list-style: none;
+            background: var(--rule); border-radius: 8px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule);
         }
-        .feature-card {
-            padding: 2.5rem;
-            background: var(--bg-card);
-            position: relative;
-            transition: background 0.5s, box-shadow 0.5s, transform 0.4s;
-            border-top: 3px solid transparent;
+        .ship-list li { font-size: 0.875rem; font-weight: 600; padding: var(--s-2) var(--s-4); background: var(--panel); color: var(--ink-2); flex: 1 1 auto; text-align: center; }
+        .ship-list li.on { background: var(--panel-2); color: var(--ink); }
+        .tabs { display: flex; flex-direction: column; border-top: 1px solid var(--rule); position: sticky; top: calc(var(--nav-h) + 32px); }
+        .tab {
+            display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: var(--s-1) var(--s-4);
+            text-align: left; background: transparent; border: 0; border-bottom: 1px solid var(--rule);
+            padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5); cursor: pointer; position: relative;
         }
-        .feature-card:nth-child(1) { border-top-color: var(--mint); }
-        .feature-card:nth-child(2) { border-top-color: var(--sky); }
-        .feature-card:nth-child(3) { border-top-color: var(--blush); }
-        .feature-card:nth-child(4) { border-top-color: var(--lavender); }
-        .feature-card:nth-child(5) { border-top-color: var(--sand); }
-        .feature-card:nth-child(6) { border-top-color: var(--mint-deep); }
-        .feature-card:hover {
-            background: #fff;
-            box-shadow: 0 8px 30px rgba(44,42,38,0.08);
-            transform: translateY(-3px);
+        .tab::before {
+            content: ""; position: absolute; left: 0; top: var(--s-4); bottom: var(--s-4); width: 2px;
+            background: transparent;
         }
-        .feature-num {
-            font-family: 'Instrument Serif', serif;
-            font-size: 2.5rem;
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            transition: color 0.5s;
-        }
-        .feature-card:nth-child(1) .feature-num { color: var(--mint); }
-        .feature-card:nth-child(2) .feature-num { color: var(--sky); }
-        .feature-card:nth-child(3) .feature-num { color: var(--blush); }
-        .feature-card:nth-child(4) .feature-num { color: var(--lavender); }
-        .feature-card:nth-child(5) .feature-num { color: var(--sand); }
-        .feature-card:nth-child(6) .feature-num { color: var(--mint-deep); }
-        .feature-card:nth-child(1):hover .feature-num { color: var(--mint-deep); }
-        .feature-card:nth-child(2):hover .feature-num { color: var(--sky-deep); }
-        .feature-card:nth-child(3):hover .feature-num { color: var(--blush-deep); }
-        .feature-card:nth-child(4):hover .feature-num { color: var(--lavender-deep); }
-        .feature-card:nth-child(5):hover .feature-num { color: var(--sand-deep); }
-        .feature-card:nth-child(6):hover .feature-num { color: #3a9e8f; }
-        .feature-card h3 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 0.8rem;
-        }
-        .feature-card p {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-            font-weight: 300;
-        }
-
-        /* ── ON iPAD & iPHONE ── */
-        .ios-section {
-            padding: 8rem 3rem;
-            background: var(--bg-1);
-            position: relative;
-        }
-        .ios-section::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
-        }
-        .ios-header { max-width: 1200px; margin: 0 auto 4rem; }
-        .ios-ship {
-            display: flex; flex-wrap: wrap; gap: 0.6rem;
-            margin-top: 1.8rem;
-        }
-        .ios-ship span {
-            font-size: 0.8rem;
-            padding: 0.45rem 0.85rem;
-            border: 1px solid var(--border-mid);
-            background: var(--bg-card);
-            color: var(--text-mid);
-        }
-        .ios-ship span.on { border-color: var(--mint-deep); color: var(--text); }
-        .ios-ship span.on::before {
-            content: ''; display: inline-block;
-            width: 6px; height: 6px; border-radius: 50%;
-            background: var(--mint-deep);
-            margin-right: 0.6rem; vertical-align: 1px;
-        }
-
-        .ios-hero {
-            max-width: 1200px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-            gap: 4.5rem;
-            align-items: center;
-        }
+        .tab-title { font-family: var(--f-display); font-weight: 600; font-size: 1.375rem; line-height: 1.15; text-transform: uppercase; letter-spacing: 0.01em; color: var(--ink-2); }
+        .tab-cap { grid-column: 1 / -1; font-size: 0.9375rem; color: var(--ink-3); }
+        .tab:hover .tab-title { color: var(--ink); }
+        .tab[aria-selected="true"] { background: var(--panel); }
+        .tab[aria-selected="true"]::before { background: var(--route); }
+        .tab[aria-selected="true"] .tab-title { color: var(--ink); }
+        .tab[aria-selected="true"] .tab-cap { color: var(--ink-2); }
         .device {
-            background: #15171c;
-            border-radius: 30px;
-            padding: 14px;
-            box-shadow: 0 24px 48px -18px rgba(44,42,38,0.38);
+            background: #05070C; padding: clamp(10px, 1.6%, 18px);
+            border-radius: clamp(18px, 3vw, 34px);
+            box-shadow: 0 0 0 1px var(--rule-strong), var(--shadow);
+            max-width: 620px; margin-left: auto;
         }
-        .device img {
-            display: block;
-            width: 100%; height: auto;
-            border-radius: 18px;
-            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .device img.swapping { opacity: 0.15; }
-        .device-sm { border-radius: 20px; padding: 9px; }
-        .device-sm img { border-radius: 12px; }
+        .device img { border-radius: clamp(10px, 1.6vw, 18px); width: 100%; aspect-ratio: 1100 / 1467; object-fit: cover; background: #0A1922; }
+        .panel-text { max-width: 620px; margin: var(--s-5) 0 0 auto; color: var(--ink-2); }
+        .panel-text p + p { margin-top: var(--s-2); }
+        .demo-note { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-5); padding-top: var(--s-2); border-top: 1px solid var(--rule); font-size: 0.8125rem; color: var(--ink-3); }
+        .demo-note b, .site-foot b { font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 6px; }
+        [role="tabpanel"][hidden] { display: none; }
 
-        .theme-toggle {
-            display: inline-flex;
-            margin-top: 1.4rem;
-            border: 1px solid var(--border-mid);
-            background: var(--bg-card);
-        }
-        .theme-toggle button {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 0.6rem 1.1rem;
-            border: 0; background: none;
-            color: var(--text-dim);
-            cursor: pointer;
-        }
-        .theme-toggle button:hover { color: var(--text); }
-        .theme-toggle button[aria-pressed="true"] { background: var(--text); color: var(--bg-card); }
-        .theme-toggle button:focus-visible { outline: 2px solid var(--sand-deep); outline-offset: 2px; }
+        .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4); margin-top: var(--s-8); }
+        .note { font-size: 0.9375rem; color: var(--ink-3); }
 
-        .ios-points { display: grid; gap: 2.2rem; }
-        .ios-point { border-top: 1px solid var(--border-mid); padding-top: 1.4rem; }
-        .ios-point h3 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.35rem; font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-        .ios-point p {
-            font-size: 0.92rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-            font-weight: 300;
-        }
+        /* ── WHAT'S SHIPPED ── */
+        .groups { display: grid; gap: var(--s-8); }
+        .group { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: var(--s-6); padding-top: var(--s-5); border-top: 2px solid var(--rule-strong); }
+        .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s-6) var(--s-6); }
+        .feat h4 { font-size: 1.125rem; font-weight: 600; line-height: 1.3; margin-bottom: var(--s-2); }
+        .feat p { color: var(--ink-2); font-size: 1rem; }
 
-        .ios-gallery {
-            max-width: 1200px; margin: 6rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 1.6rem;
-            align-items: start;
-        }
-        .ios-gallery figure { margin: 0; }
-        .ios-gallery figcaption {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-top: 1rem;
-            line-height: 1.5;
-            font-weight: 300;
-        }
-        .ios-gallery figcaption strong {
-            display: block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text);
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
+        /* ── ORGANISATIONS ── */
+        .yours { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--rule); border-radius: 8px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule); }
+        .yours > div { background: var(--panel); padding: var(--s-6); }
+        .yours h3 { font-size: 1.375rem; margin-bottom: var(--s-2); }
+        .yours p { color: var(--ink-2); }
 
-        .ios-yours {
-            max-width: 1200px; margin: 6rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border);
-        }
-        .ios-yours > div { background: var(--bg-card); padding: 2rem; }
-        .ios-yours .k {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--sand-deep);
-            margin-bottom: 0.8rem;
-        }
-        .ios-yours p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.65; font-weight: 300; }
-        .ios-note {
-            max-width: 1200px; margin: 1.6rem auto 0;
-            font-size: 0.8rem;
-            font-weight: 300;
-            color: var(--text-dim);
-        }
-        .status-item.wide { grid-column: 1 / -1; }
 
-        /* ── BUILD STATUS ── */
-        .status-section {
-            padding: 8rem 3rem;
-            background: linear-gradient(165deg, var(--bg-1) 0%, rgba(184,216,208,0.15) 50%, rgba(180,203,224,0.15) 100%);
-            position: relative;
-        }
-        .status-section::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
-        }
-        .status-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 5rem;
-            align-items: start;
-        }
+        /* ── TRIAL ── */
+        .steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6); }
+        .steps li { padding-top: var(--s-4); border-top: 2px solid var(--route); }
+        .steps h3 { font-size: 1.5rem; margin-bottom: var(--s-2); }
+        .steps p { color: var(--ink-2); }
+        .terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8); margin-top: var(--s-9); }
+        .terms h3 { margin-bottom: var(--s-4); }
+        .terms .lede { color: var(--ink); font-size: 1.125rem; margin-bottom: var(--s-4); max-width: 46ch; }
+        .terms ul { list-style: none; }
+        .terms li { position: relative; padding: var(--s-3) 0 var(--s-3) var(--s-6); border-top: 1px solid var(--rule); color: var(--ink-2); }
+        .terms li::before { content: ""; position: absolute; left: 4px; top: calc(var(--s-3) + 0.8em); width: 10px; height: 2px; background: var(--route); }
+        .terms li strong { color: var(--ink); font-weight: 600; }
 
-        .status-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: var(--border);
-        }
-        .status-item {
-            padding: 1.8rem;
-            background: var(--bg-card);
-            display: flex; flex-direction: column; gap: 0.6rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .status-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(44,42,38,0.06);
-        }
-        .status-item .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-        }
-        .status-item .value {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.1rem;
-            display: flex; align-items: center; gap: 0.5rem;
-            font-weight: 400;
-        }
-        .status-item .value::before {
-            content: '';
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .status-item .value.live { color: #3a9e8f; }
-        .status-item .value.live::before {
-            background: #3a9e8f;
-            box-shadow: 0 0 0 3px rgba(58,158,143,0.15);
-            animation: dotPulse 2s ease-in-out infinite;
-        }
-        .status-item .value.building { color: var(--sky-deep); }
-        .status-item .value.building::before {
-            background: var(--sky-deep);
-            box-shadow: 0 0 0 3px rgba(138,175,207,0.2);
-            animation: dotPulse 2s ease-in-out infinite 0.5s;
-        }
-        .status-item .value.soon { color: var(--blush-deep); }
-        .status-item .value.soon::before {
-            background: var(--blush-deep);
-            box-shadow: 0 0 0 3px rgba(212,160,144,0.2);
-        }
-        @keyframes dotPulse {
-            0%, 100% { box-shadow: 0 0 0 3px rgba(58,158,143,0.15); }
-            50% { box-shadow: 0 0 0 6px rgba(58,158,143,0.08); }
-        }
+        .photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); margin-bottom: var(--s-8); }
+        .photo img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; box-shadow: 0 0 0 1px var(--rule); background: var(--panel); }
+        .photo figcaption { margin-top: var(--s-3); }
 
-        .progress-wrap { margin-top: 2.5rem; }
-        .progress-header {
-            display: flex; justify-content: space-between; align-items: baseline;
-            margin-bottom: 0.8rem;
+        /* ── APPLY ── */
+        .apply { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); align-items: start; }
+        .apply-card { background: var(--panel); border-radius: 8px; padding: 40px; box-shadow: 0 0 0 1px var(--rule), var(--shadow); }
+        .apply-card > h3 { font-size: 1.75rem; margin-bottom: var(--s-2); }
+        .apply-card > p { color: var(--ink-2); margin-bottom: var(--s-6); }
+        .apply-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5) var(--s-4); }
+        .apply-form .full { grid-column: 1 / -1; }
+        .apply-form label { display: block; margin-bottom: 6px; font-size: 0.9375rem; font-weight: 600; color: var(--ink); }
+        .apply-form label span { font-weight: 400; color: var(--ink-3); }
+        .apply-form select.field {
+            appearance: none; padding-right: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23869DAA' stroke-width='1.6'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 16px center;
         }
-        .progress-header span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-dim);
+        .apply-form textarea.field { min-height: 112px; padding: var(--s-3) var(--s-4); resize: vertical; line-height: 1.5; }
+        .field[aria-invalid="true"] { border-color: var(--red-ink); }
+        .field-msg { margin-top: 6px; font-size: 0.875rem; color: var(--red-ink); }
+        .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4); }
+        .form-error {
+            padding: var(--s-4); border-radius: 4px;
+            background: var(--console); border: 1px solid var(--red-ink);
         }
-        .progress-header .pct {
-            font-family: 'Instrument Serif', serif;
-            font-size: 2rem;
-            color: #3a9e8f;
-            letter-spacing: 0;
-            font-weight: 400;
-        }
-        .progress-track {
-            width: 100%; height: 6px;
-            background: var(--border);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%; width: 0%;
-            background: linear-gradient(90deg, var(--mint-deep), #3a9e8f, var(--sky-deep));
-            border-radius: 3px;
-            transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-        }
-        .progress-fill::after {
-            content: '';
-            position: absolute; right: 0; top: -2px;
-            width: 10px; height: 10px;
-            background: #3a9e8f;
-            border-radius: 50%;
-            box-shadow: 0 0 0 3px rgba(58,158,143,0.2);
-        }
-
-        /* ── BUILT BY A PILOT ── */
-        .pilot-section {
-            padding: 8rem 3rem;
-            background: var(--bg-2);
-            position: relative;
-        }
-        .pilot-section::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
-        }
-        .pilot-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .pilot-quote {
-            font-family: 'Instrument Serif', serif;
-            font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--text-mid);
-            position: relative;
-            padding-left: 2rem;
-            border-left: 2px solid var(--blush);
-        }
-        .pilot-attr {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--sand-deep);
-            margin-top: 2rem;
-            padding-left: 2rem;
-        }
-
-        .pilot-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: var(--border);
-        }
-        .pilot-stat {
-            padding: 2.5rem 2rem;
-            background: var(--bg-card);
-            text-align: center;
-        }
-        .pilot-stat .number {
-            font-family: 'Instrument Serif', serif;
-            font-size: 3rem;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-        .pilot-stat:nth-child(1) .number { color: var(--mint-deep); }
-        .pilot-stat:nth-child(2) .number { color: var(--sky-deep); }
-        .pilot-stat:nth-child(3) .number { color: var(--sand-deep); }
-        .pilot-stat:nth-child(4) .number { color: var(--blush-deep); }
-        .pilot-stat .desc {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-        }
-
-        /* ── EARLY ACCESS ── */
-        .access-section {
-            padding: 8rem 3rem;
-            background: var(--bg-1);
-            position: relative;
-        }
-        .access-section::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
-        }
-        .access-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
-        }
-
-        .access-card {
-            padding: 3rem;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            box-shadow: 0 4px 24px rgba(44,42,38,0.05);
-        }
-        .access-card h3 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 0.6rem;
-        }
-        .access-card > p {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-        .access-form { display: grid; gap: 1.2rem; }
-        .access-form label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            display: block; margin-bottom: 0.4rem;
-        }
-        .access-form input {
-            width: 100%; padding: 0.9rem 1rem;
-            border: 1px solid var(--border-mid);
-            background: var(--bg-1);
-            color: var(--text);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
-        }
-        .access-form input:focus {
-            outline: none;
-            border-color: var(--sand-deep);
-        }
-        .access-form input::placeholder { color: rgba(44,42,38,0.25); }
-
-        .access-actions {
-            display: flex; align-items: center; gap: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        .access-button {
-            font-family: 'DM Sans', sans-serif;
-            text-transform: uppercase; letter-spacing: 0.2em;
-            font-size: 0.72rem; font-weight: 500;
-            padding: 0.9rem 2rem;
-            border: 1px solid var(--sand-deep);
-            background: var(--sand-deep);
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .access-button:hover {
-            background: var(--sand);
-            border-color: var(--sand);
-            box-shadow: 0 4px 24px rgba(166,138,96,0.2);
-            transform: translateY(-2px);
-        }
-        .access-note {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            color: var(--text-dim);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
-
-        .access-toast {
-            position: fixed; bottom: 2rem; left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            padding: 0.9rem 2rem;
-            background: rgba(122, 191, 179, 0.12);
-            border: 1px solid var(--mint-deep);
-            color: var(--mint-deep);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.4s, transform 0.4s;
-            z-index: 200;
-            backdrop-filter: blur(12px);
-        }
-        .access-toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
+        .form-error a { color: var(--ink); text-decoration-color: var(--red-ink); text-underline-offset: 3px; }
+        .form-done h3 { font-size: 1.75rem; margin-bottom: var(--s-3); color: var(--route-ink); }
+        .form-done p { color: var(--ink-2); }
+        .form-done p + p { margin-top: var(--s-3); }
+        .form-done strong { color: var(--ink); overflow-wrap: anywhere; }
+        .form-done:focus { outline: none; }
 
         /* ── FOOTER ── */
-        .site-footer {
-            padding: 3rem;
-            display: flex; align-items: center; justify-content: space-between;
-            background: var(--bg-3);
-            border-top: 1px solid var(--border);
-            position: relative; z-index: 10;
+        .site-foot {
+            background: var(--console); border-top: 1px solid var(--rule);
+            padding: var(--s-6) var(--gutter);
+            display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-7);
+            font-size: 0.875rem; color: var(--ink-3);
         }
-        .footer-brand {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1rem;
-            color: var(--text-dim);
-        }
-        .footer-center {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-        }
-        .footer-contact a {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            color: var(--sand-deep);
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        .footer-contact a:hover { opacity: 0.6; }
-
-        /* ── BETA BAND ── */
-        .beta-band {
-            background: var(--bg-3);
-            border-bottom: 1px solid var(--border);
-            padding: 1.4rem 3rem;
-            position: relative; z-index: 10;
-        }
-        .beta-band-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            gap: 2rem; flex-wrap: wrap;
-        }
-        .beta-band-item {
-            display: flex; align-items: baseline; gap: 0.7rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-        }
-        .beta-band-item strong {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1rem;
-            letter-spacing: 0.02em;
-            text-transform: none;
-            font-weight: 400;
-            color: var(--text);
-        }
-        .beta-band-item a {
-            color: var(--sand-deep);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(166,138,96,0.35);
-            transition: opacity 0.3s;
-        }
-        .beta-band-item a:hover { opacity: 0.65; }
-
-        /* ── TRIAL SECTION ── */
-        .trial-section {
-            padding: 8rem 3rem;
-            background: linear-gradient(165deg, var(--bg-1) 0%, rgba(232,196,184,0.14) 55%, rgba(197,184,216,0.14) 100%);
-            position: relative;
-        }
-        .trial-section::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
-        }
-        .trial-header { max-width: 1200px; margin: 0 auto 4.5rem; }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            max-width: 1200px; margin: 0 auto 4rem;
-            background: var(--border);
-        }
-        .step {
-            padding: 2.5rem;
-            background: var(--bg-card);
-            position: relative;
-            border-top: 3px solid transparent;
-        }
-        .step:nth-child(1) { border-top-color: var(--mint); }
-        .step:nth-child(2) { border-top-color: var(--sky); }
-        .step:nth-child(3) { border-top-color: var(--lavender); }
-        .step .step-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            margin-bottom: 1.2rem;
-        }
-        .step h3 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 0.8rem;
-        }
-        .step p {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-            font-weight: 300;
-        }
-
-        .terms {
-            max-width: 1200px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem 5rem;
-        }
-        .terms h4 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.62rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--sand-deep);
-            margin-bottom: 1.4rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .terms ul { list-style: none; display: grid; gap: 0.9rem; }
-        .terms li {
-            font-size: 0.95rem;
-            color: var(--text-mid);
-            line-height: 1.65;
-            font-weight: 300;
-            padding-left: 1.6rem;
-            position: relative;
-        }
-        .terms li::before {
-            content: '';
-            position: absolute; left: 0; top: 0.62em;
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: var(--mint-deep);
-        }
-        .terms .asks li::before { background: var(--blush-deep); }
-        .terms li strong { color: var(--text); font-weight: 500; }
-
-        /* ── ACCESS FORM GRID ── */
-        .access-form .field-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-        }
-        .access-form select,
-        .access-form textarea {
-            width: 100%; padding: 0.9rem 1rem;
-            border: 1px solid var(--border-mid);
-            background: var(--bg-1);
-            color: var(--text);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
-        }
-        .access-form select:focus,
-        .access-form textarea:focus {
-            outline: none;
-            border-color: var(--sand-deep);
-        }
-        .access-form textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
-        .access-form select { cursor: pointer; }
-
-        /* ── SCROLL REVEAL ── */
-        .reveal {
-            opacity: 0; transform: translateY(24px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-d1 { transition-delay: 0.08s; }
-        .reveal-d2 { transition-delay: 0.16s; }
-        .reveal-d3 { transition-delay: 0.24s; }
-        .reveal-d4 { transition-delay: 0.32s; }
-        .reveal-d5 { transition-delay: 0.40s; }
-        .reveal-d6 { transition-delay: 0.48s; }
+        .site-foot a { color: var(--ink-2); text-decoration: none; }
+        .site-foot a:hover { color: var(--ink); }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .features { grid-template-columns: repeat(2, 1fr); }
-            .ios-hero { gap: 3rem; }
-            .ios-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .ios-yours { grid-template-columns: 1fr 1fr; }
-            .status-inner { grid-template-columns: 1fr; gap: 3rem; }
-            .pilot-inner { grid-template-columns: 1fr; gap: 3rem; }
-            .access-inner { grid-template-columns: 1fr; gap: 3rem; }
-            .steps { grid-template-columns: 1fr; }
-            .terms { grid-template-columns: 1fr; gap: 2.5rem; }
-            .compass-rose { width: 500px; right: -15%; }
+        @media (max-width: 1180px) {
+            .voyage { grid-template-columns: minmax(0, 1fr); }
+            .rail { display: none; }
         }
-
-        @media (max-width: 768px) {
-            .nav-bar { padding: 1rem 1.5rem; }
-            .nav-bar.scrolled { padding: 0.7rem 1.5rem; }
+        @media (max-width: 960px) {
+            .screens, .apply { grid-template-columns: minmax(0, 1fr); gap: var(--s-7); }
+            .device, .panel-text { margin-left: 0; }
+            .screens { gap: var(--s-5); }
+            .tabs {
+                position: static; flex-direction: row; overflow-x: auto; scroll-snap-type: x proximity;
+                border-top: 0; border-bottom: 1px solid var(--rule);
+                margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter);
+                scrollbar-width: none;
+            }
+            .tabs::-webkit-scrollbar { display: none; }
+            .tab { flex: none; scroll-snap-align: start; display: flex; align-items: center; gap: var(--s-2); border-bottom: 0; padding: var(--s-3) var(--s-4); }
+            .tab::before { left: var(--s-4); right: var(--s-4); top: auto; bottom: 0; width: auto; height: 2px; }
+            .tab-title { font-size: 1.125rem; white-space: nowrap; }
+            .tab-cap { display: none; }
+            .group { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+            .steps { grid-template-columns: minmax(0, 1fr); }
+            .terms { grid-template-columns: minmax(0, 1fr); gap: var(--s-7); margin-top: var(--s-8); }
+            .readouts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .leg { padding: var(--s-9) 0; }
+        }
+        @media (max-width: 900px) {
+            .nav-toggle { display: inline-flex; align-items: center; }
+            .site-nav nav { order: 3; }
             .nav-links {
-                position: fixed; inset: 0;
-                background: rgba(244, 241, 236, 0.97);
-                backdrop-filter: blur(24px);
-                flex-direction: column;
-                justify-content: center; align-items: center;
-                gap: 2rem;
-                opacity: 0; pointer-events: none;
-                transition: opacity 0.4s;
+                position: fixed; top: var(--nav-h); left: 0; right: 0;
+                flex-direction: column; align-items: stretch; gap: 0;
+                background: var(--console); border-bottom: 1px solid var(--rule);
+                padding: var(--s-2) var(--gutter) var(--s-5);
+                display: none;
             }
-            .nav-links.open { opacity: 1; pointer-events: all; }
-            .nav-links a { font-size: 0.85rem; letter-spacing: 0.3em; }
-            .nav-toggle { display: block; }
-
-            .hero { padding: 7rem 1.5rem 4rem; }
-            .hero h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
-            .compass-rose { display: none; }
-            .scroll-cue { left: 1.5rem; }
-
-            .what-section,
-            .status-section,
-            .trial-section,
-            .pilot-section,
-            .access-section { padding: 5rem 1.5rem; }
-
-            .ios-section { padding: 5rem 1rem; }
-            .ios-hero { grid-template-columns: 1fr; gap: 3rem; }
-            .ios-gallery {
-                display: flex; gap: 1rem; margin: 4rem -1rem 0; padding: 0 1rem 0.5rem;
-                overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+            .nav-links.open { display: flex; }
+            .nav-links a { display: block; padding: var(--s-3) 0; font-size: 1.0625rem; border-bottom: 1px solid var(--rule); }
+        }
+        @media (max-width: 640px) {
+            :root { --nav-h: 56px; }
+            .site-nav { gap: var(--s-3); }
+            .brand-product { display: none; }
+            .theme-switch button { padding: 0 var(--s-2); }
+            .hero { padding-bottom: 112px; align-items: flex-end; }
+            .hero::after { background: rgba(8, 12, 22, 0.62); }
+            [data-theme="dawn"] .hero::after { background: rgba(238, 241, 236, 0.66); }
+            .hero-chart img, .hero-chart.dawn img {
+                top: var(--nav-h); right: auto; left: -18vw; width: 150vw; transform: none;
+                -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 95%);
+                -webkit-mask-composite: source-over;
+                mask-image: linear-gradient(to bottom, #000 55%, transparent 95%);
+                mask-composite: add;
             }
-            .ios-gallery::-webkit-scrollbar { display: none; }
-            .ios-gallery figure { flex: 0 0 68%; scroll-snap-align: start; }
-            .ios-yours { grid-template-columns: 1fr; margin-top: 4rem; }
-            .device { border-radius: 22px; padding: 10px; }
-            .device img { border-radius: 13px; }
-
-            .features { grid-template-columns: 1fr; }
-            .status-grid { grid-template-columns: 1fr; }
-            .pilot-stats { grid-template-columns: 1fr 1fr; }
-
-            .beta-band { padding: 1.2rem 1.5rem; }
-            .beta-band-inner { gap: 1rem; flex-direction: column; align-items: flex-start; }
-            .access-form .field-row { grid-template-columns: 1fr; }
-
-            .site-footer {
-                flex-direction: column; gap: 0.8rem;
-                text-align: center; padding: 2rem 1.5rem;
-            }
+            .hero-apply { grid-template-columns: minmax(0, 1fr); }
+            .yours, .photos, .apply-form { grid-template-columns: minmax(0, 1fr); }
+            .yours > div { padding: var(--s-5); }
+            .apply-card { padding: var(--s-5); }
+            .tab { padding-left: var(--s-4); }
+            .leg { padding: var(--s-8) 0; }
+            .leg-head { margin-bottom: var(--s-6); }
+            .cta-row { margin-top: var(--s-6); }
+            .cta-row .btn { width: 100%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .btn { transition: none; }
         }
     </style>
 </head>
 <body>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <!-- Chart line background -->
-    <div class="chart-bg"></div>
-
-    <!-- NAV -->
-    <header class="nav-bar">
-        <div class="nav-brand">Sea <span>Digital</span></div>
-        <button class="nav-toggle" aria-label="Toggle navigation">
-            <span></span><span></span><span></span>
-        </button>
-        <nav class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#product">Product</a>
-            <a href="#ios">iPad</a>
-            <a href="#status">Status</a>
-            <a href="#trial">The Trial</a>
-            <a href="#access">Apply</a>
-            <a href="https://app.seadigital.com.au" class="nav-signin">Sign In</a>
+    <header class="site-nav">
+        <a class="brand" href="#home" aria-label="Sea Digital, EMPX home">
+            <span class="brand-name">Sea Digital</span>
+            <span class="brand-product">EMPX</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <nav aria-label="Primary">
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#exchange">Product</a></li>
+                <li><a href="#organisations">Organisations</a></li>
+                <li><a href="#trial">The Trial</a></li>
+                <li><a href="https://app.seadigital.com.au">Sign In</a></li>
+                <li><a class="nav-apply" href="#apply">Apply</a></li>
+            </ul>
         </nav>
+        <div class="theme-switch" role="group" aria-label="Page theme">
+            <button type="button" data-set-theme="night" aria-pressed="true">Night</button>
+            <button type="button" data-set-theme="dawn" aria-pressed="false">Dawn</button>
+        </div>
     </header>
 
-    <!-- ═══════════════ HERO ═══════════════ -->
-    <section class="hero" id="home">
-        <!-- Ocean background -->
-        <div class="hero-bg"></div>
-        <!-- Decorative compass rose -->
-        <div class="compass-rose">
-            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="200" cy="200" r="195" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-                <circle cx="200" cy="200" r="160" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                <circle cx="200" cy="200" r="120" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-                <circle cx="200" cy="200" r="80" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
-                <!-- Cardinal lines -->
-                <line x1="200" y1="5" x2="200" y2="395" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                <line x1="5" y1="200" x2="395" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                <!-- Diagonal lines -->
-                <line x1="58" y1="58" x2="342" y2="342" stroke="currentColor" stroke-width="0.3" opacity="0.2"/>
-                <line x1="342" y1="58" x2="58" y2="342" stroke="currentColor" stroke-width="0.3" opacity="0.2"/>
-                <!-- Rose points -->
-                <polygon points="200,20 210,180 200,160 190,180" fill="currentColor" opacity="0.08"/>
-                <polygon points="200,380 210,220 200,240 190,220" fill="currentColor" opacity="0.05"/>
-                <polygon points="20,200 180,190 160,200 180,210" fill="currentColor" opacity="0.05"/>
-                <polygon points="380,200 220,190 240,200 220,210" fill="currentColor" opacity="0.05"/>
-                <!-- Tick marks -->
-                <line x1="200" y1="5" x2="200" y2="18" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-                <line x1="200" y1="382" x2="200" y2="395" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-                <line x1="5" y1="200" x2="18" y2="200" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-                <line x1="382" y1="200" x2="395" y2="200" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-                <circle cx="200" cy="200" r="3" fill="currentColor" opacity="0.3"/>
-            </svg>
-        </div>
+    <main id="main">
+        <!-- ═══════════════ HERO ═══════════════ -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <picture class="hero-chart night">
+                <source type="image/webp" srcset="images/ios/hero-night.webp">
+                <img src="images/ios/hero-night.jpg" width="1455" height="1293" alt="" fetchpriority="high">
+            </picture>
+            <picture class="hero-chart dawn">
+                <source type="image/webp" srcset="images/ios/hero-day.webp">
+                <img src="images/ios/hero-day.jpg" width="1073" height="358" alt="" loading="lazy">
+            </picture>
 
-        <div class="hero-content">
-            <div class="hero-coords reveal">33&deg;51'S &nbsp; 151&deg;12'E</div>
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <h1 id="hero-title">The Master Pilot Exchange, reimagined.</h1>
+                    <p class="hero-sub">
+                        <strong>EMPX</strong> is a tablet-first platform that replaces the paper MPX
+                        with a digital workflow built on IMO A.960: charts, per-leg under-keel
+                        clearance, an underway logbook and a signed PDF record.
+                        <strong>It's built, it's live, and we're looking for pilots to trial it.</strong>
+                    </p>
 
-            <div class="hero-kicker reveal reveal-d1">
-                <span class="dot"></span>
-                Beta Open &mdash; Taking Trial Pilots
-            </div>
-
-            <h1 class="reveal reveal-d2">
-                The <em>Master Pilot<br>Exchange</em>,<br>reimagined.
-            </h1>
-
-            <p class="hero-sub reveal reveal-d3">
-                <strong>EMPX</strong> is a tablet-first platform that replaces the paper MPX
-                with a digital, IMO-compliant workflow &mdash; charts, per-leg under-keel
-                clearance, an underway logbook and a signed PDF record.
-                <strong>It's built, it's live, and we're looking for pilots to trial it.</strong>
-            </p>
-
-            <div class="cta-group reveal reveal-d4">
-                <a href="#access" class="cta-primary">
-                    Apply for the Beta
-                    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 7h12M8 2l5 5-5 5"/>
-                    </svg>
-                </a>
-                <a href="#product" class="cta-ghost">See What's Shipped</a>
-            </div>
-        </div>
-
-        <div class="scroll-cue">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
-        </div>
-    </section>
-
-    <!-- ═══════════════ BETA BAND ═══════════════ -->
-    <div class="beta-band">
-        <div class="beta-band-inner">
-            <div class="beta-band-item">
-                Status
-                <strong>Beta &mdash; live in service</strong>
-            </div>
-            <div class="beta-band-item">
-                Running at
-                <strong><a href="https://app.seadigital.com.au">app.seadigital.com.au</a></strong>
-            </div>
-            <div class="beta-band-item">
-                Trial places
-                <strong>Limited &mdash; invite only</strong>
-            </div>
-            <div class="beta-band-item">
-                To start
-                <strong>No card required</strong>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════ WHAT IS EMPX ═══════════════ -->
-    <section class="what-section" id="product">
-        <div class="what-header">
-            <div class="section-tag reveal">What's Shipped</div>
-            <h2 class="section-heading reveal reveal-d1">Everything a pilot needs.<br><em>Nothing they don't.</em></h2>
-            <p class="section-prose reveal reveal-d2">
-                From the boarding ground to the berth &mdash; every checklist item, every leg,
-                every signature &mdash; captured digitally, stored securely, and printed into one
-                record. All of the below is built and in the app today.
-            </p>
-        </div>
-
-        <div class="features">
-            <div class="feature-card reveal">
-                <div class="feature-num">01</div>
-                <h3>The IMO Exchange</h3>
-                <p>A full A.960 / SOLAS Chapter V checklist &mdash; and a form builder, so your organisation runs <em>its</em> form, not ours. Photograph your existing paper form and it's read in for you.</p>
-            </div>
-            <div class="feature-card reveal reveal-d1">
-                <div class="feature-num">02</div>
-                <h3>Under-Keel Clearance, by Leg</h3>
-                <p>Controlling depth on every leg, height of tide, squat from planned speed, and net clearance against the port's margin &mdash; drawn as a depth section, not a table of numbers.</p>
-            </div>
-            <div class="feature-card reveal reveal-d2">
-                <div class="feature-num">03</div>
-                <h3>Passage Plan &amp; Charts</h3>
-                <p>Build passages on the chart with bearings, distances and speed limits per leg. Shared org passages your admin maintains, plus your own personal ones.</p>
-            </div>
-            <div class="feature-card reveal reveal-d3">
-                <div class="feature-num">04</div>
-                <h3>Underway Logbook</h3>
-                <p>Live GPS against the plan, one-tap event presets, voice memos, and time corrections that are marked as amended rather than silently rewritten.</p>
-            </div>
-            <div class="feature-card reveal reveal-d4">
-                <div class="feature-num">05</div>
-                <h3>Signed, Exportable Record</h3>
-                <p>Master and pilot sign on the tablet. Exchange, conditions, UKC table and passage log export as one PDF under your organisation's branding.</p>
-            </div>
-            <div class="feature-card reveal reveal-d5">
-                <div class="feature-num">06</div>
-                <h3>Vessel Memory</h3>
-                <p>Finalise an exchange and the ship's particulars are kept. Next visit, type three letters of her name and around thirty fields fill themselves in.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-num">07</div>
-                <h3>Weather &amp; Tides</h3>
-                <p>Wind, gusts, pressure tendency, sea state and tide &mdash; resolved at the passage position rather than wherever the pilot happens to be standing, and captured onto the record.</p>
-            </div>
-            <div class="feature-card reveal reveal-d1">
-                <div class="feature-num">08</div>
-                <h3>Admin Console</h3>
-                <p>Invite pilots, set roles, watch licence expiries, maintain the org form and passages, and see every record in the organisation. Per-org isolation throughout.</p>
-            </div>
-            <div class="feature-card reveal reveal-d2">
-                <div class="feature-num">09</div>
-                <h3>Built for the Bridge</h3>
-                <p>A native iPad and iPhone app with day and night themes and Apple Pencil on the chart. Designed to be read at arm's length on a wing at 0400.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════ ON iPAD & iPHONE ═══════════════ -->
-    <section class="ios-section" id="ios">
-        <div class="ios-header">
-            <div class="section-tag reveal">On iPad &amp; iPhone</div>
-            <h2 class="section-heading reveal reveal-d1">A native iOS app.<br><em>Set up for your port.</em></h2>
-            <p class="section-prose reveal reveal-d2">
-                EMPX runs as a native app on iPad and iPhone. Chart, exchange, under-keel
-                clearance and logbook sit in one place, readable at arm's length on the bridge.
-                Every screen below is the iOS build itself.
-            </p>
-            <div class="ios-ship reveal reveal-d3">
-                <span class="on">Native iPad &amp; iPhone</span>
-                <span class="on">In TestFlight now</span>
-                <span>Sign in with Apple</span>
-                <span>Day &amp; night themes</span>
-            </div>
-        </div>
-
-        <div class="ios-hero">
-            <div class="reveal">
-                <div class="device">
-                    <picture id="iosChart">
-                        <source type="image/webp" srcset="images/ios/chart-day.webp">
-                        <img src="images/ios/chart-day.jpg" width="1100" height="1467" loading="lazy"
-                             alt="EMPX on iPad: the Cairns Inbound passage on the chart with the route plan, distances and waypoint list">
-                    </picture>
-                </div>
-                <div class="theme-toggle" role="group" aria-label="Chart theme">
-                    <button type="button" data-theme="day" aria-pressed="true">Day</button>
-                    <button type="button" data-theme="night" aria-pressed="false">Night</button>
-                </div>
-            </div>
-
-            <div class="ios-points">
-                <div class="ios-point reveal reveal-d1">
-                    <h3>The passage, on the chart</h3>
-                    <p>Your organisation's passages, legs and wheel-over points on an ECDIS-style chart, with own-ship from the iPad's GPS. Import and export RTZ for the ship's ECDIS.</p>
-                </div>
-                <div class="ios-point reveal reveal-d2">
-                    <h3>The exchange, signed on the glass</h3>
-                    <p>Your checklist, not a generic one. Master and pilot sign with a finger or Apple Pencil, and the pilot finalises the record once both have signed.</p>
-                </div>
-                <div class="ios-point reveal reveal-d3">
-                    <h3>Clearance and the berth</h3>
-                    <p>Net UKC leg by leg against your margin, a ship diagram from the pilot card, and the mooring plan with your tugs named on station.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="ios-gallery">
-            <figure class="reveal">
-                <div class="device device-sm"><picture>
-                    <source type="image/webp" srcset="images/ios/passage-plan.webp">
-                    <img src="images/ios/passage-plan.jpg" width="1100" height="1467" loading="lazy" alt="Passage plan step with wind, tide and the route map">
-                </picture></div>
-                <figcaption><strong>Passage plan</strong>Wind, tide and the route at the exchange</figcaption>
-            </figure>
-            <figure class="reveal reveal-d1">
-                <div class="device device-sm"><picture>
-                    <source type="image/webp" srcset="images/ios/checklist.webp">
-                    <img src="images/ios/checklist.jpg" width="1100" height="1467" loading="lazy" alt="The MPX checklist: navigation equipment status answered yes, no or N/A">
-                </picture></div>
-                <figcaption><strong>The checklist</strong>Your organisation's form, step by step</figcaption>
-            </figure>
-            <figure class="reveal reveal-d2">
-                <div class="device device-sm"><picture>
-                    <source type="image/webp" srcset="images/ios/ukc.webp">
-                    <img src="images/ios/ukc.jpg" width="1100" height="1467" loading="lazy" alt="Under-keel clearance drawn as a depth section with net UKC for each leg">
-                </picture></div>
-                <figcaption><strong>Under-keel clearance</strong>Tide, squat and net UKC per leg</figcaption>
-            </figure>
-            <figure class="reveal reveal-d3">
-                <div class="device device-sm"><picture>
-                    <source type="image/webp" srcset="images/ios/ship-mooring.webp">
-                    <img src="images/ios/ship-mooring.jpg" width="1100" height="1467" loading="lazy" alt="Ship diagram with drafts and the mooring plan with two tugs on station">
-                </picture></div>
-                <figcaption><strong>Ship &amp; mooring</strong>Drafts, lines and tugs on station</figcaption>
-            </figure>
-            <figure class="reveal reveal-d4">
-                <div class="device device-sm"><picture>
-                    <source type="image/webp" srcset="images/ios/signatures.webp">
-                    <img src="images/ios/signatures.jpg" width="1100" height="1467" loading="lazy" alt="Master and pilot signatures captured on the record">
-                </picture></div>
-                <figcaption><strong>Signatures</strong>Master and pilot, on the record</figcaption>
-            </figure>
-        </div>
-
-        <div class="ios-yours">
-            <div class="reveal">
-                <div class="k">Your form</div>
-                <p>We build your organisation's MPX checklist into the app. Pilots see your questions, in your order.</p>
-            </div>
-            <div class="reveal reveal-d1">
-                <div class="k">Your passages</div>
-                <p>Your port's passages, waypoints, controlling depths and pre-arrival instructions, shared across the organisation.</p>
-            </div>
-            <div class="reveal reveal-d2">
-                <div class="k">Your fleet &amp; chartlets</div>
-                <p>Your tugs with their bollard pull, and your berth chartlets, ready to pick from on every job.</p>
-            </div>
-            <div class="reveal reveal-d3">
-                <div class="k">Your name on the record</div>
-                <p>Every signed record carries your organisation's name and logo, and stays inside your organisation.</p>
-            </div>
-        </div>
-        <p class="ios-note">Screens captured from the iOS build on iPad, using demo data. Vessel, people and organisation are fictional.</p>
-    </section>
-
-    <!-- ═══════════════ BUILD STATUS ═══════════════ -->
-    <section class="status-section" id="status">
-        <div class="status-inner">
-            <div>
-                <div class="section-tag reveal">Where It Stands</div>
-                <h2 class="section-heading reveal reveal-d1">Not a mockup.<br>A <em>working product.</em></h2>
-                <p class="section-prose reveal reveal-d2">
-                    EMPX has been in continuous development and is deployed and running today.
-                    We publish what's done, what's in test, and what's still ahead &mdash; because
-                    a trial is worth nothing if you can't tell the difference.
-                </p>
-
-                <div class="progress-wrap reveal reveal-d3">
-                    <div class="progress-header">
-                        <span>Toward 1.0</span>
-                        <span class="pct progress-pct">0%</span>
-                    </div>
-                    <div class="progress-track">
-                        <div class="progress-fill" data-target="85"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="status-grid reveal reveal-d2">
-                <div class="status-item">
-                    <div class="label">MPX Checklist &amp; Form Builder</div>
-                    <div class="value live">Live</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Charts &amp; Passage Builder</div>
-                    <div class="value live">Live</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Under-Keel Clearance</div>
-                    <div class="value live">Live</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Underway Logbook</div>
-                    <div class="value live">Live</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Signatures &amp; PDF Export</div>
-                    <div class="value live">Live</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Admin Console &amp; Onboarding</div>
-                    <div class="value live">Live</div>
-                </div>
-                <div class="status-item wide">
-                    <div class="label">Native iPad &amp; iPhone App</div>
-                    <div class="value building">TestFlight</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Offline on Passage</div>
-                    <div class="value building">In Test</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Ship &amp; Mooring Diagrams</div>
-                    <div class="value building">In Test</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Record Export (CSV)</div>
-                    <div class="value soon">Next</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Push Notifications</div>
-                    <div class="value soon">Planned</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════ THE TRIAL ═══════════════ -->
-    <section class="trial-section" id="trial">
-        <div class="trial-header">
-            <div class="section-tag reveal">The Beta Trial</div>
-            <h2 class="section-heading reveal reveal-d1">Use it on a real job.<br><em>Tell us what breaks.</em></h2>
-            <p class="section-prose reveal reveal-d2">
-                We're taking a small number of trial pilots and pilotage organisations &mdash;
-                solo pilots and providers both. Small on purpose: every trial is set up by hand,
-                and we'd rather support a handful properly than a hundred badly.
-            </p>
-        </div>
-
-        <div class="steps">
-            <div class="step reveal">
-                <div class="step-num">Step 01</div>
-                <h3>You apply</h3>
-                <p>Tell us who you are and where you pilot. We'll come back to you directly &mdash; no queue, no drip campaign, no sales call.</p>
-            </div>
-            <div class="step reveal reveal-d1">
-                <div class="step-num">Step 02</div>
-                <h3>We set you up</h3>
-                <p>Your organisation is provisioned by hand, with your own form and your own passages built in for you. You get a sign-in link by email and you're working the same day.</p>
-            </div>
-            <div class="step reveal reveal-d2">
-                <div class="step-num">Step 03</div>
-                <h3>You run it for real</h3>
-                <p>Use it on actual pilotage, not a demo. What you report goes into the next release &mdash; most of what shipped this month was found by using the app on a real passage.</p>
-            </div>
-        </div>
-
-        <div class="terms">
-            <div class="reveal">
-                <h4>What you get</h4>
-                <ul>
-                    <li><strong>The whole product.</strong> Nothing is held back for a paid tier &mdash; a solo pilot gets the form builder and passage builder just as an organisation does.</li>
-                    <li><strong>A free trial, no card.</strong> Nothing to cancel, nothing charged at the end. We agree the trial length with you.</li>
-                    <li><strong>Your form and your passages,</strong> set up for you rather than left as homework.</li>
-                    <li><strong>A direct line</strong> to the pilot who builds it &mdash; not a ticket queue.</li>
-                    <li><strong>Real influence on the roadmap</strong> while it is still cheap to change.</li>
-                </ul>
-            </div>
-            <div class="reveal reveal-d1">
-                <h4 style="color: var(--blush-deep);">What we ask</h4>
-                <ul class="asks">
-                    <li><strong>Use it in service,</strong> on real exchanges &mdash; that's the only test that finds anything.</li>
-                    <li><strong>Tell us when it's wrong,</strong> including the small irritations. Those are usually the ones that matter on a bridge.</li>
-                    <li><strong>Keep the paper alongside it</strong> until you're satisfied. This is beta software in a safety-critical setting and we'd think less of you if you didn't.</li>
-                    <li><strong>An honest verdict at the end</strong> &mdash; including "no". We'd rather hear it than not.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════ BUILT BY A PILOT ═══════════════ -->
-    <section class="pilot-section">
-        <div class="pilot-inner">
-            <div>
-                <div class="section-tag reveal">Built Different</div>
-                <h2 class="section-heading reveal reveal-d1">Built by a<br><em>working pilot.</em></h2>
-
-                <blockquote class="pilot-quote reveal reveal-d2">
-                    Most maritime software is designed in an office by people who've never stood
-                    on a bridge wing at 0400. EMPX is different &mdash; it's built from the deck up,
-                    by someone who uses it.
-                </blockquote>
-                <div class="pilot-attr reveal reveal-d3">Cameron &mdash; Marine Pilot &amp; Founder</div>
-            </div>
-
-            <div class="pilot-stats reveal reveal-d3">
-                <div class="pilot-stat">
-                    <div class="number">12</div>
-                    <div class="desc">IMO Sections</div>
-                </div>
-                <div class="pilot-stat">
-                    <div class="number">~80</div>
-                    <div class="desc">Checklist Fields</div>
-                </div>
-                <div class="pilot-stat">
-                    <div class="number">1</div>
-                    <div class="desc">Tap to Export</div>
-                </div>
-                <div class="pilot-stat">
-                    <div class="number">0</div>
-                    <div class="desc">Paper Forms</div>
-                </div>
-                <div class="pilot-stat">
-                    <div class="number">9</div>
-                    <div class="desc">Releases Shipped</div>
-                </div>
-                <div class="pilot-stat">
-                    <div class="number">0</div>
-                    <div class="desc">Office Committees</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════ EARLY ACCESS ═══════════════ -->
-    <section class="access-section" id="access">
-        <div class="access-inner">
-            <div>
-                <div class="section-tag reveal">Apply</div>
-                <h2 class="section-heading reveal reveal-d1">Take a place in<br>the <em>beta.</em></h2>
-                <p class="section-prose reveal reveal-d2">
-                    Tell us a little about your pilotage and we'll come back to you personally.
-                    If it's a fit, we'll provision your organisation, build your form and your
-                    passages, and email you a sign-in link.
-                </p>
-                <p class="section-prose reveal reveal-d3" style="margin-top: 1.5rem;">
-                    Already in the beta?
-                    <a href="https://app.seadigital.com.au" style="color: var(--sand-deep); text-decoration: none; border-bottom: 1px solid rgba(166,138,96,0.35);">Sign in to EMPX</a>.
-                </p>
-            </div>
-
-            <div class="access-card reveal reveal-d2">
-                <h3>Apply for a trial</h3>
-                <p>No card, no commitment. We read every one of these ourselves.</p>
-                <form class="access-form" action="https://formspree.io/f/xrpggywg" method="POST">
-                    <input type="hidden" name="_subject" value="EMPX beta trial application" />
-                    <div class="field-row">
-                        <div>
-                            <label for="pilot-name">Name</label>
-                            <input id="pilot-name" name="name" type="text" placeholder="Jane Bligh" required />
+                    <dl class="readouts">
+                        <div class="readout">
+                            <dt>Status</dt>
+                            <dd><span class="pilot-lights" aria-hidden="true"><i></i><i></i></span>Ready, live in service</dd>
                         </div>
-                        <div>
-                            <label for="pilot-email">Email Address</label>
-                            <input id="pilot-email" name="email" type="email" placeholder="pilot@portauthority.com" required />
+                        <div class="readout">
+                            <dt>Running at</dt>
+                            <dd><a href="https://app.seadigital.com.au">app.seadigital<wbr>.com.au</a></dd>
+                        </div>
+                        <div class="readout">
+                            <dt>Trial places</dt>
+                            <dd>Limited, invite only</dd>
+                        </div>
+                        <div class="readout">
+                            <dt>To start</dt>
+                            <dd>No card required</dd>
+                        </div>
+                    </dl>
+
+                    <form class="hero-apply" id="hero-apply" action="https://formspree.io/f/xrpggywg" method="POST">
+                        <input type="hidden" name="_subject" value="EMPX test pilot application (email only)">
+                        <label class="hero-label" for="hero-email">Apply to be a test pilot: start with your email</label>
+                        <input class="field" id="hero-email" name="email" type="email" autocomplete="email" placeholder="you@pilotage.org" required>
+                        <button class="btn btn-apply" type="submit">
+                            Apply
+                            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                        </button>
+                    </form>
+                    <p class="hero-more">Or <a class="inline-link" href="#exchange">see it working on iPad</a> first.</p>
+                </div>
+            </div>
+
+            <p class="chart-note"><span><b>Chart</b>EMPX, <span class="theme-name">night</span> theme</span><span><b>Passage</b>Demo inbound passage, fictional data</span></p>
+        </section>
+
+        <div class="voyage">
+            <aside class="rail" aria-label="Page passage">
+                <div class="rail-inner">
+                    <ol>
+                        <li><a href="#exchange">The exchange</a></li>
+                        <li><a href="#product">What's shipped</a></li>
+                        <li><a href="#organisations">Your organisation</a></li>
+                        <li><a href="#trial">The trial</a></li>
+                        <li><a href="#apply">Apply</a></li>
+                    </ol>
+                    <svg class="own-ship" viewBox="0 0 18 22" aria-hidden="true"><path d="M9 21 L3 13 V2 H15 V13 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                    <p class="rail-foot">Boarding ground to berth</p>
+                </div>
+            </aside>
+
+            <div class="legs">
+                <!-- ═══════════════ THE EXCHANGE ═══════════════ -->
+                <section class="leg" id="exchange" aria-labelledby="exchange-title">
+                    <div class="leg-head">
+                        <h2 id="exchange-title">A native iOS app. Set up for your port.</h2>
+                        <p class="prose">
+                            EMPX is a native app for iPad and iPhone. Chart, exchange,
+                            under-keel clearance and logbook sit in one place, readable at arm's length on the bridge.
+                            Every screen below is the iOS build itself, captured on iPad.
+                        </p>
+                        <ul class="ship-list" aria-label="iOS app">
+                            <li class="on">Native iPad &amp; iPhone</li>
+                            <li>Sign in with Apple</li>
+                            <li>Day &amp; night themes</li>
+                        </ul>
+                    </div>
+
+                    <div class="screens">
+                        <div class="tabs" role="tablist" aria-label="App screens">
+                            <button class="tab" type="button" role="tab" id="t-plan" aria-controls="p-plan" aria-selected="true">
+                                <span class="tab-title">Passage plan</span>
+                                <span class="tab-cap">Wind, tide and the route at the exchange</span>
+                            </button>
+                            <button class="tab" type="button" role="tab" id="t-check" aria-controls="p-check" aria-selected="false" tabindex="-1">
+                                <span class="tab-title">The checklist</span>
+                                <span class="tab-cap">Your organisation's form, step by step</span>
+                            </button>
+                            <button class="tab" type="button" role="tab" id="t-ukc" aria-controls="p-ukc" aria-selected="false" tabindex="-1">
+                                <span class="tab-title">Under-keel clearance</span>
+                                <span class="tab-cap">Tide, squat and net UKC per leg</span>
+                            </button>
+                            <button class="tab" type="button" role="tab" id="t-moor" aria-controls="p-moor" aria-selected="false" tabindex="-1">
+                                <span class="tab-title">Ship &amp; mooring</span>
+                                <span class="tab-cap">Drafts, lines and tugs on station</span>
+                            </button>
+                            <button class="tab" type="button" role="tab" id="t-sign" aria-controls="p-sign" aria-selected="false" tabindex="-1">
+                                <span class="tab-title">Signed on the glass</span>
+                                <span class="tab-cap">Master and pilot, on the record</span>
+                            </button>
+                        </div>
+
+                        <div class="screen-panels">
+                            <div role="tabpanel" id="p-plan" aria-labelledby="t-plan" tabindex="0">
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/passage-plan.webp">
+                                    <img src="images/ios/passage-plan.jpg" width="1100" height="1467" loading="lazy" alt="Passage plan step with wind, tide and the route map">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>Wind, gusts, pressure tendency, sea state and tide, resolved at the passage position and captured onto the record.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="p-check" aria-labelledby="t-check" tabindex="0" hidden>
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/checklist.webp">
+                                    <img src="images/ios/checklist.jpg" width="1100" height="1467" loading="lazy" alt="The MPX checklist: navigation equipment status answered yes, no or N/A">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>Your checklist, not a generic one. Pilots see your questions, in your order.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="p-ukc" aria-labelledby="t-ukc" tabindex="0" hidden>
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/ukc.webp">
+                                    <img src="images/ios/ukc.jpg" width="1100" height="1467" loading="lazy" alt="Under-keel clearance drawn as a depth section with net UKC for each leg">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>Net UKC leg by leg against your margin: controlling depth, height of tide and squat from planned speed, drawn as a depth section, not a table of numbers.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="p-moor" aria-labelledby="t-moor" tabindex="0" hidden>
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/ship-mooring.webp">
+                                    <img src="images/ios/ship-mooring.jpg" width="1100" height="1467" loading="lazy" alt="Ship diagram with drafts and the mooring plan with two tugs on station">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>A ship diagram from the pilot card, and the mooring plan with your tugs named on station.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="p-sign" aria-labelledby="t-sign" tabindex="0" hidden>
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/signatures.webp">
+                                    <img src="images/ios/signatures.jpg" width="1100" height="1467" loading="lazy" alt="Master and pilot signatures captured on the record">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>Master and pilot sign with a finger or Apple Pencil, and the pilot finalises the record once both have signed.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="field-row">
+                </section>
+
+
+                <!-- ═══════════════ WHAT'S SHIPPED ═══════════════ -->
+                <section class="leg" id="product" aria-labelledby="product-title">
+                    <div class="leg-head">
+                        <h2 id="product-title">Everything a pilot needs. Nothing they don't.</h2>
+                        <p class="prose">
+                            From the boarding ground to the berth, every checklist item, every leg and
+                            every signature is captured digitally, stored securely, and printed into one
+                            record. All of the below is ready today, in the browser and in the native iPad and iPhone app.
+                        </p>
+                    </div>
+
+                    <div class="groups">
+                        <div class="group">
+                            <h3>The exchange &amp; the record</h3>
+                            <div class="feats">
+                                <div class="feat">
+                                    <h4>The Master Pilot Exchange</h4>
+                                    <p>A full A.960 / SOLAS Chapter V checklist, and a form builder, so your organisation runs <em>its</em> form, not ours. Photograph your existing paper form and it's read in for you.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Signed, exportable record</h4>
+                                    <p>Master and pilot sign on the tablet. Exchange, conditions, UKC table and passage log export as one PDF under your organisation's branding.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Record export (CSV)</h4>
+                                    <p>Records export as CSV as well as the signed PDF.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Vessel memory</h4>
+                                    <p>Finalise an exchange and the ship's particulars are kept. Next visit, type three letters of her name and around thirty fields fill themselves in.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <h3>Passage &amp; clearance</h3>
+                            <div class="feats">
+                                <div class="feat">
+                                    <h4>Passage plan &amp; charts</h4>
+                                    <p>Build passages on the chart with bearings, distances and speed limits per leg. Shared org passages your admin maintains, plus your own personal ones.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Under-keel clearance, by leg</h4>
+                                    <p>Controlling depth on every leg, height of tide, squat from planned speed, and net clearance against the port's margin, drawn as a depth section, not a table of numbers.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Ship &amp; mooring</h4>
+                                    <p>A ship diagram from the pilot card, and the mooring plan with your tugs named on station.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Weather &amp; tides</h4>
+                                    <p>Wind, gusts, pressure tendency, sea state and tide, resolved at the passage position rather than wherever the pilot happens to be standing, and captured onto the record.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <h3>Underway</h3>
+                            <div class="feats">
+                                <div class="feat">
+                                    <h4>Underway logbook</h4>
+                                    <p>Live GPS against the plan, one-tap event presets, voice memos, and time corrections that are marked as amended rather than silently rewritten.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Built for the bridge</h4>
+                                    <p>Day and night themes, and Apple Pencil on the chart. Designed to be read at arm's length on a wing at 0400. Native on iPad and iPhone.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Offline on passage</h4>
+                                    <p>Keeps working on passage when the connection drops.</p>
+                                </div>
+                                <div class="feat">
+                                    <h4>Push notifications</h4>
+                                    <p>Notifications on iPad and iPhone.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ═══════════════ ORGANISATIONS ═══════════════ -->
+                <section class="leg" id="organisations" aria-labelledby="org-title">
+                    <div class="leg-head">
+                        <h2 id="org-title">Your form. Your passages. Your name on the record.</h2>
+                        <p class="prose">
+                            EMPX is set up around your pilotage organisation, whether that's a large provider or a solo pilot.
+                            We build your material in for you rather than leaving it as homework.
+                        </p>
+                    </div>
+                    <div class="yours">
                         <div>
-                            <label for="pilot-org">Organisation</label>
-                            <input id="pilot-org" name="organisation" type="text" placeholder="Or &ldquo;independent&rdquo;" />
+                            <h3>Your form</h3>
+                            <p>We build your organisation's MPX checklist into the app. Pilots see your questions, in your order.</p>
                         </div>
                         <div>
-                            <label for="pilot-port">Port / Region</label>
-                            <input id="pilot-port" name="port" type="text" placeholder="Port Botany, NSW" />
+                            <h3>Your passages</h3>
+                            <p>Your port's passages, waypoints, controlling depths and pre-arrival instructions, shared across the organisation.</p>
+                        </div>
+                        <div>
+                            <h3>Your fleet &amp; chartlets</h3>
+                            <p>Your tugs with their bollard pull, and your berth chartlets, ready to pick from on every job.</p>
+                        </div>
+                        <div>
+                            <h3>Your name on the record</h3>
+                            <p>Every signed record carries your organisation's name and logo, and stays inside your organisation.</p>
                         </div>
                     </div>
-                    <div>
-                        <label for="pilot-seats">How many pilots?</label>
-                        <select id="pilot-seats" name="pilots">
-                            <option value="">Select&hellip;</option>
-                            <option value="1">Just me</option>
-                            <option value="2-5">2 &ndash; 5</option>
-                            <option value="6-15">6 &ndash; 15</option>
-                            <option value="16-40">16 &ndash; 40</option>
-                            <option value="40+">More than 40</option>
-                        </select>
+                </section>
+
+                <!-- ═══════════════ TRIAL ═══════════════ -->
+                <section class="leg" id="trial" aria-labelledby="trial-title">
+                    <div class="leg-head">
+                        <h2 id="trial-title">Use it on a real job. Tell us what breaks.</h2>
+                        <p class="prose">
+                            We're taking a small number of test pilots and pilotage organisations, solo pilots and
+                            providers both. Small on purpose: every trial is set up by hand, and we'd rather support a
+                            handful properly than a hundred badly.
+                        </p>
                     </div>
-                    <div>
-                        <label for="pilot-note">What would you want it to fix? <span style="text-transform: none; letter-spacing: 0;">(optional)</span></label>
-                        <textarea id="pilot-note" name="message" placeholder="The bit of the paper MPX that wastes your time."></textarea>
+
+                    <div class="photos">
+                        <figure class="photo">
+                            <picture>
+                                <source type="image/webp" srcset="images/photos/pilot-ladder.webp">
+                                <img src="images/photos/pilot-ladder.jpg" width="696" height="396" loading="lazy" alt="A marine pilot climbing the pilot ladder from the launch up the side of a ship">
+                            </picture>
+                            <figcaption class="demo-note"><span><b>Boarding</b>From the launch, by pilot ladder</span></figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <picture>
+                                <source type="image/webp" srcset="images/photos/bridge-night.webp">
+                                <img src="images/photos/bridge-night.jpg" width="1408" height="768" loading="lazy" alt="Illustration of a darkened ship's bridge at night, with radar, a tablet and a paper chart on the console">
+                            </picture>
+                            <figcaption class="demo-note"><span><b>Bridge at night</b>Illustration, AI-generated; the tablet screen is not the EMPX interface</span></figcaption>
+                        </figure>
                     </div>
-                    <div class="access-actions">
-                        <button type="submit" class="access-button">Apply for the Beta</button>
-                        <span class="access-note">Limited places &middot; no card</span>
+
+                    <ol class="steps">
+                        <li>
+                            <h3>You apply</h3>
+                            <p>Tell us who you are and where you pilot. We'll come back to you directly: no queue, no drip campaign, no sales call.</p>
+                        </li>
+                        <li>
+                            <h3>We set you up</h3>
+                            <p>Your organisation is provisioned by hand, with your own form and your own passages built in for you. When it's ready, you get a sign-in link by email and can use it on your next job.</p>
+                        </li>
+                        <li>
+                            <h3>You run it for real</h3>
+                            <p>Use it on actual pilotage, not a demo. What you report goes into the next release. Most of what shipped this month was found by using the app on a real passage.</p>
+                        </li>
+                    </ol>
+
+                    <div class="terms">
+                        <div>
+                            <h3>What you get</h3>
+                            <p class="lede">The whole product. Nothing is held back for a paid tier: a solo pilot gets the form builder and passage builder just as an organisation does.</p>
+                            <ul>
+                                <li><strong>A free trial, no card.</strong> Nothing to cancel, nothing charged at the end. We agree the trial length with you.</li>
+                                <li><strong>Your form and your passages,</strong> set up for you rather than left as homework.</li>
+                                <li><strong>A direct line to the pilot who builds it,</strong> not a ticket queue.</li>
+                                <li><strong>Real influence on the roadmap</strong> while it is still cheap to change.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>What we ask</h3>
+                            <ul>
+                                <li><strong>Use it in service, on real exchanges.</strong> That's the only test that finds anything.</li>
+                                <li><strong>Tell us when it's wrong,</strong> including the small irritations. Those are usually the ones that matter on a bridge.</li>
+                                <li><strong>Keep the paper alongside it</strong> until you're satisfied. This is new software in a safety-critical setting and we'd think less of you if you didn't.</li>
+                                <li><strong>An honest verdict at the end,</strong> including "no". We'd rather hear it than not.</li>
+                            </ul>
+                        </div>
                     </div>
-                </form>
+                    <div class="cta-row">
+                        <a class="btn btn-apply" href="#apply">Apply as a test pilot</a>
+                        <span class="note">Limited places &middot; no card</span>
+                    </div>
+                </section>
+
+
+                <!-- ═══════════════ APPLY ═══════════════ -->
+                <section class="leg" id="apply" aria-labelledby="apply-title">
+                    <div class="apply">
+                        <div>
+                            <h2 id="apply-title">Become a test pilot.</h2>
+                            <p class="prose">
+                                Tell us a little about your pilotage and we'll come back to you personally.
+                                If it's a fit, we'll provision your organisation, build your form and your
+                                passages, and email you a sign-in link.
+                            </p>
+                            <p class="prose">
+                                Already a test pilot? <a class="inline-link" href="https://app.seadigital.com.au">Sign in to EMPX</a>.
+                            </p>
+                        </div>
+
+                        <div class="apply-card">
+                            <h3>Apply for a trial</h3>
+                            <p>No card, no commitment. We read every one of these ourselves.</p>
+                            <form class="apply-form" id="apply-form" action="https://formspree.io/f/xrpggywg" method="POST" novalidate>
+                                <input type="hidden" name="_subject" value="EMPX test pilot application">
+                                <div>
+                                    <label for="pilot-name">Name</label>
+                                    <input class="field" id="pilot-name" name="name" type="text" autocomplete="name" required>
+                                </div>
+                                <div>
+                                    <label for="pilot-email">Email</label>
+                                    <input class="field" id="pilot-email" name="email" type="email" autocomplete="email" placeholder="you@pilotage.org" required>
+                                </div>
+                                <div>
+                                    <label for="pilot-role">Your role</label>
+                                    <select class="field" id="pilot-role" name="role" required>
+                                        <option value="">Choose one</option>
+                                        <option>Pilot</option>
+                                        <option>Chief pilot or operations</option>
+                                        <option>Pilotage provider or port</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="pilot-seats">How many pilots? <span>(optional)</span></label>
+                                    <select class="field" id="pilot-seats" name="pilots">
+                                        <option value="">Choose one</option>
+                                        <option value="1">Just me</option>
+                                        <option value="2-10">2 to 10</option>
+                                        <option value="11-40">11 to 40</option>
+                                        <option value="40+">More than 40</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="pilot-org">Organisation <span>(optional)</span></label>
+                                    <input class="field" id="pilot-org" name="organisation" type="text" autocomplete="organization" placeholder="Or &ldquo;independent&rdquo;">
+                                </div>
+                                <div>
+                                    <label for="pilot-port">Where you pilot <span>(optional)</span></label>
+                                    <input class="field" id="pilot-port" name="port" type="text" placeholder="Port or pilotage district">
+                                </div>
+                                <div class="full">
+                                    <label for="pilot-note">What would you want it to fix? <span>(optional)</span></label>
+                                    <textarea class="field" id="pilot-note" name="message" placeholder="The bit of the paper MPX that wastes your time."></textarea>
+                                </div>
+                                <p class="note full">We use these details only to reply to you and set up your trial.</p>
+                                <div class="form-error full" role="alert" hidden></div>
+                                <div class="form-actions full">
+                                    <button type="submit" class="btn btn-apply">Apply as a test pilot</button>
+                                    <span class="note">Limited places &middot; no card</span>
+                                </div>
+                            </form>
+                            <div class="form-done" tabindex="-1" hidden>
+                                <h3>Application received.</h3>
+                                <p>We'll reply by email to <strong class="done-email"></strong>. We read every one ourselves.</p>
+                                <p>Wrong address? Email <a class="inline-link" href="mailto:admin@seadigital.com.au">admin@seadigital.com.au</a> and we'll fix it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- TOAST -->
-    <div class="access-toast" role="status" aria-live="polite">Request Sent</div>
-
-    <!-- ═══════════════ FOOTER ═══════════════ -->
-    <footer class="site-footer" id="contact">
-        <span class="footer-brand">Sea Digital &copy; 2026</span>
-        <span class="footer-center">Precision Maritime Technology &middot; Beta</span>
-        <span class="footer-contact">
-            <a href="https://app.seadigital.com.au">app.seadigital.com.au</a>
-            &nbsp;&middot;&nbsp;
-            <a href="mailto:admin@seadigital.com.au">admin@seadigital.com.au</a>
-        </span>
+    <footer class="site-foot">
+        <span><b>Sea Digital</b>&copy; 2026, Precision Maritime Technology</span>
+        <span><b>Build</b>0.8.5</span>
+        <span><b>App</b><a href="https://app.seadigital.com.au">app.seadigital.com.au</a></span>
+        <span><b>Contact</b><a href="mailto:admin@seadigital.com.au">admin@seadigital.com.au</a></span>
     </footer>
 
-    <!-- ═══════════════ SCRIPTS ═══════════════ -->
-    <script src="scripts/access-toast.js" defer></script>
+    <script src="scripts/apply.js" defer></script>
     <script>
-        // Nav scroll shrink
-        const nav = document.querySelector('.nav-bar');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 60);
-        }, { passive: true });
+        const root = document.documentElement;
 
-        // Mobile nav toggle
-        const toggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('open');
-            navLinks.classList.toggle('open');
+        // Night / Dawn: the whole page, like the app's own themes
+        const themeButtons = document.querySelectorAll('[data-set-theme]');
+        const themeName = document.querySelector('.theme-name');
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        const applyTheme = (t) => {
+            root.dataset.theme = t;
+            themeButtons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setTheme === t)));
+            themeName.textContent = t === 'dawn' ? 'day' : 'night';
+            themeMeta.content = t === 'dawn' ? '#FFFFFF' : '#0A0D18';
+        };
+        applyTheme(root.dataset.theme === 'dawn' ? 'dawn' : 'night');
+        themeButtons.forEach(b => b.addEventListener('click', () => {
+            applyTheme(b.dataset.setTheme);
+            try { localStorage.setItem('empx-theme', b.dataset.setTheme); } catch (e) {}
+        }));
+
+        // Mobile menu
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const setMenu = (open) => {
+            navLinks.classList.toggle('open', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+            navToggle.textContent = open ? 'Close' : 'Menu';
+        };
+        navToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('open')) { setMenu(false); navToggle.focus(); }
         });
-        navLinks.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => {
-                toggle.classList.remove('open');
-                navLinks.classList.remove('open');
+
+        // Screen viewer: tabs with arrow keys
+        const tabs = [...document.querySelectorAll('[role="tab"]')];
+        const selectTab = (tab, focus) => {
+            tabs.forEach(t => {
+                const on = t === tab;
+                t.setAttribute('aria-selected', String(on));
+                t.tabIndex = on ? 0 : -1;
+                document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+            });
+            if (focus) tab.focus();
+        };
+        tabs.forEach((tab, i) => {
+            tab.addEventListener('click', () => selectTab(tab));
+            tab.addEventListener('keydown', (e) => {
+                const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+                if (step) { e.preventDefault(); selectTab(tabs[(i + step + tabs.length) % tabs.length], true); }
+                if (e.key === 'Home') { e.preventDefault(); selectTab(tabs[0], true); }
+                if (e.key === 'End') { e.preventDefault(); selectTab(tabs[tabs.length - 1], true); }
             });
         });
 
-        // Scroll-reveal observer
-        const revealEls = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    revealObserver.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        revealEls.forEach(el => revealObserver.observe(el));
 
-        // iOS chart theme toggle
-        const iosChart = document.getElementById('iosChart');
-        document.querySelectorAll('.theme-toggle button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const t = btn.dataset.theme;
-                const img = iosChart.querySelector('img');
-                img.classList.add('swapping');
-                iosChart.querySelector('source').srcset = `images/ios/chart-${t}.webp`;
-                img.src = `images/ios/chart-${t}.jpg`;
-                img.decode().catch(() => {}).finally(() => img.classList.remove('swapping'));
-                document.querySelectorAll('.theme-toggle button').forEach(b =>
-                    b.setAttribute('aria-pressed', String(b === btn)));
+        // Own-ship: travels the passage rail as you read and marks the current waypoint
+        const railLinks = [...document.querySelectorAll('.rail a')];
+        const legs = railLinks.map(a => document.querySelector(a.getAttribute('href')));
+        const ship = document.querySelector('.own-ship');
+        const railList = document.querySelector('.rail ol');
+        let ticking = false;
+        const plot = () => {
+            ticking = false;
+            if (ship.getClientRects().length === 0) return;
+            const mark = innerHeight * 0.35;
+            const started = legs[0].getBoundingClientRect().top <= mark;
+            let idx = 0;
+            legs.forEach((leg, i) => { if (leg.getBoundingClientRect().top <= mark) idx = i; });
+            const box = legs[idx].getBoundingClientRect();
+            const frac = started ? Math.min(1, Math.max(0, (mark - box.top) / box.height)) : 0;
+            const dots = railLinks.map(a => a.parentElement.offsetTop);
+            const from = dots[idx];
+            const to = idx < dots.length - 1 ? dots[idx + 1] : from;
+            ship.style.setProperty('--ship-y', (railList.offsetTop + from + (to - from) * frac + 1) + 'px');
+            railLinks.forEach((a, i) => {
+                if (started && i === idx) a.setAttribute('aria-current', 'true');
+                else a.removeAttribute('aria-current');
             });
-            btn.addEventListener('pointerenter', () => {
-                new Image().src = `images/ios/chart-${btn.dataset.theme}.webp`;
-            }, { once: true });
-        });
-
-        // Animate progress bar
-        const progressFill = document.querySelector('.progress-fill');
-        const pctLabel = document.querySelector('.progress-pct');
-        if (progressFill) {
-            const progressObserver = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        const target = parseInt(progressFill.dataset.target, 10);
-                        progressFill.style.width = target + '%';
-                        let current = 0;
-                        const step = () => {
-                            current += 1;
-                            if (current <= target) {
-                                pctLabel.textContent = current + '%';
-                                requestAnimationFrame(step);
-                            }
-                        };
-                        requestAnimationFrame(step);
-                        progressObserver.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            progressObserver.observe(progressFill);
-        }
+        };
+        addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(plot); } }, { passive: true });
+        addEventListener('resize', plot);
+        plot();
     </script>
 </body>
 </html>

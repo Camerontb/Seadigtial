@@ -1,0 +1,1034 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-03T07:40:46.091Z",
+  "title": "Design System: Sea Digital EMPX",
+  "extensions": {
+    "themes": [
+      {
+        "name": "night",
+        "selector": ":root",
+        "default": true,
+        "colorScheme": "dark",
+        "themeColor": "#0A0D18",
+        "tokenPrefix": ""
+      },
+      {
+        "name": "dawn",
+        "selector": ":root[data-theme=\"dawn\"]",
+        "default": false,
+        "colorScheme": "light",
+        "themeColor": "#FFFFFF",
+        "tokenPrefix": "dawn-",
+        "persistence": "localStorage empx-theme, applied before paint"
+      }
+    ],
+    "colorMeta": {
+      "sea": {
+        "role": "neutral",
+        "displayName": "Chart Sea",
+        "theme": "night",
+        "cssVar": "--sea",
+        "purpose": "Page ground and the hero open water.",
+        "canonical": "#0A1922",
+        "oklch": "oklch(20.5% 0.027 236.6)",
+        "tonalRamp": [
+          "#020D15",
+          "#172630",
+          "#35454F",
+          "#556671",
+          "#778995",
+          "#9BAEBA",
+          "#BED1DE",
+          "#DEF2FF"
+        ]
+      },
+      "console": {
+        "role": "neutral",
+        "displayName": "Console Black",
+        "theme": "night",
+        "cssVar": "--console",
+        "purpose": "Nav, status strip, footer, field wells; darkest structural layer.",
+        "canonical": "#0A0D18",
+        "oklch": "oklch(16.2% 0.024 271.9)",
+        "tonalRamp": [
+          "#080A15",
+          "#202330",
+          "#3E424F",
+          "#5E6371",
+          "#818695",
+          "#A5AABA",
+          "#C8CDDE",
+          "#E9EEFE"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Instrument Panel",
+        "theme": "night",
+        "cssVar": "--panel",
+        "purpose": "Panel and readout cell fill.",
+        "canonical": "#0F222E",
+        "oklch": "oklch(24.2% 0.034 238.1)",
+        "tonalRamp": [
+          "#000D18",
+          "#132633",
+          "#314553",
+          "#516675",
+          "#748A99",
+          "#98AEBE",
+          "#BAD2E2",
+          "#DFF2FE"
+        ]
+      },
+      "panel-raised": {
+        "role": "neutral",
+        "displayName": "Raised Panel",
+        "theme": "night",
+        "cssVar": "--panel-2",
+        "purpose": "Selected segment, pressed theme option.",
+        "canonical": "#132A38",
+        "oklch": "oklch(27.3% 0.039 237.3)",
+        "tonalRamp": [
+          "#000D19",
+          "#102735",
+          "#2E4655",
+          "#4E6777",
+          "#708A9B",
+          "#94AFC1",
+          "#B7D2E5",
+          "#DEF2FF"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "theme": "night",
+        "cssVar": "--rule",
+        "purpose": "Dividers, panel rings, stack gaps.",
+        "canonical": "#1F3747",
+        "oklch": "oklch(32.5% 0.041 239.0)",
+        "tonalRamp": [
+          "#000D1A",
+          "#0F2736",
+          "#2D4656",
+          "#4D6779",
+          "#708A9D",
+          "#94AFC3",
+          "#B6D2E6",
+          "#DFF1FF"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "theme": "night",
+        "cssVar": "--rule-strong",
+        "purpose": "Field borders, device ring, 2px group divider.",
+        "canonical": "#2C4A5C",
+        "oklch": "oklch(39.4% 0.047 236.1)",
+        "tonalRamp": [
+          "#000D18",
+          "#082738",
+          "#284658",
+          "#49687B",
+          "#6B8B9F",
+          "#8FB0C5",
+          "#B1D3E9",
+          "#DEF2FE"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "theme": "night",
+        "cssVar": "--ink",
+        "purpose": "Headings, values, emphasis.",
+        "canonical": "#E3EAEE",
+        "oklch": "oklch(93.3% 0.009 232.4)",
+        "tonalRamp": [
+          "#070C0E",
+          "#202528",
+          "#3E4347",
+          "#5E6468",
+          "#81878B",
+          "#A5ACB0",
+          "#C8CFD3",
+          "#E9F0F4"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "theme": "night",
+        "cssVar": "--ink-2",
+        "purpose": "Body prose, captions, nav links.",
+        "canonical": "#A9BAC4",
+        "oklch": "oklch(77.9% 0.024 233.5)",
+        "tonalRamp": [
+          "#020D14",
+          "#18262E",
+          "#36454D",
+          "#56666F",
+          "#798992",
+          "#9DAEB8",
+          "#BFD1DB",
+          "#E0F2FC"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Faint Ink",
+        "theme": "night",
+        "cssVar": "--ink-3",
+        "purpose": "Labels, placeholders, scale-bar mark.",
+        "canonical": "#869DAA",
+        "oklch": "oklch(68.3% 0.032 232.7)",
+        "tonalRamp": [
+          "#000D16",
+          "#132731",
+          "#314651",
+          "#516773",
+          "#738A97",
+          "#97AFBC",
+          "#BAD2E0",
+          "#DDF2FE"
+        ]
+      },
+      "route": {
+        "role": "secondary",
+        "displayName": "Route Green",
+        "theme": "night",
+        "cssVar": "--route",
+        "purpose": "Passage line, waypoints, selected-tab bar, step rules, selection.",
+        "canonical": "#3FB26A",
+        "oklch": "oklch(68.1% 0.148 152.4)",
+        "tonalRamp": [
+          "#001003",
+          "#002D12",
+          "#015127",
+          "#0A773D",
+          "#259F58",
+          "#55C57C",
+          "#7AE99E",
+          "#C7FFD5"
+        ]
+      },
+      "route-ink": {
+        "role": "secondary",
+        "displayName": "Route Green (text)",
+        "theme": "night",
+        "cssVar": "--route-ink",
+        "purpose": "Focus ring, caret, field focus, success heading, link hover.",
+        "canonical": "#4CC27A",
+        "oklch": "oklch(72.9% 0.149 153.5)",
+        "tonalRamp": [
+          "#001004",
+          "#002D14",
+          "#055029",
+          "#107641",
+          "#1D9F5A",
+          "#50C67D",
+          "#76EA9F",
+          "#C8FED7"
+        ]
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Own-Ship Amber",
+        "theme": "night",
+        "cssVar": "--amber",
+        "purpose": "Own-ship marker and draft-only awaiting slots.",
+        "canonical": "#E0A030",
+        "oklch": "oklch(74.9% 0.142 76.5)",
+        "tonalRamp": [
+          "#140800",
+          "#332000",
+          "#593C05",
+          "#845A01",
+          "#B17A08",
+          "#DD9D2C",
+          "#FDC267",
+          "#FFEBD0"
+        ]
+      },
+      "red": {
+        "role": "primary",
+        "displayName": "Night-Vision Red",
+        "theme": "night",
+        "cssVar": "--red",
+        "purpose": "Apply button fill, skip link, lower pilot light.",
+        "canonical": "#C8322B",
+        "oklch": "oklch(55.1% 0.188 27.9)",
+        "tonalRamp": [
+          "#200000",
+          "#4B0001",
+          "#810307",
+          "#B61C1A",
+          "#E14B40",
+          "#FC8173",
+          "#FDBBB1",
+          "#FEE9E6"
+        ]
+      },
+      "red-hover": {
+        "role": "primary",
+        "displayName": "Night-Vision Red (pressed)",
+        "theme": "night",
+        "cssVar": "--red-hover",
+        "purpose": "Apply button hover.",
+        "canonical": "#A82822",
+        "oklch": "oklch(48.3% 0.165 28.0)",
+        "tonalRamp": [
+          "#200000",
+          "#4B0102",
+          "#7F080A",
+          "#AE2E27",
+          "#D8564A",
+          "#FE7F71",
+          "#FEBAB1",
+          "#FFE9E5"
+        ]
+      },
+      "red-ink": {
+        "role": "primary",
+        "displayName": "Night-Vision Red (text)",
+        "theme": "night",
+        "cssVar": "--red-ink",
+        "purpose": "Apply nav link, field and form errors.",
+        "canonical": "#EF7068",
+        "oklch": "oklch(69.5% 0.158 25.6)",
+        "tonalRamp": [
+          "#200000",
+          "#4B0005",
+          "#800511",
+          "#AB3230",
+          "#D55852",
+          "#FF7E75",
+          "#FFBAB2",
+          "#FEE9E6"
+        ]
+      },
+      "on-red": {
+        "role": "primary",
+        "displayName": "On Red",
+        "theme": "night",
+        "cssVar": "--on-red",
+        "purpose": "Label on the Apply button.",
+        "canonical": "#FFFFFF",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#424242",
+          "#636363",
+          "#868686",
+          "#ABABAB",
+          "#CECECE",
+          "#EEEEEE"
+        ]
+      },
+      "bezel": {
+        "role": "neutral",
+        "displayName": "Bezel",
+        "theme": "both",
+        "cssVar": null,
+        "purpose": "iPad device frame; identical in both themes.",
+        "canonical": "#05070C",
+        "oklch": "oklch(12.8% 0.013 263.6)",
+        "tonalRamp": [
+          "#080B11",
+          "#21242A",
+          "#3F4249",
+          "#5F636B",
+          "#82868E",
+          "#A7ABB3",
+          "#C9CED6",
+          "#EAEFF7"
+        ]
+      },
+      "dawn-sea": {
+        "role": "neutral",
+        "displayName": "Dawn Chart Sea",
+        "theme": "dawn",
+        "cssVar": "--sea",
+        "purpose": "Page ground and the hero open water.",
+        "canonical": "#EEF1EC",
+        "oklch": "oklch(95.4% 0.007 132.4)",
+        "tonalRamp": [
+          "#0A0C09",
+          "#232521",
+          "#41433F",
+          "#626460",
+          "#848783",
+          "#A9ACA7",
+          "#CCCFCA",
+          "#EDF0EB"
+        ]
+      },
+      "dawn-console": {
+        "role": "neutral",
+        "displayName": "Dawn Console Black",
+        "theme": "dawn",
+        "cssVar": "--console",
+        "purpose": "Nav, status strip, footer, field wells; darkest structural layer.",
+        "canonical": "#FFFFFF",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#424242",
+          "#636363",
+          "#868686",
+          "#ABABAB",
+          "#CECECE",
+          "#EEEEEE"
+        ]
+      },
+      "dawn-panel": {
+        "role": "neutral",
+        "displayName": "Dawn Instrument Panel",
+        "theme": "dawn",
+        "cssVar": "--panel",
+        "purpose": "Panel and readout cell fill.",
+        "canonical": "#FFFFFF",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#424242",
+          "#636363",
+          "#868686",
+          "#ABABAB",
+          "#CECECE",
+          "#EEEEEE"
+        ]
+      },
+      "dawn-panel-raised": {
+        "role": "neutral",
+        "displayName": "Dawn Raised Panel",
+        "theme": "dawn",
+        "cssVar": "--panel-2",
+        "purpose": "Selected segment, pressed theme option.",
+        "canonical": "#F5F7F3",
+        "oklch": "oklch(97.4% 0.006 128.5)",
+        "tonalRamp": [
+          "#0A0C09",
+          "#232522",
+          "#414340",
+          "#626460",
+          "#858783",
+          "#AAABA8",
+          "#CCCECB",
+          "#EDEFEB"
+        ]
+      },
+      "dawn-rule": {
+        "role": "neutral",
+        "displayName": "Dawn Hairline",
+        "theme": "dawn",
+        "cssVar": "--rule",
+        "purpose": "Dividers, panel rings, stack gaps.",
+        "canonical": "#D3DAD5",
+        "oklch": "oklch(88.2% 0.010 155.1)",
+        "tonalRamp": [
+          "#080C09",
+          "#202622",
+          "#3E4440",
+          "#5F6561",
+          "#828883",
+          "#A6ADA8",
+          "#C9D0CB",
+          "#E9F1EB"
+        ]
+      },
+      "dawn-rule-strong": {
+        "role": "neutral",
+        "displayName": "Dawn Strong Hairline",
+        "theme": "dawn",
+        "cssVar": "--rule-strong",
+        "purpose": "Field borders, device ring, 2px group divider.",
+        "canonical": "#B8C3BE",
+        "oklch": "oklch(80.7% 0.014 167.1)",
+        "tonalRamp": [
+          "#060D0A",
+          "#1E2623",
+          "#3C4541",
+          "#5C6661",
+          "#7F8984",
+          "#A3AEA9",
+          "#C6D1CC",
+          "#E6F2EC"
+        ]
+      },
+      "dawn-ink": {
+        "role": "neutral",
+        "displayName": "Dawn Ink",
+        "theme": "dawn",
+        "cssVar": "--ink",
+        "purpose": "Headings, values, emphasis.",
+        "canonical": "#0E1B24",
+        "oklch": "oklch(21.5% 0.026 239.7)",
+        "tonalRamp": [
+          "#030C15",
+          "#18262F",
+          "#36444F",
+          "#566671",
+          "#798994",
+          "#9DADBA",
+          "#BFD0DD",
+          "#E0F1FE"
+        ]
+      },
+      "dawn-ink-muted": {
+        "role": "neutral",
+        "displayName": "Dawn Muted Ink",
+        "theme": "dawn",
+        "cssVar": "--ink-2",
+        "purpose": "Body prose, captions, nav links.",
+        "canonical": "#3E4F5A",
+        "oklch": "oklch(41.7% 0.028 236.7)",
+        "tonalRamp": [
+          "#010D15",
+          "#162630",
+          "#344550",
+          "#546672",
+          "#778995",
+          "#9BAEBB",
+          "#BDD1DE",
+          "#DEF2FF"
+        ]
+      },
+      "dawn-ink-faint": {
+        "role": "neutral",
+        "displayName": "Dawn Faint Ink",
+        "theme": "dawn",
+        "cssVar": "--ink-3",
+        "purpose": "Labels, placeholders, scale-bar mark.",
+        "canonical": "#56666F",
+        "oklch": "oklch(50.0% 0.024 232.6)",
+        "tonalRamp": [
+          "#020D14",
+          "#18262E",
+          "#36454D",
+          "#56666F",
+          "#788993",
+          "#9CAEB8",
+          "#BFD1DB",
+          "#DFF2FC"
+        ]
+      },
+      "dawn-route": {
+        "role": "secondary",
+        "displayName": "Dawn Route Green",
+        "theme": "dawn",
+        "cssVar": "--route",
+        "purpose": "Passage line, waypoints, selected-tab bar, step rules, selection.",
+        "canonical": "#23854C",
+        "oklch": "oklch(54.7% 0.125 153.1)",
+        "tonalRamp": [
+          "#001004",
+          "#002D13",
+          "#015028",
+          "#0A773F",
+          "#3E9C61",
+          "#66C285",
+          "#8AE6A7",
+          "#C7FFD6"
+        ]
+      },
+      "dawn-route-ink": {
+        "role": "secondary",
+        "displayName": "Dawn Route Green (text)",
+        "theme": "dawn",
+        "cssVar": "--route-ink",
+        "purpose": "Focus ring, caret, field focus, success heading, link hover.",
+        "canonical": "#1C7041",
+        "oklch": "oklch(48.4% 0.109 154.0)",
+        "tonalRamp": [
+          "#001004",
+          "#002D15",
+          "#05502A",
+          "#227545",
+          "#4B9967",
+          "#70BF8B",
+          "#93E3AD",
+          "#C5FFD6"
+        ]
+      },
+      "dawn-amber": {
+        "role": "tertiary",
+        "displayName": "Dawn Own-Ship Amber",
+        "theme": "dawn",
+        "cssVar": "--amber",
+        "purpose": "Own-ship marker and draft-only awaiting slots.",
+        "canonical": "#8A5A00",
+        "oklch": "oklch(50.8% 0.108 73.3)",
+        "tonalRamp": [
+          "#150800",
+          "#341F00",
+          "#5B3B02",
+          "#86590A",
+          "#AD7B32",
+          "#D4A059",
+          "#F9C37C",
+          "#FFEBD3"
+        ]
+      },
+      "dawn-red": {
+        "role": "primary",
+        "displayName": "Dawn Night-Vision Red",
+        "theme": "dawn",
+        "cssVar": "--red",
+        "purpose": "Apply button fill, skip link, lower pilot light.",
+        "canonical": "#B3261E",
+        "oklch": "oklch(50.1% 0.178 28.7)",
+        "tonalRamp": [
+          "#200000",
+          "#4B0001",
+          "#810404",
+          "#B3251E",
+          "#DD5043",
+          "#FC8172",
+          "#FDBBB1",
+          "#FEE9E5"
+        ]
+      },
+      "dawn-red-hover": {
+        "role": "primary",
+        "displayName": "Dawn Night-Vision Red (pressed)",
+        "theme": "dawn",
+        "cssVar": "--red-hover",
+        "purpose": "Apply button hover.",
+        "canonical": "#9C1F18",
+        "oklch": "oklch(45.2% 0.162 28.7)",
+        "tonalRamp": [
+          "#210000",
+          "#4C0000",
+          "#810304",
+          "#AC3127",
+          "#D6584A",
+          "#FD8171",
+          "#FDBBB1",
+          "#FFE9E5"
+        ]
+      },
+      "dawn-red-ink": {
+        "role": "primary",
+        "displayName": "Dawn Night-Vision Red (text)",
+        "theme": "dawn",
+        "cssVar": "--red-ink",
+        "purpose": "Apply nav link, field and form errors.",
+        "canonical": "#A82A22",
+        "oklch": "oklch(48.5% 0.164 28.5)",
+        "tonalRamp": [
+          "#210000",
+          "#4C0000",
+          "#810003",
+          "#AD2F27",
+          "#D7574A",
+          "#FE8071",
+          "#FEBBB0",
+          "#FFE9E5"
+        ]
+      },
+      "mask-opaque": {
+        "role": "mask",
+        "displayName": "Mask Opaque (not a palette colour)",
+        "theme": "both",
+        "cssVar": null,
+        "purpose": "Opaque stop inside alpha masks only: hero fade gradients and the scale-bar SVG mask. Never a fill, ink or border; deliberately absent from the frontmatter palette.",
+        "canonical": "#000000",
+        "oklch": "oklch(0% 0 0)",
+        "tonalRamp": [
+          "#000000"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; uppercase ship marking. Leading 0.9 is deliberate (tight-leading suppressed)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings; uppercase, balanced, leading 0.95."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step and card headings; uppercase."
+      },
+      "panel-title": {
+        "displayName": "Panel Title",
+        "purpose": "Brand wordmark, screen tab titles (1.125rem mobile), \"Your …\" organisation panel titles; uppercase."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Nav and rail links, field labels (600), tab captions, notes, awaiting-slot text."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Field error messages, footer, segmented-strip cells (600), brand product label and Menu toggle (600 caps)."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "Founder quote; the only mixed-case use of the condensed face."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "All buttons; uppercase."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; tabular numerals globally; prose max 62ch."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero sub-copy, max 36ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase keys: status strip, footer, switch, awaiting-slot header."
+      },
+      "readout-label": {
+        "displayName": "Readout Label",
+        "purpose": "Uppercase instrument label above a value."
+      },
+      "readout-value": {
+        "displayName": "Readout Value",
+        "purpose": "Instrument value; 1.75rem in the founder stats."
+      }
+    },
+    "fonts": {
+      "source": "Google Fonts",
+      "families": [
+        "Barlow Condensed 600,700",
+        "Barlow 400,500,600, italic 400"
+      ],
+      "numeric": "font-variant-numeric: tabular-nums on body"
+    },
+    "radiusMeta": {
+      "focus": {
+        "purpose": "Corner of the global :focus-visible outline."
+      },
+      "control": {
+        "purpose": "Buttons, fields, switch options, form error box."
+      },
+      "switch": {
+        "purpose": "Theme switch track."
+      },
+      "panel": {
+        "purpose": "Panels, panel stacks, Apply card, awaiting slot."
+      },
+      "device-frame-outer": {
+        "pair": "device-frame",
+        "purpose": "iPad bezel; always used with device-frame-screen."
+      },
+      "device-frame-screen": {
+        "pair": "device-frame",
+        "purpose": "Screen capture inside the bezel; always used with device-frame-outer."
+      },
+      "device-frame-outer-min": {
+        "pair": "device-frame",
+        "term": "min",
+        "purpose": "Clamp term of device-frame-outer; not a standalone radius."
+      },
+      "device-frame-outer-fluid": {
+        "pair": "device-frame",
+        "term": "fluid",
+        "purpose": "Clamp term of device-frame-outer; not a standalone radius."
+      },
+      "device-frame-outer-max": {
+        "pair": "device-frame",
+        "term": "max",
+        "purpose": "Clamp term of device-frame-outer; not a standalone radius."
+      },
+      "device-frame-screen-min": {
+        "pair": "device-frame",
+        "term": "min",
+        "purpose": "Clamp term of device-frame-screen; not a standalone radius."
+      },
+      "device-frame-screen-fluid": {
+        "pair": "device-frame",
+        "term": "fluid",
+        "purpose": "Clamp term of device-frame-screen; not a standalone radius."
+      },
+      "device-frame-screen-max": {
+        "pair": "device-frame",
+        "term": "max",
+        "purpose": "Clamp term of device-frame-screen; not a standalone radius."
+      },
+      "light": {
+        "purpose": "Waypoint rings and pilot lights."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hairline-ring",
+        "value": "0 0 0 1px var(--rule)",
+        "purpose": "Outline for every panel and panel stack instead of a border."
+      },
+      {
+        "name": "lift",
+        "value": "0 18px 40px -18px rgba(0, 0, 0, 0.7)",
+        "dawnValue": "0 18px 40px -22px rgba(14, 27, 36, 0.35)",
+        "purpose": "Only the hero Apply panel, the Apply card and the device frame, always combined with a ring."
+      },
+      {
+        "name": "device-ring",
+        "value": "0 0 0 1px var(--rule-strong)",
+        "purpose": "Device bezel ring, combined with lift."
+      },
+      {
+        "name": "switch-inset",
+        "value": "inset 0 0 0 1px var(--rule)",
+        "purpose": "Theme switch track; pressed option uses rule-strong."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 1px var(--route-ink)",
+        "purpose": "Field focus, paired with a route-ink border."
+      }
+    ],
+    "focus": {
+      "value": "outline: 2px solid var(--route-ink); outline-offset: 3px; border-radius: 2px",
+      "purpose": "Global :focus-visible ring."
+    },
+    "masks": [
+      {
+        "name": "hero-fade",
+        "value": "linear-gradient(to right, transparent, #000 38%) intersect linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent)",
+        "purpose": "Night chart fades into open sea at left, where the headline sits, and top and bottom."
+      },
+      {
+        "name": "hero-fade-dawn",
+        "value": "linear-gradient(to right, transparent, #000 38%) intersect linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent)",
+        "purpose": "Day crop, with a slightly deeper top and bottom fade."
+      },
+      {
+        "name": "hero-fade-mobile",
+        "value": "linear-gradient(to bottom, #000 55%, transparent 95%)",
+        "purpose": "At 640px and below the chart sits on top and fades downward under a 62% console dimmer (66% sea on Dawn)."
+      },
+      {
+        "name": "route-dash",
+        "value": "repeating-linear-gradient(to bottom, var(--route) 0 10px, transparent 10px 16px) at 60% opacity",
+        "purpose": "Planned-route line on the passage rail."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-fill",
+        "value": "background-color 160ms ease-out",
+        "purpose": "Apply hover; removed under prefers-reduced-motion."
+      },
+      {
+        "name": "anchor-scroll",
+        "value": "scroll-behavior: smooth; scroll-padding-top: nav-h + 16px",
+        "purpose": "In-page navigation; auto under reduced motion."
+      },
+      {
+        "name": "own-ship",
+        "value": "translateY(var(--ship-y)) set per animation frame on scroll; no CSS transition",
+        "purpose": "Own-ship travels the rail between waypoints from a 35% viewport mark."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "rail",
+        "value": "1180px",
+        "purpose": "Below: passage rail hidden, single column."
+      },
+      {
+        "name": "stack",
+        "value": "960px",
+        "purpose": "Below: splits stack, tabs become horizontal snap strip, readouts 2-up."
+      },
+      {
+        "name": "menu",
+        "value": "900px",
+        "purpose": "Below: nav links behind Menu toggle."
+      },
+      {
+        "name": "mobile",
+        "value": "640px",
+        "purpose": "Below: nav 56px, hero copy bottom-anchored, single-column forms, full-width CTAs."
+      }
+    ],
+    "detectorSuppressions": [
+      {
+        "rule": "repeating-stripes-gradient",
+        "scope": "index.html",
+        "reason": "The dashed rail line is the passage route, drawn dashed like a planned route on the app chart."
+      },
+      {
+        "rule": "tight-leading",
+        "scope": "index.html",
+        "reason": "Condensed-caps display h1/h2 at 0.9-0.95 line-height only; all other text at 1.2 or above."
+      }
+    ],
+    "draftMode": {
+      "trigger": "localhost, 127.0.0.1, [::1], or ?draft adds .draft to <html>",
+      "purpose": "Reveals awaiting-material slots; never visible on the live site."
+    }
+  },
+  "components": [
+    {
+      "name": "Apply Button",
+      "kind": "button",
+      "refersTo": "button-apply",
+      "description": "The single button variant: night-vision red, condensed caps, optional stroke arrow.",
+      "html": "<button class=\"ds-btn-apply\" type=\"button\">Apply <svg viewBox=\"0 0 14 14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M1 7h12M8 2l5 5-5 5\"/></svg></button>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-btn-apply{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;font-family:var(--f-display);font-weight:600;font-size:1.125rem;letter-spacing:.04em;text-transform:uppercase;border:0;border-radius:4px;cursor:pointer;background:var(--red);color:var(--on-red);transition:background-color 160ms ease-out}.ds-btn-apply svg{width:16px;height:16px}.ds-btn-apply:hover{background:var(--red-hover)}.ds-btn-apply:focus-visible{outline:2px solid var(--route-ink);outline-offset:3px}.ds-btn-apply[disabled]{opacity:.7;cursor:progress}"
+    },
+    {
+      "name": "Nav with Night/Dawn Switch",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Console bar: condensed brand, muted links, red-ink Apply link, segmented theme switch.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-brand-name\">Sea Digital</span><span class=\"ds-brand-product\">EMPX</span></a><ul class=\"ds-links\"><li><a href=\"#\">Product</a></li><li><a href=\"#\">The Trial</a></li><li><a class=\"ds-apply\" href=\"#\">Apply</a></li></ul><div class=\"ds-switch\" role=\"group\" aria-label=\"Page theme\"><button type=\"button\" aria-pressed=\"true\">Night</button><button type=\"button\" aria-pressed=\"false\">Dawn</button></div></header>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-nav{height:64px;display:flex;align-items:center;gap:24px;padding:0 24px;background:var(--console);border-bottom:1px solid var(--rule);font-family:var(--f-text);color:var(--ink)}.ds-brand{display:flex;align-items:baseline;gap:12px;text-decoration:none;color:var(--ink);margin-right:auto}.ds-brand-name{font-family:var(--f-display);font-weight:700;font-size:1.375rem;letter-spacing:.02em;text-transform:uppercase}.ds-brand-product{font-size:.875rem;font-weight:600;letter-spacing:.08em;color:var(--ink-3)}.ds-links{display:flex;gap:24px;list-style:none;margin:0;padding:0}.ds-links a{font-size:.9375rem;font-weight:500;color:var(--ink-2);text-decoration:none}.ds-links a:hover{color:var(--ink)}.ds-links .ds-apply{color:var(--red-ink);font-weight:600}.ds-switch{display:inline-flex;padding:3px;gap:2px;border-radius:6px;background:var(--panel);box-shadow:inset 0 0 0 1px var(--rule)}.ds-switch button{border:0;background:transparent;cursor:pointer;min-height:34px;padding:0 12px;border-radius:4px;font:600 .8125rem var(--f-text);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}.ds-switch button[aria-pressed=\"true\"]{background:var(--panel-2);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-strong)}.ds-switch button:focus-visible,.ds-links a:focus-visible{outline:2px solid var(--route-ink);outline-offset:3px}"
+    },
+    {
+      "name": "Instrument Readouts",
+      "kind": "card",
+      "refersTo": "readout",
+      "description": "Labelled-value cells joined by hairline gaps; status carries the white-over-red pilot lights.",
+      "html": "<dl class=\"ds-readouts\"><div><dt>Status</dt><dd><span class=\"ds-lights\" aria-hidden=\"true\"><i></i><i></i></span>Ready, live in service</dd></div><div><dt>Trial places</dt><dd>Limited, invite only</dd></div><div><dt>To start</dt><dd>No card required</dd></div></dl>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-readouts{display:inline-grid;grid-template-columns:repeat(3,auto);gap:1px;margin:0;border-radius:8px;overflow:hidden;background:var(--rule);box-shadow:0 0 0 1px var(--rule);font-family:var(--f-text);font-variant-numeric:tabular-nums}.ds-readouts div{background:var(--panel);padding:12px 16px}.ds-readouts dt{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}.ds-readouts dd{margin:2px 0 0;font-size:1rem;font-weight:600;line-height:1.3;color:var(--ink)}.ds-lights{display:inline-flex;flex-direction:column;gap:3px;vertical-align:middle;margin-right:8px}.ds-lights i{width:7px;height:7px;border-radius:50%;background:var(--ink)}.ds-lights i:last-child{background:var(--red)}"
+    },
+    {
+      "name": "Apply Panel",
+      "kind": "input",
+      "refersTo": "apply-panel",
+      "description": "Hero email capture: lifted panel, console-well field with route focus, red Apply.",
+      "html": "<form class=\"ds-apply\"><label for=\"ds-e\">Apply to be a test pilot: start with your email</label><input class=\"ds-field\" id=\"ds-e\" type=\"email\" placeholder=\"you@pilotage.org\"><button class=\"ds-go\" type=\"button\">Apply</button></form>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-apply{display:grid;grid-template-columns:1fr auto;gap:8px;max-width:560px;background:var(--panel);padding:12px;border-radius:8px;box-shadow:0 0 0 1px var(--rule),var(--shadow);font-family:var(--f-text);color:var(--ink)}.ds-apply label{grid-column:1/-1;padding:0 4px;font-size:.9375rem;font-weight:600}.ds-field{min-height:48px;padding:0 16px;background:var(--console);border:1px solid var(--rule-strong);border-radius:4px;color:var(--ink);font:inherit;caret-color:var(--route-ink)}.ds-field::placeholder{color:var(--ink-3)}.ds-field:focus{outline:none;border-color:var(--route-ink);box-shadow:0 0 0 1px var(--route-ink)}.ds-go{min-height:48px;padding:0 24px;border:0;border-radius:4px;background:var(--red);color:var(--on-red);font:600 1.125rem var(--f-display);letter-spacing:.04em;text-transform:uppercase;cursor:pointer}.ds-go:hover{background:var(--red-hover)}.ds-go:focus-visible{outline:2px solid var(--route-ink);outline-offset:3px}"
+    },
+    {
+      "name": "Form Field with Error",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Labelled field in its invalid state, with the red-ink message linked by aria-describedby.",
+      "html": "<div class=\"ds-f\"><label for=\"ds-n\">Name</label><input class=\"ds-in\" id=\"ds-n\" aria-invalid=\"true\" aria-describedby=\"ds-n-msg\"><p class=\"ds-msg\" id=\"ds-n-msg\">Enter your name so we know who to reply to.</p><label for=\"ds-o\">Organisation <span>(optional)</span></label><input class=\"ds-in\" id=\"ds-o\" placeholder=\"Or “independent”\"></div>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-f{display:grid;gap:6px;max-width:360px;padding:24px;background:var(--panel);font-family:var(--f-text);color:var(--ink)}.ds-f label{font-size:.9375rem;font-weight:600}.ds-f label span{font-weight:400;color:var(--ink-3)}.ds-in{min-height:48px;padding:0 16px;background:var(--console);border:1px solid var(--rule-strong);border-radius:4px;color:var(--ink);font:inherit;caret-color:var(--route-ink)}.ds-in::placeholder{color:var(--ink-3)}.ds-in:focus{outline:none;border-color:var(--route-ink);box-shadow:0 0 0 1px var(--route-ink)}.ds-in[aria-invalid=\"true\"]{border-color:var(--red-ink)}.ds-msg{margin:0 0 12px;font-size:.875rem;color:var(--red-ink)}"
+    },
+    {
+      "name": "Passage Rail",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature wayfinding: dashed route line, waypoint rings, amber own-ship that travels on scroll.",
+      "html": "<nav class=\"ds-rail\"><ol><li><a href=\"#\">The exchange</a></li><li><a href=\"#\" aria-current=\"true\">What’s shipped</a></li><li><a href=\"#\">The trial</a></li><li><a href=\"#\">Apply</a></li></ol><svg class=\"ds-ship\" viewBox=\"0 0 18 22\" aria-hidden=\"true\"><path d=\"M9 21 L3 13 V2 H15 V13 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg><p class=\"ds-foot\">Boarding ground to berth</p></nav>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-rail{position:relative;width:208px;padding:24px 0;background:var(--sea);font-family:var(--f-text)}.ds-rail ol{list-style:none;margin:0;padding:0;position:relative}.ds-rail ol::before{content:\"\";position:absolute;left:7px;top:12px;bottom:12px;width:2px;background:repeating-linear-gradient(to bottom,var(--route) 0 10px,transparent 10px 16px);opacity:.6}.ds-rail li{position:relative;padding-left:32px}.ds-rail li+li{margin-top:24px}.ds-rail a{display:block;color:var(--ink-3);text-decoration:none;font-size:.9375rem;font-weight:500;line-height:1.3;padding:2px 0}.ds-rail a::before{content:\"\";position:absolute;left:2px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--sea);box-shadow:inset 0 0 0 2px var(--route)}.ds-rail a:hover{color:var(--ink)}.ds-rail a[aria-current=\"true\"]{color:var(--ink);font-weight:600}.ds-rail a[aria-current=\"true\"]::before{background:var(--route)}.ds-rail a:focus-visible{outline:2px solid var(--route-ink);outline-offset:3px}.ds-ship{position:absolute;left:-1px;top:24px;width:18px;height:22px;color:var(--amber);transform:translateY(64px)}.ds-foot{margin:32px 0 0;padding-left:32px;font-size:.8125rem;color:var(--ink-3)}"
+    },
+    {
+      "name": "Screen Tabs",
+      "kind": "custom",
+      "refersTo": "tab",
+      "description": "Vertical tablist with condensed titles and captions; the selected tab gets a panel fill and a route bar.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\"><span class=\"t\">Passage plan</span><span class=\"c\">Wind, tide and the route at the exchange</span></button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\"><span class=\"t\">Under-keel clearance</span><span class=\"c\">Tide, squat and net UKC per leg</span></button></div>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-tabs{display:flex;flex-direction:column;max-width:420px;border-top:1px solid var(--rule);background:var(--sea)}.ds-tab{position:relative;display:grid;gap:4px;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--rule);padding:16px 16px 16px 24px;cursor:pointer;font-family:var(--f-text)}.ds-tab::before{content:\"\";position:absolute;left:0;top:16px;bottom:16px;width:2px;background:transparent}.ds-tab .t{font:600 1.375rem/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.01em;color:var(--ink-2)}.ds-tab .c{font-size:.9375rem;color:var(--ink-3)}.ds-tab:hover .t{color:var(--ink)}.ds-tab[aria-selected=\"true\"]{background:var(--panel)}.ds-tab[aria-selected=\"true\"]::before{background:var(--route)}.ds-tab[aria-selected=\"true\"] .t{color:var(--ink)}.ds-tab[aria-selected=\"true\"] .c{color:var(--ink-2)}.ds-tab:focus-visible{outline:2px solid var(--route-ink);outline-offset:3px}"
+    },
+    {
+      "name": "Device Frame with Demo Note",
+      "kind": "card",
+      "refersTo": "device-frame",
+      "description": "iPad bezel holding a real capture, followed by a status-strip caption labelling demo data.",
+      "html": "<figure class=\"ds-dev\"><div class=\"ds-bezel\"><div class=\"ds-screen\"></div></div><p class=\"ds-note\"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p></figure>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-dev{margin:0;max-width:320px;font-family:var(--f-text)}.ds-bezel{background:#05070C;padding:10px;border-radius:clamp(18px, 3vw, 34px);box-shadow:0 0 0 1px var(--rule-strong),var(--shadow)}.ds-screen{aspect-ratio:1100/1467;border-radius:clamp(10px, 1.6vw, 18px);background:var(--sea)}.ds-note{display:flex;flex-wrap:wrap;gap:4px 24px;margin:24px 0 0;padding-top:8px;border-top:1px solid var(--rule);font-size:.8125rem;color:var(--ink-3)}.ds-note b{font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-right:6px}"
+    },
+    {
+      "name": "Segmented Strip",
+      "kind": "chip",
+      "refersTo": "segment",
+      "description": "Non-interactive fact strip: hairline-joined panel cells, one raised \"on\" cell.",
+      "html": "<ul class=\"ds-seg\"><li class=\"on\">Native iPad &amp; iPhone</li><li>Sign in with Apple</li><li>Day &amp; night themes</li></ul>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-seg{display:inline-flex;flex-wrap:wrap;gap:1px;margin:0;padding:0;list-style:none;background:var(--rule);border-radius:8px;overflow:hidden;box-shadow:0 0 0 1px var(--rule);font-family:var(--f-text)}.ds-seg li{flex:1 1 auto;text-align:center;font-size:.875rem;font-weight:600;padding:8px 16px;background:var(--panel);color:var(--ink-2)}.ds-seg li.on{background:var(--panel-2);color:var(--ink)}"
+    },
+    {
+      "name": "Scale-Bar Section Break",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Hairline section divider with a 121 x 7 chart scale bar at its left end.",
+      "html": "<div class=\"ds-break\"></div>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-break{position:relative;height:48px;border-top:1px solid var(--rule);background:var(--sea)}.ds-break::before{content:\"\";position:absolute;left:0;top:-4px;width:121px;height:7px;background:var(--ink-3);-webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='121' height='7'%3E%3Crect x='.5' y='.5' width='120' height='6' fill='none' stroke='%23000'/%3E%3Crect x='0' y='0' width='30' height='7'/%3E%3Crect x='60' y='0' width='30' height='7'/%3E%3C/svg%3E\") no-repeat;mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='121' height='7'%3E%3Crect x='.5' y='.5' width='120' height='6' fill='none' stroke='%23000'/%3E%3Crect x='0' y='0' width='30' height='7'/%3E%3Crect x='60' y='0' width='30' height='7'/%3E%3C/svg%3E\") no-repeat}"
+    },
+    {
+      "name": "Awaiting-Material Slot (draft only)",
+      "kind": "custom",
+      "refersTo": "awaiting-slot",
+      "description": "Placeholder for user-supplied evidence; hidden in production, shown only under .draft.",
+      "html": "<figure class=\"ds-await\"><b>Awaiting material</b>A page from the signed PDF record goes here, with demo data labelled as fictional.</figure>",
+      "css": ":host{--sea:#0A1922;--console:#0A0D18;--panel:#0F222E;--panel-2:#132A38;--rule:#1F3747;--rule-strong:#2C4A5C;--ink:#E3EAEE;--ink-2:#A9BAC4;--ink-3:#869DAA;--route:#3FB26A;--route-ink:#4CC27A;--amber:#E0A030;--red:#C8322B;--red-hover:#A82822;--red-ink:#EF7068;--on-red:#FFFFFF;--shadow:0 18px 40px -18px rgba(0,0,0,0.7);--f-display:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--f-text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;} .ds-await{display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:240px;margin:0;padding:32px;border:2px dashed var(--amber);border-radius:8px;background:var(--sea);color:var(--ink-2);font:400 .9375rem var(--f-text)}.ds-await b{color:var(--amber);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Bridge at 0400",
+    "overview": "The page is a darkened wheelhouse, and the EMPX app's own night chart is the ground it is set on. Every colour is lifted from that chart: the deep sea, the near-black console, route green for the passage, amber for own-ship, and night-vision red kept for the one thing a visitor should do. Type reads like ship marking: Barlow Condensed capitals for headings and buttons over plain Barlow text, with tabular numerals everywhere so figures sit like instrument readouts.\n\nDensity is calm and instrument-like rather than editorial. Information sits in labelled panels (small caps label above a large value), separated by hairlines, with section breaks drawn as chart scale bars. Depth comes from tonal layering of console, sea and panel, not from light effects: there is no glow and no gradient fill anywhere. Dawn is not an accent swap but a whole-page day state that mirrors the app's day chart, driven by the same token names.\n\nThis world replaces an earlier cream and pastel editorial look. That look is retired: no cream paper, pastel tints or serif editorial display.",
+    "keyCharacteristics": [
+      "Real app captures as imagery: the hero is a crop of the night (or day) chart, never an illustration or mockup scene.",
+      "Two complete themes, Night (default) and Dawn, sharing one token set.",
+      "Condensed uppercase display over a humanist sans; tabular numerals throughout.",
+      "Labelled-value instrument panels in hairline-separated stacks.",
+      "Colour is semantic: green means route and position, amber means own-ship, red means Apply.",
+      "Flat tonal depth; one soft lift reserved for surfaces you act in or look into."
+    ],
+    "rules": [
+      {
+        "name": "The One Meaning Rule",
+        "body": "Each signal colour means one thing. Green is the route, current position, focus and success. Amber is own-ship and draft-only slots. Red is Apply, the lit signal, and errors. Never use one decoratively or borrow it for another meaning.",
+        "section": "colors"
+      },
+      {
+        "name": "The Night-Vision Red Rule",
+        "body": "Red never fills more than the Apply controls and the small lit signals. A red section background or a red heading breaks night vision and the hierarchy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Themes, One Token Set Rule",
+        "body": "Every colour goes through a role token so Dawn swaps cleanly. The only fixed values are the device bezel and the screenshot backing colour behind images while they load.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ship Marking Rule",
+        "body": "The condensed face appears only in uppercase headings, buttons and the brand. The one exception is the founder quote. Running text, labels and values stay in Barlow.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Only the condensed uppercase display and headline sizes run below 1.0 leading (0.9 and 0.95). That is a deliberate ship-marking setting, and the detector's `tight-leading` hit is suppressed in `.impeccable/config.json` for it alone. Everything else stays at 1.2 or above.",
+        "section": "typography"
+      },
+      {
+        "name": "The Scale-Bar Break Rule",
+        "body": "Sections are divided by a 1px hairline carrying a 121 x 7px chart scale bar (alternating filled and open segments, in faint ink) at its left end. The first leg has neither.",
+        "section": "layout"
+      },
+      {
+        "name": "The Lift Is Earned Rule",
+        "body": "Only surfaces you type into or look into (the Apply panels and the device) carry the lift. Information panels stay flat with a hairline ring.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No Glow Rule",
+        "body": "No glows, no coloured shadows, no gradient fills. Gradients appear only as alpha masks (the hero fade) and as the rail's dash pattern.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do build imagery from real EMPX captures (chart crops, device screens), with demo data labelled fictional in a status strip.",
+      "Do route every colour through the role tokens so Night and Dawn both work; check every new surface in both themes.",
+      "Do present facts as labelled values: faint 0.08em caps label over an ink value, in hairline-joined panel stacks with 8px corners.",
+      "Do keep red for Apply, lit signals and errors; green for route, position, focus and success; amber for own-ship and draft slots.",
+      "Do divide sections with the hairline-plus-scale-bar break, and keep the 4px-based spacing scale.",
+      "Do set headings in uppercase Barlow Condensed and running text in Barlow with tabular numerals."
+    ],
+    "donts": [
+      "Don't return to the retired cream and pastel editorial look: no cream paper grounds, pastel tints or serif display.",
+      "Don't add glows, coloured shadows or gradient fills; gradients exist only as masks and the route dash.",
+      "Don't give information panels the lift shadow; it belongs to the Apply panels and the device frame.",
+      "Don't set Barlow Condensed in mixed-case body text or below 1.0 leading outside the display and headline sizes.",
+      "Don't use icon fonts or glyph icons; draw icons as small inline SVG strokes.",
+      "Don't ship an awaiting-material slot to the live site, or style anything else with the amber dashed border."
+    ]
+  }
+}
