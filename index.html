@@ -450,6 +450,146 @@
             font-weight: 300;
         }
 
+        /* ── ON iPAD & iPHONE ── */
+        .ios-section {
+            padding: 8rem 3rem;
+            background: var(--bg-1);
+            position: relative;
+        }
+        .ios-section::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border-mid) 50%, transparent 100%);
+        }
+        .ios-header { max-width: 1200px; margin: 0 auto 4rem; }
+        .ios-ship {
+            display: flex; flex-wrap: wrap; gap: 0.6rem;
+            margin-top: 1.8rem;
+        }
+        .ios-ship span {
+            font-size: 0.8rem;
+            padding: 0.45rem 0.85rem;
+            border: 1px solid var(--border-mid);
+            background: var(--bg-card);
+            color: var(--text-mid);
+        }
+        .ios-ship span.on { border-color: var(--mint-deep); color: var(--text); }
+        .ios-ship span.on::before {
+            content: ''; display: inline-block;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--mint-deep);
+            margin-right: 0.6rem; vertical-align: 1px;
+        }
+
+        .ios-hero {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: 4.5rem;
+            align-items: center;
+        }
+        .device {
+            background: #15171c;
+            border-radius: 30px;
+            padding: 14px;
+            box-shadow: 0 24px 48px -18px rgba(44,42,38,0.38);
+        }
+        .device img {
+            display: block;
+            width: 100%; height: auto;
+            border-radius: 18px;
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .device img.swapping { opacity: 0.15; }
+        .device-sm { border-radius: 20px; padding: 9px; }
+        .device-sm img { border-radius: 12px; }
+
+        .theme-toggle {
+            display: inline-flex;
+            margin-top: 1.4rem;
+            border: 1px solid var(--border-mid);
+            background: var(--bg-card);
+        }
+        .theme-toggle button {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.6rem 1.1rem;
+            border: 0; background: none;
+            color: var(--text-dim);
+            cursor: pointer;
+        }
+        .theme-toggle button:hover { color: var(--text); }
+        .theme-toggle button[aria-pressed="true"] { background: var(--text); color: var(--bg-card); }
+        .theme-toggle button:focus-visible { outline: 2px solid var(--sand-deep); outline-offset: 2px; }
+
+        .ios-points { display: grid; gap: 2.2rem; }
+        .ios-point { border-top: 1px solid var(--border-mid); padding-top: 1.4rem; }
+        .ios-point h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.35rem; font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .ios-point p {
+            font-size: 0.92rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .ios-gallery {
+            max-width: 1200px; margin: 6rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1.6rem;
+            align-items: start;
+        }
+        .ios-gallery figure { margin: 0; }
+        .ios-gallery figcaption {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: 1rem;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+        .ios-gallery figcaption strong {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .ios-yours {
+            max-width: 1200px; margin: 6rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+        }
+        .ios-yours > div { background: var(--bg-card); padding: 2rem; }
+        .ios-yours .k {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--sand-deep);
+            margin-bottom: 0.8rem;
+        }
+        .ios-yours p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.65; font-weight: 300; }
+        .ios-note {
+            max-width: 1200px; margin: 1.6rem auto 0;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--text-dim);
+        }
+        .status-item.wide { grid-column: 1 / -1; }
+
         /* ── BUILD STATUS ── */
         .status-section {
             padding: 8rem 3rem;
@@ -943,6 +1083,9 @@
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .features { grid-template-columns: repeat(2, 1fr); }
+            .ios-hero { gap: 3rem; }
+            .ios-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .ios-yours { grid-template-columns: 1fr 1fr; }
             .status-inner { grid-template-columns: 1fr; gap: 3rem; }
             .pilot-inner { grid-template-columns: 1fr; gap: 3rem; }
             .access-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -979,6 +1122,18 @@
             .pilot-section,
             .access-section { padding: 5rem 1.5rem; }
 
+            .ios-section { padding: 5rem 1rem; }
+            .ios-hero { grid-template-columns: 1fr; gap: 3rem; }
+            .ios-gallery {
+                display: flex; gap: 1rem; margin: 4rem -1rem 0; padding: 0 1rem 0.5rem;
+                overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+            }
+            .ios-gallery::-webkit-scrollbar { display: none; }
+            .ios-gallery figure { flex: 0 0 68%; scroll-snap-align: start; }
+            .ios-yours { grid-template-columns: 1fr; margin-top: 4rem; }
+            .device { border-radius: 22px; padding: 10px; }
+            .device img { border-radius: 13px; }
+
             .features { grid-template-columns: 1fr; }
             .status-grid { grid-template-columns: 1fr; }
             .pilot-stats { grid-template-columns: 1fr 1fr; }
@@ -1008,6 +1163,7 @@
         <nav class="nav-links">
             <a href="#home">Home</a>
             <a href="#product">Product</a>
+            <a href="#ios">iPad</a>
             <a href="#status">Status</a>
             <a href="#trial">The Trial</a>
             <a href="#access">Apply</a>
@@ -1160,9 +1316,117 @@
             <div class="feature-card reveal reveal-d2">
                 <div class="feature-num">09</div>
                 <h3>Built for the Bridge</h3>
-                <p>Tablet-first, day and night themes, Apple Pencil on the chart, and installable as an app. Designed to be read at arm's length on a wing at 0400.</p>
+                <p>A native iPad and iPhone app with day and night themes and Apple Pencil on the chart. Designed to be read at arm's length on a wing at 0400.</p>
             </div>
         </div>
+    </section>
+
+    <!-- ═══════════════ ON iPAD & iPHONE ═══════════════ -->
+    <section class="ios-section" id="ios">
+        <div class="ios-header">
+            <div class="section-tag reveal">On iPad &amp; iPhone</div>
+            <h2 class="section-heading reveal reveal-d1">A native iOS app.<br><em>Set up for your port.</em></h2>
+            <p class="section-prose reveal reveal-d2">
+                EMPX runs as a native app on iPad and iPhone. Chart, exchange, under-keel
+                clearance and logbook sit in one place, readable at arm's length on the bridge.
+                Every screen below is the iOS build itself.
+            </p>
+            <div class="ios-ship reveal reveal-d3">
+                <span class="on">Native iPad &amp; iPhone</span>
+                <span class="on">In TestFlight now</span>
+                <span>Sign in with Apple</span>
+                <span>Day &amp; night themes</span>
+            </div>
+        </div>
+
+        <div class="ios-hero">
+            <div class="reveal">
+                <div class="device">
+                    <picture id="iosChart">
+                        <source type="image/webp" srcset="images/ios/chart-day.webp">
+                        <img src="images/ios/chart-day.jpg" width="1100" height="1467" loading="lazy"
+                             alt="EMPX on iPad: the Cairns Inbound passage on the chart with the route plan, distances and waypoint list">
+                    </picture>
+                </div>
+                <div class="theme-toggle" role="group" aria-label="Chart theme">
+                    <button type="button" data-theme="day" aria-pressed="true">Day</button>
+                    <button type="button" data-theme="night" aria-pressed="false">Night</button>
+                </div>
+            </div>
+
+            <div class="ios-points">
+                <div class="ios-point reveal reveal-d1">
+                    <h3>The passage, on the chart</h3>
+                    <p>Your organisation's passages, legs and wheel-over points on an ECDIS-style chart, with own-ship from the iPad's GPS. Import and export RTZ for the ship's ECDIS.</p>
+                </div>
+                <div class="ios-point reveal reveal-d2">
+                    <h3>The exchange, signed on the glass</h3>
+                    <p>Your checklist, not a generic one. Master and pilot sign with a finger or Apple Pencil, and the pilot finalises the record once both have signed.</p>
+                </div>
+                <div class="ios-point reveal reveal-d3">
+                    <h3>Clearance and the berth</h3>
+                    <p>Net UKC leg by leg against your margin, a ship diagram from the pilot card, and the mooring plan with your tugs named on station.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ios-gallery">
+            <figure class="reveal">
+                <div class="device device-sm"><picture>
+                    <source type="image/webp" srcset="images/ios/passage-plan.webp">
+                    <img src="images/ios/passage-plan.jpg" width="1100" height="1467" loading="lazy" alt="Passage plan step with wind, tide and the route map">
+                </picture></div>
+                <figcaption><strong>Passage plan</strong>Wind, tide and the route at the exchange</figcaption>
+            </figure>
+            <figure class="reveal reveal-d1">
+                <div class="device device-sm"><picture>
+                    <source type="image/webp" srcset="images/ios/checklist.webp">
+                    <img src="images/ios/checklist.jpg" width="1100" height="1467" loading="lazy" alt="The MPX checklist: navigation equipment status answered yes, no or N/A">
+                </picture></div>
+                <figcaption><strong>The checklist</strong>Your organisation's form, step by step</figcaption>
+            </figure>
+            <figure class="reveal reveal-d2">
+                <div class="device device-sm"><picture>
+                    <source type="image/webp" srcset="images/ios/ukc.webp">
+                    <img src="images/ios/ukc.jpg" width="1100" height="1467" loading="lazy" alt="Under-keel clearance drawn as a depth section with net UKC for each leg">
+                </picture></div>
+                <figcaption><strong>Under-keel clearance</strong>Tide, squat and net UKC per leg</figcaption>
+            </figure>
+            <figure class="reveal reveal-d3">
+                <div class="device device-sm"><picture>
+                    <source type="image/webp" srcset="images/ios/ship-mooring.webp">
+                    <img src="images/ios/ship-mooring.jpg" width="1100" height="1467" loading="lazy" alt="Ship diagram with drafts and the mooring plan with two tugs on station">
+                </picture></div>
+                <figcaption><strong>Ship &amp; mooring</strong>Drafts, lines and tugs on station</figcaption>
+            </figure>
+            <figure class="reveal reveal-d4">
+                <div class="device device-sm"><picture>
+                    <source type="image/webp" srcset="images/ios/signatures.webp">
+                    <img src="images/ios/signatures.jpg" width="1100" height="1467" loading="lazy" alt="Master and pilot signatures captured on the record">
+                </picture></div>
+                <figcaption><strong>Signatures</strong>Master and pilot, on the record</figcaption>
+            </figure>
+        </div>
+
+        <div class="ios-yours">
+            <div class="reveal">
+                <div class="k">Your form</div>
+                <p>We build your organisation's MPX checklist into the app. Pilots see your questions, in your order.</p>
+            </div>
+            <div class="reveal reveal-d1">
+                <div class="k">Your passages</div>
+                <p>Your port's passages, waypoints, controlling depths and pre-arrival instructions, shared across the organisation.</p>
+            </div>
+            <div class="reveal reveal-d2">
+                <div class="k">Your fleet &amp; chartlets</div>
+                <p>Your tugs with their bollard pull, and your berth chartlets, ready to pick from on every job.</p>
+            </div>
+            <div class="reveal reveal-d3">
+                <div class="k">Your name on the record</div>
+                <p>Every signed record carries your organisation's name and logo, and stays inside your organisation.</p>
+            </div>
+        </div>
+        <p class="ios-note">Screens captured from the iOS build on iPad, using demo data. Vessel, people and organisation are fictional.</p>
     </section>
 
     <!-- ═══════════════ BUILD STATUS ═══════════════ -->
@@ -1212,6 +1476,10 @@
                 <div class="status-item">
                     <div class="label">Admin Console &amp; Onboarding</div>
                     <div class="value live">Live</div>
+                </div>
+                <div class="status-item wide">
+                    <div class="label">Native iPad &amp; iPhone App</div>
+                    <div class="value building">TestFlight</div>
                 </div>
                 <div class="status-item">
                     <div class="label">Offline on Passage</div>
@@ -1444,6 +1712,24 @@
             });
         }, { threshold: 0.12 });
         revealEls.forEach(el => revealObserver.observe(el));
+
+        // iOS chart theme toggle
+        const iosChart = document.getElementById('iosChart');
+        document.querySelectorAll('.theme-toggle button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const t = btn.dataset.theme;
+                const img = iosChart.querySelector('img');
+                img.classList.add('swapping');
+                iosChart.querySelector('source').srcset = `images/ios/chart-${t}.webp`;
+                img.src = `images/ios/chart-${t}.jpg`;
+                img.decode().catch(() => {}).finally(() => img.classList.remove('swapping'));
+                document.querySelectorAll('.theme-toggle button').forEach(b =>
+                    b.setAttribute('aria-pressed', String(b === btn)));
+            });
+            btn.addEventListener('pointerenter', () => {
+                new Image().src = `images/ios/chart-${btn.dataset.theme}.webp`;
+            }, { once: true });
+        });
 
         // Animate progress bar
         const progressFill = document.querySelector('.progress-fill');
