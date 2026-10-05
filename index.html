@@ -643,6 +643,7 @@
             <aside class="rail" aria-label="Page passage">
                 <div class="rail-inner">
                     <ol>
+                        <li><a href="#difference">What's different</a></li>
                         <li><a href="#exchange">The exchange</a></li>
                         <li><a href="#product">What's shipped</a></li>
                         <li><a href="#organisations">Your organisation</a></li>
@@ -655,6 +656,33 @@
             </aside>
 
             <div class="legs">
+                <!-- ═══════════════ WHAT'S DIFFERENT ═══════════════ -->
+                <section class="leg" id="difference" aria-labelledby="diff-title">
+                    <div class="leg-head">
+                        <h2 id="diff-title">More than an electronic MPX.</h2>
+                        <p class="prose">
+                            Pilotage is an ecosystem, not a form. Boarding, the exchange, the passage,
+                            the chart, the swing and the berth are one continuous job &mdash; so we built EMPX
+                            to carry all of it, and to keep going into the part a checklist app hands off:
+                            the navigation. On the same iPad, EMPX is your pilot portable unit.
+                        </p>
+                    </div>
+                    <div class="yours">
+                        <div>
+                            <h3>One job, one record</h3>
+                            <p>Exchange, passage plan, under-keel clearance, chart and underway log are facets of a single record, not four apps stitched together. What you planned is what you pilot, and what you sign.</p>
+                        </div>
+                        <div>
+                            <h3>A PPU on the iPad in your hand</h3>
+                            <p>Own-ship drawn to scale with a curved predictor, heading, rate of turn, course and speed, cross-track and distance to go &mdash; the pilot portable unit, on the tablet you already carry aboard.</p>
+                        </div>
+                        <div>
+                            <h3>Docking you can trust</h3>
+                            <p>Bow and stern speeds alongside the berth, and every reading says where it came from: measured with a sensor, or clearly marked an estimate. Never a guess dressed up as a fix.</p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- ═══════════════ THE EXCHANGE ═══════════════ -->
                 <section class="leg" id="exchange" aria-labelledby="exchange-title">
                     <div class="leg-head">
@@ -692,6 +720,18 @@
                             <button class="tab" type="button" role="tab" id="t-sign" aria-controls="p-sign" aria-selected="false" tabindex="-1">
                                 <span class="tab-title">Signed on the glass</span>
                                 <span class="tab-cap">Master and pilot, on the record</span>
+                            </button>
+                            <button class="tab" type="button" role="tab" id="t-sim" aria-controls="p-sim" aria-selected="false" tabindex="-1">
+                                <span class="tab-title">Passage simulation</span>
+                                <span class="tab-cap">The plan, the tugs and the tide, played through</span>
+                            </button>
+                            <button class="tab" type="button" role="tab" id="t-way" aria-controls="p-way" aria-selected="false" tabindex="-1">
+                                <span class="tab-title">Underway log</span>
+                                <span class="tab-cap">The passage logged as it happens</span>
+                            </button>
+                            <button class="tab" type="button" role="tab" id="t-dock" aria-controls="p-dock" aria-selected="false" tabindex="-1">
+                                <span class="tab-title">Docking view</span>
+                                <span class="tab-cap">Bow and stern speeds alongside</span>
                             </button>
                         </div>
 
@@ -743,6 +783,36 @@
                                 </picture></div>
                                 <div class="panel-text">
                                     <p>Master and pilot sign with a finger or Apple Pencil, and the pilot finalises the record once both have signed.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="p-sim" aria-labelledby="t-sim" tabindex="0" hidden>
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/passage-sim.webp">
+                                    <img src="images/ios/passage-sim.jpg" width="1100" height="1467" loading="lazy" alt="Passage simulation playing through the Cairns Inbound route, with both tugs on station at the berth and a scrub bar showing time and speed">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>Play the passage through before you run it. The ship steams the plan, your tugs take their stations on cue, and the wind and tide are shown as they'll be at the time &mdash; a briefing you can watch, not just read.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="p-way" aria-labelledby="t-way" tabindex="0" hidden>
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/underway.webp">
+                                    <img src="images/ios/underway.jpg" width="1100" height="1467" loading="lazy" alt="Underway logbook recording the passage, with key times and events timed and stamped with the position they happened at">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>The passage as it happens: position against the plan, and events timed and stamped where they occurred. Moments like the exchange log themselves, and a time correction is marked as amended rather than silently rewritten.</p>
+                                    <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="p-dock" aria-labelledby="t-dock" tabindex="0" hidden>
+                                <div class="device"><picture>
+                                    <source type="image/webp" srcset="images/ios/docking.webp">
+                                    <img src="images/ios/docking.jpg" width="1100" height="1467" loading="lazy" alt="Docking view on the chart showing bow and stern lateral speeds and the fore-and-aft speed alongside the berth">
+                                </picture></div>
+                                <div class="panel-text">
+                                    <p>Alongside, the bow and stern speeds and the speed ahead, read straight off the chart. Measured with a heading sensor, or clearly marked as estimates when the ship has none &mdash; never a guess passed off as a reading.</p>
                                     <p class="demo-note"><span><b>Source</b>iOS build on iPad</span><span><b>Data</b>Demo; vessel, people and organisation are fictional</span></p>
                                 </div>
                             </div>
@@ -867,23 +937,6 @@
                             providers both. Small on purpose: every trial is set up by hand, and we'd rather support a
                             handful properly than a hundred badly.
                         </p>
-                    </div>
-
-                    <div class="photos">
-                        <figure class="photo">
-                            <picture>
-                                <source type="image/webp" srcset="images/photos/pilot-ladder.webp">
-                                <img src="images/photos/pilot-ladder.jpg" width="696" height="396" loading="lazy" alt="A marine pilot climbing the pilot ladder from the launch up the side of a ship">
-                            </picture>
-                            <figcaption class="demo-note"><span><b>Boarding</b>From the launch, by pilot ladder</span></figcaption>
-                        </figure>
-                        <figure class="photo">
-                            <picture>
-                                <source type="image/webp" srcset="images/photos/bridge-night.webp">
-                                <img src="images/photos/bridge-night.jpg" width="1408" height="768" loading="lazy" alt="Illustration of a darkened ship's bridge at night, with radar, a tablet and a paper chart on the console">
-                            </picture>
-                            <figcaption class="demo-note"><span><b>Bridge at night</b>Illustration, AI-generated; the tablet screen is not the EMPX interface</span></figcaption>
-                        </figure>
                     </div>
 
                     <ol class="steps">
